@@ -1,0 +1,96 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ardent_cinematic_watch_3npdHq": {
+      "type": "ardent-cinematic-watch",
+      "name": "Ardent — film interactif",
+      "settings": {
+        "image": "shopify://shop_images/ardent-elysee-cinematic-hero-v2.png",
+        "eyebrow": "ARDENT / MAISON HORLOGÈRE",
+        "title": "Le temps vous appartient.",
+        "body": "Des montres conçues pour porter votre histoire, jamais pour suivre celle des autres.",
+        "cta_label": "Découvrir Ardent",
+        "cta_link": "#ardent-gateway-ardent_atelier_gateway"
+      },
+      "disabled": true
+    },
+    "ardent_scroll_hero_enV64x": {
+      "type": "ardent-scroll-hero",
+      "disabled": true,
+      "name": "Ardent Scroll Hero",
+      "settings": {
+        "image_1": "shopify://shop_images/Capture_d_ecran_2026-09-01_a_17.22.22.png",
+        "eyebrow_1": "ARDENT / CONFIGURATEUR",
+        "heading_1": "Votre montre. En mouvement.",
+        "text_1": "<p>Entrez dans l atelier. Composez une montre qui porte votre identité.</p>",
+        "button_text_1": "Configurer la mienne",
+        "button_link_1": "",
+        "eyebrow_2": "ATELIER ARDENT",
+        "heading_2": "La montre devient la vôtre.",
+        "text_2": "<p>Boîtier. Cadran. Bracelet. Gravure. Faites-la évoluer en temps réel.</p>",
+        "model_image_1": "shopify://shop_images/Capture_d_ecran_2026-09-01_a_19.03.05.png",
+        "model_title_1": "Élysée",
+        "model_text_1": "Le point de départ.",
+        "model_button_1": "Configurer Élysée",
+        "model_link_1": "",
+        "model_image_2": "shopify://shop_images/Capture_d_ecran_2026-09-01_a_19.05.52.png",
+        "model_title_2": "Méridian",
+        "model_text_2": "La précision en mouvement.",
+        "model_button_2": "Configurer Méridian",
+        "model_link_2": "",
+        "model_image_3": "shopify://shop_images/Capture_d_ecran_2026-09-01_a_19.07.41.png",
+        "model_title_3": "Bastille",
+        "model_text_3": "Votre signature finale.",
+        "model_button_3": "Configurer Bastille",
+        "model_link_3": "",
+        "text_color_1": "#ffffff",
+        "text_color_2": "#ffffff",
+        "button_background": "{{ settings.color_palette.color5 }}",
+        "button_text_color": "#ffffff",
+        "button_border_color": "#ffffff",
+        "text_alignment": "center",
+        "vertical_position": "center",
+        "scroll_height": 400,
+        "mobile_scroll_height": 300,
+        "zoom_amount": 8,
+        "heading_size": 120,
+        "overlay_opacity": 20,
+        "show_scroll_indicator": true
+      }
+    },
+    "ardent_atelier_gateway": {
+      "type": "ardent-atelier-gateway",
+      "name": "Atelier Ardent",
+      "settings": {},
+      "disabled": true
+    },
+    "ardent_kinetic_details": {
+      "type": "ardent-kinetic-details",
+      "name": "Ardent — Détails",
+      "settings": {},
+      "disabled": true
+    },
+    "ardent_elements": {
+      "type": "ardent-element-home",
+      "name": "Ardent — Les éléments",
+      "settings": {
+        "dwell": 6
+      }
+    }
+  },
+  "order": [
+    "ardent_elements",
+    "ardent_cinematic_watch_3npdHq",
+    "ardent_atelier_gateway",
+    "ardent_kinetic_details",
+    "ardent_scroll_hero_enV64x"
+  ]
+}
