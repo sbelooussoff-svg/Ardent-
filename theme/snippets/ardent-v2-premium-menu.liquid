@@ -1,0 +1,271 @@
+{% doc %}
+  Renders Ardent's elemental navigation.
+  @param {object} menu_settings - Header override section settings.
+{% enddoc %}
+{% liquid
+  assign base_url = routes.root_url
+  assign last_character = base_url | slice: -1, 1
+  unless last_character == '/'
+    assign base_url = base_url | append: '/'
+  endunless
+  assign models = 'meridian,bastille,elysee' | split: ','
+  assign contexts = 'collections,configurator' | split: ','
+%}
+<ardent-navigation id="ardent-v2-premium-menu" data-open-label="{{ 'ardent_elements.menu.open' | t | escape }}">
+  <dialog id="ArdentNavigationDialog" class="ardent-nav" aria-labelledby="ArdentNavigationTitle">
+    <div class="ardent-nav__masthead">
+      <a class="ardent-nav__brand" href="{{ routes.root_url }}" aria-label="{{ 'ardent_elements.menu.home' | t | escape }}">
+        {% if settings.logo != blank %}{{ settings.logo | image_url: width: 320 | image_tag: class: 'ardent-nav__logo', alt: shop.name, loading: 'lazy' }}{% else %}<span>ARDENT</span>{% endif %}
+      </a>
+      <span class="ardent-nav__sr-only" id="ArdentNavigationTitle">{{ 'ardent_elements.menu.navigation' | t }}</span>
+      <button type="button" class="ardent-nav__close" data-ardent-close aria-label="{{ 'ardent_elements.menu.close' | t | escape }}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19" stroke="currentColor" stroke-width="1.25"/></svg>
+      </button>
+    </div>
+    <div class="ardent-nav__body">
+      <div class="ardent-nav__rail">
+        <nav aria-label="{{ 'ardent_elements.menu.navigation' | t | escape }}" class="ardent-nav__primary">
+          <a class="ardent-nav__link" href="{{ routes.root_url }}"{% if request.page_type == 'index' %} aria-current="page"{% endif %}><span aria-hidden="true">01</span>{{ 'ardent_elements.menu.home' | t }}</a>
+          <button class="ardent-nav__link is-active" type="button" aria-expanded="true" aria-controls="ArdentPanel-collections" data-ardent-panel-trigger="collections"><span aria-hidden="true">02</span>{{ 'ardent_elements.menu.collections' | t }}<i aria-hidden="true">↗</i></button>
+          <button class="ardent-nav__link" type="button" aria-expanded="false" aria-controls="ArdentPanel-configurator" data-ardent-panel-trigger="configurator"><span aria-hidden="true">03</span>{{ 'ardent_elements.menu.configurator' | t }}<i aria-hidden="true">↗</i></button>
+          <button class="ardent-nav__link" type="button" aria-expanded="false" aria-controls="ArdentPanel-craft" data-ardent-panel-trigger="craft"><span aria-hidden="true">04</span>{{ 'ardent_elements.menu.craft' | t }}<i aria-hidden="true">↗</i></button>
+          <button class="ardent-nav__link" type="button" aria-expanded="false" aria-controls="ArdentPanel-service" data-ardent-panel-trigger="service"><span aria-hidden="true">05</span>{{ 'ardent_elements.menu.service' | t }}<i aria-hidden="true">↗</i></button>
+        </nav>
+        <div class="ardent-nav__rail-bottom">
+          <p>{{ 'ardent_elements.menu.signature' | t }}</p>
+          {% form 'localization', id: 'ArdentLanguageForm', class: 'ardent-nav__language' %}
+            <label for="ArdentLanguageSelect">{{ 'ardent_elements.menu.language' | t }}</label>
+            <select name="language_code" id="ArdentLanguageSelect" aria-label="{{ 'ardent_elements.menu.choose_language' | t | escape }}">
+              {% for language in localization.available_languages %}
+                <option value="{{ language.iso_code }}" lang="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} selected{% endif %}>{{ language.endonym_name | capitalize }}</option>
+              {% endfor %}
+            </select>
+            <noscript><button type="submit">{{ 'ardent_elements.menu.apply' | t }}</button></noscript>
+          {% endform %}
+        </div>
+      </div>
+      <div class="ardent-nav__panels">
+        {% for context in contexts %}
+          {% liquid
+            assign heading_key = 'ardent_elements.menu.' | append: context
+            assign description_key = heading_key | append: '_intro'
+            assign media_context = 'collection'
+            if context == 'configurator'
+              assign media_context = 'configurator'
+            endif
+          %}
+          <section id="ArdentPanel-{{ context }}" class="ardent-nav__panel{% if forloop.first %} is-active{% endif %}" data-ardent-panel="{{ context }}" aria-labelledby="ArdentPanelTitle-{{ context }}"{% unless forloop.first %} hidden inert{% endunless %}>
+            <div class="ardent-nav__intro"><h2 id="ArdentPanelTitle-{{ context }}">{{ heading_key | t }}</h2><p>{{ description_key | t }}</p></div>
+            <div class="ardent-nav__cards">
+              {% for model in models %}
+                {% liquid
+                  assign title = 'Méridian'
+                  assign element_key = 'ardent_elements.menu.fire'
+                  case model
+                    when 'bastille'
+                      assign title = 'Bastille'
+                      assign element_key = 'ardent_elements.menu.water'
+                    when 'elysee'
+                      assign title = 'Élysée'
+                      assign element_key = 'ardent_elements.menu.sky'
+                  endcase
+                  assign target_url = base_url | append: 'collections/' | append: model
+                  if context == 'configurator'
+                    assign target_url = base_url | append: 'pages/configurateur?model=' | append: model
+                  endif
+                %}
+                {% capture element_image %}{% render 'ardent-element-media', model: model, context: media_context %}{% endcapture %}
+                {% assign element_image = element_image | strip %}
+                <a class="ardent-nav__card ardent-nav__card--{{ model }}" href="{{ target_url }}" style="--card-index: {{ forloop.index0 }};">
+                  <div class="ardent-nav__media">
+                    {% if element_image != blank %}<img src="{{ element_image | escape }}" alt="{{ title }}" width="720" height="960" loading="lazy" decoding="async">{% endif %}
+                    <div class="ardent-nav__caption"><span>{{ element_key | t }}</span><h3>{{ title }}</h3><span class="ardent-nav__arrow" aria-hidden="true">↗</span></div>
+                  </div>
+                </a>
+              {% endfor %}
+            </div>
+          </section>
+        {% endfor %}
+        {% assign editorial_groups = 'craft,service' | split: ',' %}
+        {% for group in editorial_groups %}
+          {% assign heading_key = 'ardent_elements.menu.' | append: group %}
+          <section id="ArdentPanel-{{ group }}" class="ardent-nav__panel" data-ardent-panel="{{ group }}" aria-labelledby="ArdentPanelTitle-{{ group }}" hidden inert>
+            <div class="ardent-nav__intro"><h2 id="ArdentPanelTitle-{{ group }}">{{ heading_key | t }}</h2></div>
+            <div class="ardent-nav__cards ardent-nav__cards--two">
+              {% for index in (1..2) %}
+                {% liquid
+                  assign settings_prefix = group | append: '_' | append: index
+                  assign title_setting = settings_prefix | append: '_title'
+                  assign image_setting = settings_prefix | append: '_image'
+                  assign link_setting = settings_prefix | append: '_link'
+                  assign editorial_title = menu_settings[title_setting]
+                  assign editorial_image = menu_settings[image_setting]
+                  assign editorial_link = menu_settings[link_setting]
+                  assign title_key = 'ardent_elements.menu.' | append: settings_prefix
+                  if localization.language.iso_code == 'en'
+                    assign editorial_title = title_key | t
+                  endif
+                  assign first_seven = editorial_link | slice: 0, 7
+                  if first_seven == '/pages/'
+                    assign editorial_link = editorial_link | remove_first: '/'
+                    assign editorial_link = base_url | append: editorial_link
+                  endif
+                %}
+                <a class="ardent-nav__card ardent-nav__card--editorial" href="{{ editorial_link }}" style="--card-index: {{ forloop.index0 }};">
+                  <div class="ardent-nav__media">
+                    {% if editorial_image != blank %}{{ editorial_image | image_url: width: 900 | image_tag: alt: editorial_title, loading: 'lazy' }}{% endif %}
+                    <div class="ardent-nav__caption"><h3>{{ editorial_title | escape }}</h3><span class="ardent-nav__arrow" aria-hidden="true">↗</span></div>
+                  </div>
+                </a>
+              {% endfor %}
+            </div>
+          </section>
+        {% endfor %}
+      </div>
+    </div>
+  </dialog>
+</ardent-navigation>
+{% stylesheet %}
+  ardent-navigation{display:contents}html.ardent-menu-lock{overflow:hidden}
+  .ardent-nav{--nav-ink:#1a1713;--nav-paper:#f4f0e9;--nav-rule:rgba(51,39,26,.16);padding:0;margin:0;inset:0 auto 0 0;width:min(1420px,96vw);max-width:none;height:100dvh;max-height:none;border:0;color:var(--nav-ink);background:var(--nav-paper);overflow-y:auto;overscroll-behavior:contain;box-shadow:18px 0 80px #0003}
+  .ardent-nav::backdrop{background:#07090bb8;backdrop-filter:blur(9px)}
+  .ardent-nav[open]{animation:ardent-drawer-open .6s cubic-bezier(.2,.75,.2,1) both}.ardent-nav[open]::backdrop{animation:ardent-backdrop-open .5s both}
+  .ardent-nav[data-closing]{animation:ardent-drawer-close .3s ease both}.ardent-nav[data-closing]::backdrop{animation:ardent-backdrop-open .3s reverse both}
+  .ardent-nav__masthead{height:96px;padding:24px 44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--nav-rule)}
+  .ardent-nav__brand{text-decoration:none;color:inherit;font-size:24px;letter-spacing:.27em}.ardent-nav__logo{display:block;width:auto;height:auto;max-width:154px;max-height:44px}
+  .ardent-nav__close{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--nav-rule);border-radius:50%;background:transparent;color:inherit;cursor:pointer;transition:transform .3s,background .3s}.ardent-nav__close:hover{transform:rotate(90deg);background:#fff7}
+  .ardent-nav__body{display:grid;grid-template-columns:minmax(252px,.9fr) minmax(0,2.6fr);min-height:calc(100dvh - 96px)}
+  .ardent-nav__rail{padding:60px 34px 30px 44px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--nav-rule)}
+  .ardent-nav__primary{display:flex;flex-direction:column;gap:9px}
+  .ardent-nav__link{appearance:none;display:grid;grid-template-columns:22px 1fr 16px;align-items:baseline;gap:8px;text-decoration:none;text-align:left;width:100%;padding:15px 0;border:0;background:none;color:inherit;font:inherit;font-size:clamp(15px,1.3vw,19px);line-height:1.3;cursor:pointer;transition:opacity .25s,transform .35s}
+  .ardent-nav__link>span{font-size:9px;letter-spacing:.06em;opacity:.45}.ardent-nav__link>i{font-size:14px;font-style:normal;opacity:0;transform:translate(-5px,5px);transition:opacity .25s,transform .3s}.ardent-nav__link.is-active>i,.ardent-nav__link:hover>i{opacity:1;transform:none}.ardent-nav__link:hover{transform:translateX(4px)}.ardent-nav__link.is-active{color:#956d48}
+  .ardent-nav__rail-bottom{padding-top:60px}.ardent-nav__rail-bottom>p{max-width:18ch;font-family:var(--font-heading--family,Georgia,serif);font-size:23px;line-height:1.25;font-weight:400;margin:0 0 36px}
+  .ardent-nav__language{border-top:1px solid var(--nav-rule);padding-top:20px;margin:0;display:flex;align-items:center;gap:15px}.ardent-nav__language label{font-size:10px;letter-spacing:.12em;text-transform:uppercase}.ardent-nav__language select{min-height:44px;max-width:145px;background:transparent;border:0;color:inherit;font:inherit;font-size:12px;padding:10px 24px 10px 0;cursor:pointer}
+  .ardent-nav__panels{padding:62px 42px 44px;align-self:start;min-width:0}.ardent-nav__panel[hidden]{display:none!important}
+  .ardent-nav__intro{min-height:96px;margin-bottom:24px}.ardent-nav__intro h2{font-family:var(--font-heading--family,Georgia,serif);font-size:clamp(28px,3.2vw,48px);font-weight:400;letter-spacing:-.04em;line-height:1.05;margin:0 0 14px;color:inherit}.ardent-nav__intro p{font-size:12px;line-height:1.6;letter-spacing:.02em;opacity:.68;margin:0}
+  .ardent-nav__cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.ardent-nav__cards--two{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ardent-nav__card{display:block;position:relative;text-decoration:none;color:#fff;min-width:0}.ardent-nav__media{position:relative;overflow:hidden;aspect-ratio:3/5;isolation:isolate;background:#322821}.ardent-nav__cards--two .ardent-nav__media{aspect-ratio:4/5}
+  .ardent-nav__card--meridian .ardent-nav__media{background:linear-gradient(145deg,#190f0b,#8b381b)}.ardent-nav__card--bastille .ardent-nav__media{background:linear-gradient(145deg,#052830,#137187)}.ardent-nav__card--elysee .ardent-nav__media{background:linear-gradient(145deg,#345271,#cad6e4)}
+  .ardent-nav__media::after{position:absolute;content:'';inset:0;background:linear-gradient(180deg,transparent 40%,#08090b16 55%,#08090bd4);z-index:1;pointer-events:none}.ardent-nav__media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.6,.2,1)}.ardent-nav__card:hover img,.ardent-nav__card:focus-visible img{transform:scale(1.055)}
+  .ardent-nav__caption{z-index:2;position:absolute;inset:auto 20px 24px;color:#fff}.ardent-nav__caption>span:first-child:not(.ardent-nav__arrow){display:block;font-size:9px;text-transform:uppercase;letter-spacing:.22em;margin-bottom:9px;opacity:.9}.ardent-nav__caption h3{font-family:var(--font-heading--family,Georgia,serif);font-weight:400;font-size:clamp(22px,2.2vw,34px);letter-spacing:-.035em;line-height:1.06;margin:0;padding-right:18px;color:inherit}.ardent-nav__card--editorial h3{font-size:clamp(21px,2vw,30px);max-width:15ch}.ardent-nav__arrow{position:absolute;right:0;bottom:4px;font-size:17px;transition:transform .3s}.ardent-nav__card:hover .ardent-nav__arrow{transform:translate(3px,-3px)}
+  .ardent-nav__panel.is-active .ardent-nav__intro{animation:ardent-panel-reveal .5s both}.ardent-nav__panel.is-active .ardent-nav__card{animation:ardent-card-reveal .8s calc(var(--card-index)*85ms) cubic-bezier(.2,.75,.2,1) both}
+  .ardent-nav :is(a,button,select):focus-visible,.ardent-nav-trigger:focus-visible{outline:2px solid #ac845a;outline-offset:5px}
+  .ardent-nav__sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .ardent-nav-trigger{width:44px;height:44px;display:flex;align-items:center;justify-content:center;padding:0;background:transparent;color:inherit;border:0;cursor:pointer}.ardent-nav-trigger svg{pointer-events:none}
+  #header-component .header-menu{display:none!important}#header-component .header__drawer,#header-component .header-drawer,#header-component .header-drawer .header__icon--menu{display:flex!important}
+  @keyframes ardent-drawer-open{from{transform:translateX(-100%)}to{transform:none}}@keyframes ardent-drawer-close{to{transform:translateX(-100%)}}@keyframes ardent-backdrop-open{from{opacity:0}to{opacity:1}}@keyframes ardent-panel-reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@keyframes ardent-card-reveal{from{opacity:0;transform:translateY(28px);clip-path:inset(0 0 13%)}to{opacity:1;transform:none;clip-path:inset(0)}}
+  @media(max-width:1100px){.ardent-nav{width:100vw}.ardent-nav__body{grid-template-columns:250px minmax(0,1fr)}.ardent-nav__masthead{padding-inline:28px}.ardent-nav__rail{padding:40px 24px 30px 28px}.ardent-nav__panels{padding:42px 28px}.ardent-nav__cards{gap:10px}.ardent-nav__caption{inset-inline:12px}}
+  @media(max-width:760px){.ardent-nav__masthead{height:76px;padding:16px 22px}.ardent-nav__body{display:flex;flex-direction:column;min-height:calc(100dvh - 76px)}.ardent-nav__rail{display:contents}.ardent-nav__primary{padding:20px 22px;border-bottom:1px solid var(--nav-rule);display:grid;grid-template-columns:1fr 1fr;gap:0 22px}.ardent-nav__link{grid-template-columns:1fr 12px;font-size:14px;padding:13px 0}.ardent-nav__link>span{display:none}.ardent-nav__link>i{font-size:12px}.ardent-nav__rail-bottom{order:2;padding:8px 22px 28px}.ardent-nav__rail-bottom>p{display:none}.ardent-nav__panels{padding:28px 22px;width:100%}.ardent-nav__intro{min-height:0;margin-bottom:22px}.ardent-nav__intro h2{font-size:32px}.ardent-nav__cards,.ardent-nav__cards--two{grid-template-columns:1fr;gap:16px}.ardent-nav__media,.ardent-nav__cards--two .ardent-nav__media{aspect-ratio:1.55/1}.ardent-nav__media img{object-position:50% 42%}.ardent-nav__caption{inset:auto 22px 23px}.ardent-nav__caption h3{font-size:30px}.ardent-nav__panel.is-active .ardent-nav__card{animation-delay:0s}}
+  @media(prefers-reduced-motion:reduce){.ardent-nav,.ardent-nav::backdrop,.ardent-nav *,.ardent-nav *::after{animation:none!important;transition:none!important}.ardent-nav__card:hover img{transform:none}}
+{% endstylesheet %}
+{% javascript %}
+  if (!customElements.get('ardent-navigation')) {
+    customElements.define('ardent-navigation', class extends HTMLElement {
+      connectedCallback() {
+        if (this._controller) return;
+        this._controller = new AbortController();
+        const signal = this._controller.signal;
+        this._dialog = this.querySelector('dialog');
+        if (!this._dialog) return;
+        this._triggerSelector = '#header-component .header__icon--menu, .ardent-nav-trigger';
+        this._initTriggers();
+        document.addEventListener('click', (event) => {
+          const trigger = event.target.closest(this._triggerSelector);
+          if (!trigger || this.contains(trigger)) return;
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          this.open(trigger);
+        }, { capture: true, signal });
+        this.addEventListener('click', (event) => {
+          if (event.target.closest('[data-ardent-close]')) this.close();
+          const trigger = event.target.closest('[data-ardent-panel-trigger]');
+          if (trigger) this.showPanel(trigger.dataset.ardentPanelTrigger);
+          if (event.target === this._dialog) {
+            const rect = this._dialog.getBoundingClientRect();
+            if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) this.close();
+          }
+        }, { signal });
+        this._dialog.addEventListener('cancel', (event) => { event.preventDefault(); this.close(); }, { signal });
+        this._dialog.addEventListener('close', () => this._afterClose(), { signal });
+        this._dialog.addEventListener('keydown', (event) => this._trapFocus(event), { signal });
+        this.querySelector('select[name="language_code"]')?.addEventListener('change', (event) => event.target.form.requestSubmit(), { signal });
+        document.addEventListener('shopify:section:load', () => this._initTriggers(), { signal });
+        window.addEventListener('resize', () => this._initTriggers(), { signal });
+      }
+      _initTriggers() {
+        const header = document.getElementById('header-component');
+        if (!header) return;
+        const nativeTriggers = [...header.querySelectorAll('.header__icon--menu')];
+        nativeTriggers.forEach((trigger) => {
+          trigger.setAttribute('aria-haspopup', 'dialog');
+          trigger.setAttribute('aria-controls', 'ArdentNavigationDialog');
+          trigger.setAttribute('aria-expanded', String(Boolean(this._dialog?.open)));
+        });
+        const visibleTrigger = nativeTriggers.some((trigger) => trigger.getClientRects().length && getComputedStyle(trigger).visibility !== 'hidden');
+        if (visibleTrigger) { this._fallback?.remove(); this._fallback = null; return; }
+        if (this._fallback?.isConnected) return;
+        const host = header.querySelector('.header__column--left') || header.querySelector('.header__columns') || header;
+        this._fallback = document.createElement('button');
+        this._fallback.type = 'button';
+        this._fallback.className = 'ardent-nav-trigger';
+        this._fallback.setAttribute('aria-label', this.dataset.openLabel);
+        this._fallback.setAttribute('aria-haspopup', 'dialog');
+        this._fallback.setAttribute('aria-controls', 'ArdentNavigationDialog');
+        this._fallback.setAttribute('aria-expanded', 'false');
+        this._fallback.innerHTML = '<svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M1 7h20M1 15h20" stroke="currentColor" stroke-width="1.3"/></svg>';
+        host.prepend(this._fallback);
+      }
+      open(trigger) {
+        if (this._dialog.open) return;
+        clearTimeout(this._closeTimer);
+        this._dialog.removeAttribute('data-closing');
+        this._returnFocus = trigger;
+        this._dialog.showModal();
+        document.documentElement.classList.add('ardent-menu-lock');
+        document.querySelectorAll('[aria-controls="ArdentNavigationDialog"]').forEach((button) => button.setAttribute('aria-expanded', 'true'));
+        this.querySelector('[data-ardent-close]').focus({ preventScroll: true });
+      }
+      close() {
+        if (!this._dialog.open || this._dialog.hasAttribute('data-closing')) return;
+        this._dialog.setAttribute('data-closing', '');
+        const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300;
+        this._closeTimer = setTimeout(() => this._dialog.close(), delay);
+      }
+      _afterClose() {
+        this._dialog.removeAttribute('data-closing');
+        document.documentElement.classList.remove('ardent-menu-lock');
+        document.querySelectorAll('[aria-controls="ArdentNavigationDialog"]').forEach((button) => button.setAttribute('aria-expanded', 'false'));
+        if (this._returnFocus?.isConnected) this._returnFocus.focus({ preventScroll: true });
+      }
+      showPanel(key) {
+        this.querySelectorAll('[data-ardent-panel-trigger]').forEach((trigger) => {
+          const active = trigger.dataset.ardentPanelTrigger === key;
+          trigger.classList.toggle('is-active', active);
+          trigger.setAttribute('aria-expanded', String(active));
+        });
+        this.querySelectorAll('[data-ardent-panel]').forEach((panel) => {
+          const active = panel.dataset.ardentPanel === key;
+          panel.hidden = !active;
+          panel.inert = !active;
+          panel.classList.toggle('is-active', active);
+        });
+      }
+      _trapFocus(event) {
+        if (event.key !== 'Tab') return;
+        const items = [...this._dialog.querySelectorAll('a[href], button:not([disabled]), select, input:not([disabled]), [tabindex="0"]')].filter((node) => node.getClientRects().length && !node.closest('[hidden], [inert]'));
+        if (!items.length) { event.preventDefault(); return; }
+        const first = items[0], last = items[items.length - 1];
+        if (event.shiftKey && (document.activeElement === first || !this._dialog.contains(document.activeElement))) { event.preventDefault(); last.focus(); }
+        if (!event.shiftKey && (document.activeElement === last || !this._dialog.contains(document.activeElement))) { event.preventDefault(); first.focus(); }
+      }
+      disconnectedCallback() {
+        clearTimeout(this._closeTimer);
+        if (this._dialog?.open) this._dialog.close();
+        document.documentElement.classList.remove('ardent-menu-lock');
+        this._fallback?.remove();
+        this._controller?.abort();
+        this._controller = null;
+      }
+    });
+  }
+{% endjavascript %}
