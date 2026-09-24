@@ -1,0 +1,739 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "blocks": {
+    "load_video": "Charger la vidéo : {{ description }}",
+    "sold_out": "Épuisé",
+    "email_signup": {
+      "label": "E-mail",
+      "placeholder": "Adresse e-mail",
+      "success": "Merci de vous être abonné(e) !"
+    },
+    "filter": "Filtrer",
+    "payment_methods": "Moyens de paiement",
+    "contact_form": {
+      "name": "Nom",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "comment": "Commentaire",
+      "post_success": "Merci de nous avoir contactés. Nous vous répondrons dès que possible.",
+      "error_heading": "Veuillez ajuster les éléments suivants :"
+    },
+    "slider_label": "Carrousel"
+  },
+  "accessibility": {
+    "play_model": "Jouer le modèle 3D",
+    "play_video": "Lire la vidéo",
+    "unit_price": "Prix unitaire",
+    "country_results_count": "{{ count }} résultats",
+    "slideshow_pause": "Interrompre le diaporama",
+    "slideshow_play": "Lire le diaporama",
+    "remove_item": "Supprimer {{ title}}",
+    "skip_to_text": "Ignorer et passer au contenu",
+    "skip_to_product_info": "Passer aux informations sur le produit",
+    "skip_to_results_list": "Passer à la liste des résultats",
+    "new_window": "S’ouvre dans une nouvelle fenêtre.",
+    "slideshow_next": "Diapositive suivante",
+    "slideshow_previous": "Diapositive précédente",
+    "close_dialog": "Fermer la boîte de dialogue",
+    "reset_search": "Réinitialiser la recherche",
+    "search_results_count": "{{ count }} résultats de recherche trouvés pour « {{ query }} »",
+    "search_results_no_results": "Aucun résultat trouvé pour « {{ query }} »",
+    "filters": "Filtres",
+    "filter_count": {
+      "one": "{{ count }} filtre appliqué",
+      "other": "{{ count }} filtres appliqués",
+      "many": "{{ count }} filtres appliqués"
+    },
+    "account": "Compte",
+    "cart": "Panier",
+    "cart_count": "Nombre total d’articles dans le panier",
+    "menu": "Menu",
+    "country_region": "Pays/région",
+    "slide_status": "Diapositive {{ index }} sur {{ length }}",
+    "scroll_to": "Faire défiler vers {{ title }}",
+    "loading_product_recommendations": "Chargement des recommandations de produits",
+    "discount": "Appliquer un code de réduction",
+    "discount_menu": "Codes de réduction",
+    "discount_applied": "Code de réduction appliqué : {{ code }}",
+    "inventory_status": "Statut du stock",
+    "pause_video": "Mettre la vidéo en pause",
+    "find_country": "Trouver un pays",
+    "localization_region_and_language": "Sélecteur de région et de langue",
+    "decrease_quantity": "Diminuer la quantité",
+    "increase_quantity": "Augmenter la quantité",
+    "quantity": "Quantité",
+    "rating": "La note de ce produit est {{ rating }} sur 5",
+    "nested_product": "{{ product_title }} pour {{ parent_title }}",
+    "remove": "Retirer",
+    "view_pricing_info": "Afficher les informations de tarification",
+    "slideshow": "Diaporama",
+    "header_navigation_label": "Principale",
+    "home_logo_alt": "{{ store_name }} - Accueil",
+    "active_filters": "Activez des filtres :",
+    "product_details": "Détails du produit",
+    "show_product_details": "Afficher les détails du produit pour {{ product_name }}",
+    "show_submenu": "Afficher le sous-menu {{ title }}",
+    "featured_product": "Produit en vedette",
+    "search_suggestions_available": "Rechercher des suggestions disponibles pour « {{ query }} »",
+    "price_filter_low": "Prix bas",
+    "price_filter_high": "Prix élevé",
+    "view_disclosure_information_for_product": "Afficher les informations sur le produit {{ product_title }}"
+  },
+  "actions": {
+    "add_to_cart": "Ajouter au panier",
+    "clear_all": "Tout effacer",
+    "remove": "Retirer",
+    "view_in_your_space": "Voir dans votre espace",
+    "show_filters": "Filtrer",
+    "clear": "Effacer",
+    "continue_shopping": "Continuer vos achats",
+    "log_in_html": "Vous possédez un compte ? <a href=\"{{ link }}\">Connectez-vous</a> pour payer plus vite.",
+    "see_items": {
+      "one": "Voir {{ count }} article",
+      "other": "Voir {{ count }} articles",
+      "many": "Voir {{ count }} articles"
+    },
+    "view_all": "Tout afficher",
+    "add": "Ajouter",
+    "choose": "Choisir",
+    "added": "Ajouté",
+    "show_less": "Afficher moins",
+    "show_more": "Afficher plus",
+    "close": "Fermer",
+    "more": "Plus",
+    "reset": "Réinitialiser",
+    "zoom": "Zoom",
+    "close_dialog": "Fermer la boîte de dialogue",
+    "enter_using_password": "Accéder avec le mot de passe",
+    "submit": "Soumettre",
+    "enter_password": "Saisir le mot de passe",
+    "back": "Retour",
+    "log_in": "Se connecter",
+    "log_out": "Se déconnecter",
+    "remove_discount": "Supprimer le {{ code }} de réduction",
+    "view_store_information": "Afficher les informations de la boutique",
+    "apply": "Appliquer",
+    "sign_up": "S’inscrire",
+    "sign_in_options": "Autres options de connexion",
+    "open_image_in_full_screen": "Ouvrir l’image en plein écran",
+    "sort": "Trier",
+    "show_all_options": "Afficher toutes les options",
+    "open": "Ouvrir",
+    "back_to": "Retour à {{ title }}",
+    "back_to_main_menu": "Retour au menu principal",
+    "zoom_media": "Zoom du support multimédia {{ index }}"
+  },
+  "content": {
+    "reviews": "avis",
+    "language": "Langue",
+    "localization_region_and_language": "Région et langue",
+    "no_results_found": "Aucun résultat trouvé",
+    "cart_total": "Total du panier",
+    "your_cart_is_empty": "Votre panier est vide",
+    "product_image": "Image de produit",
+    "product_information": "Informations sur le produit",
+    "quantity": "Quantité",
+    "product_total": "Nombre total de produits",
+    "cart_estimated_total": "Total estimé",
+    "seller_note": "Instructions spéciales",
+    "cart_subtotal": "Sous-total",
+    "discounts": "Réductions",
+    "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Frais de douane et taxes inclus. Réductions et <a href=\"{{ link }}\">frais d’expédition</a> calculés à l’étape du paiement.",
+    "duties_and_taxes_included_shipping_at_checkout_without_policy": "Frais de douane et taxes inclus. Réductions et frais d’expédition calculés à l’étape du paiement.",
+    "taxes_included_shipping_at_checkout_with_policy_html": "Taxes incluses. Réductions et <a href=\"{{ link }}\">frais d’expédition</a> calculés à l’étape du paiement.",
+    "taxes_included_shipping_at_checkout_without_policy": "Taxes incluses. Réductions et frais d’expédition calculés à l’étape du paiement.",
+    "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Frais de douane inclus. Taxes, réductions et <a href=\"{{ link }}\">frais d’expédition</a> calculés à l’étape du paiement.",
+    "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Frais de douane inclus. Taxes, réductions et frais d’expédition calculés à l’étape du paiement.",
+    "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Taxes, réductions et <a href=\"{{ link }}\">frais d’expédition</a> calculés à l’étape du paiement.",
+    "taxes_at_checkout_shipping_at_checkout_without_policy": "Taxes, réductions et frais d’expédition calculés à l’étape du paiement.",
+    "checkout": "Payer",
+    "cart_title": "Panier",
+    "price": "Prix",
+    "price_regular": "Prix régulier",
+    "price_compare_at": "Prix avant réduction",
+    "price_sale": "Prix promotionnel",
+    "duties_and_taxes_included": "Frais de douane et taxes inclus.",
+    "duties_included": "Frais de douane inclus.",
+    "shipping_policy_html": "<a href=\"{{ link }}\">Expédition</a> calculée lors du paiement.",
+    "taxes_included": "Taxes incluses.",
+    "product_badge_sold_out": "Épuisé",
+    "product_badge_sale": "Promotion",
+    "grid_view": {
+      "default_view": "Par défaut",
+      "grid_fieldset": "Grille de colonnes",
+      "single_item": "Unique",
+      "zoom_out": "Dézoomer"
+    },
+    "search_input_label": "Rechercher",
+    "search_input_placeholder": "Rechercher",
+    "search_results": "Résultats de la recherche",
+    "search_results_label": "Résultats de la recherche",
+    "search_results_no_results": "Aucun résultat trouvé pour « {{ terms }} ». Essayez une autre recherche.",
+    "search_results_resource_articles": "Articles de blog",
+    "search_results_resource_collections": "Collections",
+    "search_results_resource_pages": "Pages",
+    "search_results_resource_products": "Produits",
+    "search_results_resource_queries": "Suggestions de recherche",
+    "search_results_view_all": "Tout afficher",
+    "search_results_view_all_button": "Tout afficher",
+    "search_results_resource_products_count": {
+      "one": "{{ count }} produit",
+      "other": "{{ count }} produits",
+      "many": "{{ count }} produits"
+    },
+    "recently_viewed_products": "Récemment consulté(s)",
+    "unavailable": "Indisponible",
+    "collection_placeholder": "Titre de la collection",
+    "product_card_placeholder": "Titre du produit",
+    "product_count": "Nombre de produits",
+    "item_count": {
+      "one": "{{ count }} article",
+      "other": "{{ count }} articles",
+      "many": "{{ count }} articles"
+    },
+    "errors": "Erreurs",
+    "price_from": "De {{ price }}",
+    "search": "Rechercher",
+    "search_results_no_results_check_spelling": "Aucun résultat trouvé pour « {{ terms }} ». Vérifiez l’orthographe ou utilisez un autre mot ou une autre expression.",
+    "no_products_found": "Aucun produit trouvé.",
+    "use_fewer_filters_html": "Essayez d’utiliser moins de filtres, ou <a class=\"{{ class }}\" href=\"{{ link }}\">effacez tous les filtres</a>.",
+    "featured_products": "Produits en vedette",
+    "filters": "Filtres",
+    "price_filter_html": "Le prix le plus élevé est de {{ price }}",
+    "blog_details_separator": "|",
+    "read_more": "Lire plus...",
+    "wrong_password": "Mot de passe incorrect",
+    "account_title": "Compte",
+    "account_title_personalized": "Bonjour {{ first_name }}",
+    "account_orders": "Commandes",
+    "account_profile": "Profil",
+    "discount_code": "Code de réduction",
+    "duties_and_taxes_included_shipping_at_checkout_with_policy_without_discounts_html": "Droits de douane et taxes inclus. L’expédition est calculée lors du paiement.",
+    "duties_and_taxes_included_shipping_at_checkout_without_policy_without_discounts": "Droits de douane et taxes inclus. L’expédition est calculée lors du paiement.",
+    "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_without_discounts_html": "Droits de douane inclus. L’expédition est calculée lors du paiement.",
+    "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy_without_discounts": "Droits de douane inclus. L’expédition est calculée lors du paiement.",
+    "pickup_available_at_html": "Retrait disponible à <b>{{ location }}</b>",
+    "pickup_available_in": "Retrait disponible, {{ pickup_time }}",
+    "pickup_not_available": "Retrait actuellement non disponible",
+    "pickup_ready_in": "{{ pickup_time }}",
+    "taxes_at_checkout_shipping_at_checkout_with_policy_without_discounts_html": "Taxes et <a href=\"{{ link }}\">expédition</a> calculés lors du paiement.",
+    "taxes_at_checkout_shipping_at_checkout_without_policy_without_discounts": "Taxes et expédition calculés lors du paiement.",
+    "taxes_included_shipping_at_checkout_with_policy_without_discounts_html": "Taxes incluses. L’expédition est calculée lors du paiement.",
+    "taxes_included_shipping_at_checkout_without_policy_without_discounts": "Taxes incluses. L’expédition est calculée lors du paiement.",
+    "view_more_details": "Afficher plus de détails",
+    "page_placeholder_title": "Titre de la page",
+    "page_placeholder_content": "Sélectionnez une page pour afficher son contenu.",
+    "placeholder_image": "Image du paramètre fictif",
+    "inventory_low_stock": "Stock faible",
+    "inventory_in_stock": "En stock",
+    "inventory_out_of_stock": "En rupture de stock",
+    "inventory_low_stock_show_count": {
+      "one": "{{ count }} restant(s)",
+      "other": "{{ count }} restant(s)",
+      "many": "{{ count }} restant(s)"
+    },
+    "shipping_policy": "Expédition calculée lors du paiement.",
+    "powered_by": "Cette boutique sera exploitée par",
+    "store_owner_link_html": "Êtes-vous le propriétaire de la boutique ? <a href=\"{{ link }}\">Connectez-vous ici</a>",
+    "shipping_discount_error": "Les réductions sur l’expédition sont affichées lors du paiement après avoir ajouté une adresse",
+    "discount_code_error": "Le code de réduction ne peut pas être appliqué à votre panier",
+    "discount": "Réduction",
+    "recipient_form_send_to": "Envoyer à",
+    "recipient_form_email_label": "E-mail du destinataire",
+    "recipient_form_email_label_my_email": "Mon e-mail",
+    "recipient_form_email_address": "Adresse e-mail du destinataire",
+    "recipient_form_name_label": "Nom du destinataire (facultatif)",
+    "recipient_form_message": "Message (facultatif)",
+    "recipient_form_characters_used": "{{ used_chars }}/{{ max_chars }} caractères utilisés",
+    "recipient_form_send_on": "JJ-MM-AAAA",
+    "recipient_form_send_on_label": "Envoyer le (facultatif)",
+    "recipient_form_fields_visible": "Les champs du formulaire de destinataire sont désormais visibles",
+    "recipient_form_fields_hidden": "Les champs du formulaire de destinataire sont désormais masqués",
+    "recipient_form_error": "La soumission du formulaire présentait une erreur",
+    "product_custom_property_character_count": "{{ used_chars }}/{{ max_chars }} caractères utilisés",
+    "terms_and_policies": "Conditions générales et politiques",
+    "pagination": {
+      "nav_label": "Pagination",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "page": "Page {{ page }}"
+    },
+    "volume_pricing_available": "La tarification basée sur la quantité est disponible",
+    "volume_pricing": "Tarification basée sur la quantité",
+    "at_price_each": "à {{ price }}/pièce",
+    "each": "{{ price }}/pièce",
+    "each_abbreviation": "pièce",
+    "price_at": "à",
+    "price_range": "Fourchette de prix",
+    "item_count_cutoff": "Plus de {{ count }} articles",
+    "cancel": "Annuler",
+    "product_subtotal": "Sous-total des produits",
+    "quantity_per_item": "/pièce",
+    "remove_all": "Tout retirer",
+    "remove_all_items_confirmation": "Retirer les {{ count }} articles de votre panier ?",
+    "remove_one_item_confirmation": "Retirer 1 article de votre panier ?",
+    "total_items": "Total des articles",
+    "variant": "Variante",
+    "variant_total": "Total des variantes",
+    "view_cart": "Voir le panier",
+    "your_cart": "Votre panier",
+    "items_added_to_cart": {
+      "one": "1 article ajouté au panier",
+      "other": "{{ count }} articles ajoutés au panier",
+      "many": "{{ count }} articles ajoutés au panier"
+    },
+    "quick_order_list": "Liste de commande rapide",
+    "product_disclosures": "Informations sur le produit"
+  },
+  "gift_cards": {
+    "issued": {
+      "how_to_use_gift_card": "Utiliser le code de la carte‑cadeau en ligne ou le code QR en boutique",
+      "title": "Voici le solde de votre carte‑cadeau {{ shop }} d'une valeur de {{ value }} !",
+      "subtext": "Votre carte‑cadeau",
+      "shop_link": "Visiter la boutique en ligne",
+      "add_to_apple_wallet": "Ajouter à Apple Wallet",
+      "qr_image_alt": "Code QR : scannez‑le pour utiliser votre carte‑cadeau",
+      "copy_code": "Copier le code de la carte‑cadeau",
+      "expiration_date": "Expire le {{ expires_on }}",
+      "copy_code_success": "Le code a bien été copié",
+      "expired": "Expirée"
+    }
+  },
+  "placeholders": {
+    "password": "Mot de passe",
+    "search": "Rechercher",
+    "product_title": "Titre de produit",
+    "collection_title": "Titre de la collection",
+    "blog_posts": "Articles de blog",
+    "blog_post_title": "Titre",
+    "blog_post_author": "Auteur",
+    "blog_post_date": "Date",
+    "blog_post_description": "Un extrait du contenu de votre article de blog"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Ajouter au panier",
+      "added_to_cart": "Ajouté au panier",
+      "adding_to_cart": "Ajout...",
+      "add_to_cart_error": "Erreur lors de l’ajout au panier",
+      "sold_out": "Épuisé",
+      "unavailable": "Non disponible(s)",
+      "quantity_error_max": "Cet article a un maximum de {{ maximum }}",
+      "quantity": "Quantité",
+      "quantity_increments": "Incréments de {{ increment }}",
+      "quantity_minimum": "Minimum de {{ minimum }}",
+      "quantity_maximum": "Maximum de {{ maximum }}",
+      "in_cart": "dans le panier",
+      "default_title": "Titre par défaut",
+      "sticky_add_to_cart": "Barre d’ajout rapide au panier"
+    }
+  },
+  "fields": {
+    "separator": "à"
+  },
+  "blogs": {
+    "article": {
+      "comment_author_separator": "•",
+      "comments_heading": {
+        "one": "{{ count }} commentaire",
+        "other": "{{ count }} commentaires",
+        "many": "{{ count }} commentaires"
+      }
+    },
+    "comment_form": {
+      "email": "E-mail",
+      "error": "La publication du commentaire a échoué. Veuillez corriger les éléments suivants :",
+      "heading": "Laisser un commentaire",
+      "message": "Message",
+      "moderated": "Veuillez noter que les commentaires doivent être approuvés avant leur publication.",
+      "name": "Nom",
+      "post": "Publier le commentaire",
+      "success_moderated": "Commentaire publié, en attente de modération",
+      "success": "Commentaire publié"
+    }
+  },
+  "ardent": {
+    "origin": {
+      "hero": {
+        "eyebrow": "Origines",
+        "title": "La naissance d’Ardent",
+        "lead": "Une maison française née d’une conviction : l’élégance horlogère doit pouvoir se vivre pleinement.",
+        "scroll": "Faire défiler"
+      },
+      "opening": {
+        "eyebrow": "Une maison en devenir",
+        "title": "L’exigence, dès le premier trait.",
+        "copy_one": "Ardent naît d’un désir précis : imaginer des montres dont la présence se ressent avant même qu’elles ne se remarquent. Des pièces conçues et fabriquées en France, avec l’attention portée aux lignes, aux proportions et à la sensation d’un objet juste.",
+        "copy_two": "Notre point de départ n’est pas la nostalgie. C’est l’envie de faire entrer le savoir-faire français dans une nouvelle époque : plus ouverte, plus personnelle, toujours fidèle à l’essentiel."
+      },
+      "chapters": {
+        "eyebrow": "Le commencement",
+        "title": "Avant le temps, il y a une intention.",
+        "first_title": "Une exigence",
+        "first_copy": "Imaginer une montre où la précision rencontre l’allure, sans compromis sur ce qui compte.",
+        "second_title": "Un regard français",
+        "second_copy": "Faire de la silhouette, de la proportion et du détail les premières signatures d’Ardent.",
+        "third_title": "Le premier trait",
+        "third_copy": "Donner une forme concrète à une idée qui ne demandait qu’à prendre le temps."
+      },
+      "craft": {
+        "caption": "La maîtrise se lit dans les gestes, mais aussi dans ce que l’on choisit de ne jamais laisser au hasard."
+      },
+      "detail": {
+        "eyebrow": "Une signature à venir",
+        "title": "Le début d’une histoire qui s’écrira au poignet.",
+        "copy": "Cette page est la première. Elle raconte le point de départ : une ambition française, une attention au détail et la volonté de créer des montres qui deviennent naturellement personnelles."
+      },
+      "closing": {
+        "eyebrow": "Ardent",
+        "quote": "Le temps ne se porte pas. Il s’affirme."
+      },
+      "images": {
+        "hero_alt": "La naissance d’Ardent",
+        "origin_alt": "Les origines d’Ardent",
+        "craft_alt": "Le savoir-faire Ardent",
+        "detail_alt": "Un détail de l’univers Ardent",
+        "closing_alt": "L’univers Ardent"
+      }
+    },
+    "spirit": {
+      "hero": {
+        "eyebrow": "L’esprit Ardent",
+        "title": "Ce que vous portez parle avant vous.",
+        "lead": "Une montre Ardent n’est pas un signe extérieur. C’est une présence, choisie avec intention."
+      },
+      "manifesto": {
+        "eyebrow": "Une manière d’être",
+        "aria": "Élégance, intelligence, ambition",
+        "first": "Élégance.",
+        "second": "Intelligence.",
+        "third": "Ambition.",
+        "copy": "L’esprit Ardent appartient à celles et ceux qui considèrent le détail comme une forme de langage. Une allure sans bruit. Une décision assumée. Une ambition qui ne demande l’autorisation de personne."
+      },
+      "portrait": {
+        "eyebrow": "Une présence personnelle",
+        "title": "Votre temps. Votre signature.",
+        "copy": "Ce qui donne de la force à une montre, ce n’est pas seulement ce qu’elle mesure. C’est la façon dont elle accompagne un mouvement, une conversation, une décision."
+      },
+      "style": {
+        "eyebrow": "L’allure comme intention",
+        "title": "Ne pas suivre le rythme. Le définir.",
+        "copy": "Ardent se porte avec une exigence calme : celle de choisir des objets qui disent quelque chose de vous, sans jamais avoir besoin d’en faire trop."
+      },
+      "configurator": {
+        "eyebrow": "À venir",
+        "title": "Imaginez une montre qui vous ressemble davantage.",
+        "copy": "Le configurateur Ardent est en préparation. Il ouvrira bientôt un nouvel espace de choix, pour que chaque détail puisse devenir un peu plus personnel.",
+        "soon": "Le configurateur arrive bientôt"
+      },
+      "closing": {
+        "eyebrow": "Ardent",
+        "quote": "L’élégance est une décision."
+      },
+      "images": {
+        "hero_alt": "L’esprit Ardent",
+        "portrait_alt": "Une silhouette Ardent",
+        "style_alt": "Un détail de style Ardent",
+        "configurator_alt": "La promesse du configurateur Ardent",
+        "closing_alt": "L’univers Ardent"
+      }
+    },
+    "vision": {
+      "hero": {
+        "eyebrow": "Notre vision",
+        "title": "Tracer un horizon plus vaste.",
+        "lead": "Faire rayonner une signature française, sans jamais perdre la proximité de ce qui compte."
+      },
+      "opening": {
+        "eyebrow": "Regarder devant",
+        "title": "Voir plus loin sans se disperser.",
+        "copy_one": "Ardent avance avec une idée simple : créer une maison qui parle au monde tout en restant fidèle à son regard. Une ambition qui ne cherche pas à aller vite pour aller vite, mais à construire une présence qui ait du sens.",
+        "copy_two": "Notre vision est celle d’un temps choisi. Des objets qui accompagnent les trajectoires, des attentions qui durent et une manière de faire grandir la marque avec exigence, écoute et liberté."
+      },
+      "horizon": {
+        "eyebrow": "Une direction",
+        "title": "L’ambition, avec du relief.",
+        "copy": "Nous voulons porter une certaine idée de l’élégance française au-delà des frontières : précise, contemporaine et accessible dans son attitude. Une maison qui avance, qui apprend et qui n’oublie jamais ce qui la rend singulière."
+      },
+      "pillars": {
+        "eyebrow": "Nos lignes de force",
+        "first_title": "Une maison ouverte au monde",
+        "first_copy": "Parler à toutes les sensibilités, sans effacer la signature française qui donne sa cohérence à Ardent.",
+        "second_title": "Un lien qui dure",
+        "second_copy": "Faire de chaque échange une attention réelle, avant, pendant et longtemps après le premier choix.",
+        "third_title": "Une ambition en mouvement",
+        "third_copy": "Continuer de regarder devant, d’affiner, d’inventer et de laisser la marque évoluer avec celles et ceux qui la font vivre."
+      },
+      "world": {
+        "eyebrow": "Un horizon commun",
+        "title": "D’ici, pour aller partout.",
+        "copy": "L’ouverture ne consiste pas à se diluer. Elle consiste à partager une vision claire, à créer des rendez-vous et à laisser chacun y trouver sa propre place."
+      },
+      "relationship": {
+        "eyebrow": "Une histoire partagée",
+        "title": "Plus qu’une marque, une relation.",
+        "copy": "Ardent veut grandir avec une communauté curieuse, exigeante et libre. Une relation où la confiance se gagne dans les détails et se confirme avec le temps."
+      },
+      "closing": {
+        "eyebrow": "Ardent",
+        "quote": "L’avenir ne s’attend pas. Il se dessine."
+      },
+      "images": {
+        "hero_alt": "La vision d’Ardent",
+        "horizon_alt": "Un horizon pour Ardent",
+        "world_alt": "L’ouverture d’Ardent au monde",
+        "relationship_alt": "La communauté Ardent",
+        "closing_alt": "L’avenir d’Ardent"
+      }
+    },
+    "anatomy": {
+      "hero": {
+        "eyebrow": "Savoir-faire",
+        "title": "L’anatomie d’une Ardent.",
+        "lead": "Une montre ne se résume pas à ses pièces. Elle se construit dans la manière dont elles trouvent leur juste place.",
+        "spec_one": "Assemblage en France",
+        "spec_two": "NH35 / NH70",
+        "spec_three": "50 ATM"
+      },
+      "intro": {
+        "eyebrow": "Une composition libre",
+        "title": "Pensée en détails. Composée pour vous.",
+        "copy": "Chaque Ardent repose sur une même exigence de cohérence. Du mouvement au bracelet, chaque élément est choisi pour former un ensemble précis, équilibré et profondément personnel."
+      },
+      "case": {
+        "eyebrow": "L’enveloppe",
+        "title": "La présence commence par la ligne.",
+        "copy": "Boîtier, cadran, aiguilles, bracelet : ce sont les proportions et les finitions qui donnent à une Ardent sa première expression. L’assemblage est réalisé en France, dans nos ateliers."
+      },
+      "movement": {
+        "eyebrow": "Le cœur",
+        "title": "Un rythme japonais, au centre de la pièce.",
+        "copy": "Selon la configuration, la montre accueille un mouvement japonais NH35 ou NH70. Deux calibres sélectionnés pour donner à chaque composition le mouvement qui lui convient.",
+        "aria": "Mouvements disponibles : NH35 et NH70"
+      },
+      "custom": {
+        "eyebrow": "Votre composition",
+        "title": "Aucune Ardent ne doit ressembler à une évidence.",
+        "copy": "La personnalisation fait partie de la conception. Vous composez votre montre dans ses lignes essentielles, afin qu’elle ne soit jamais simplement choisie, mais réellement imaginée.",
+        "first": "Le cadran",
+        "second": "Le boîtier",
+        "third": "Les aiguilles",
+        "fourth": "Le bracelet"
+      },
+      "water": {
+        "eyebrow": "Une présence durable",
+        "title": "Prête pour plus que le quotidien.",
+        "copy": "Avec une étanchéité annoncée à 50 ATM, une Ardent est conçue pour suivre les rythmes de vie qui ne restent pas à la surface."
+      },
+      "closing": {
+        "eyebrow": "Ardent",
+        "quote": "Chaque détail a sa raison d’être."
+      },
+      "images": {
+        "hero_alt": "L’anatomie d’une montre Ardent",
+        "case_alt": "Les détails d’une Ardent",
+        "movement_alt": "Le mouvement d’une Ardent",
+        "custom_alt": "La personnalisation d’une Ardent",
+        "water_alt": "L’étanchéité d’une Ardent",
+        "closing_alt": "L’univers Ardent"
+      }
+    },
+    "gesture": {
+      "hero": {
+        "eyebrow": "Savoir-faire",
+        "title": "Le geste Ardent.",
+        "lead": "Ce qui ne se voit pas toujours est souvent ce qui compte le plus.",
+        "scroll": "Entrer dans l’atelier"
+      },
+      "opening": {
+        "eyebrow": "L’attention en mouvement",
+        "title": "Une montre prend vie dans les gestes qui l’approchent.",
+        "copy": "Avant de devenir une présence au poignet, une Ardent traverse une succession d’attentions. Le temps du choix, de l’assemblage, du réglage et du contrôle. Un rythme calme, guidé par le détail."
+      },
+      "selection": {
+        "eyebrow": "La sélection",
+        "title": "Commencer par ce qui fera la différence.",
+        "copy": "Chaque configuration réunit les composants qui correspondent à son intention. Les matières, les proportions et les finitions sont pensées comme un ensemble, jamais comme une addition."
+      },
+      "assembly": {
+        "eyebrow": "L’assemblage",
+        "title": "Quand les éléments deviennent une seule pièce.",
+        "copy": "Dans nos ateliers en France, les composants prennent leur place avec précision. Le boîtier, le cadran, les aiguilles, le mouvement et le bracelet se rejoignent pour former une Ardent cohérente, prête à devenir la vôtre."
+      },
+      "adjustment": {
+        "eyebrow": "Le réglage",
+        "title": "Laisser la précision trouver sa place.",
+        "copy": "L’alignement d’une aiguille, la justesse d’une finition, la sensation d’un bracelet : chaque détail demande un regard attentif. C’est là que la montre gagne son équilibre."
+      },
+      "control": {
+        "eyebrow": "L’épreuve",
+        "title": "Avant de partir, prendre le temps de vérifier.",
+        "copy": "Avant de quitter l’atelier, chaque composition passe par les contrôles nécessaires. Parce que la confiance se construit d’abord dans les détails que l’on choisit de vérifier."
+      },
+      "closing": {
+        "eyebrow": "Ardent",
+        "quote": "La précision est une forme d’attention."
+      },
+      "images": {
+        "hero_alt": "Le geste Ardent",
+        "selection_alt": "La sélection des composants Ardent",
+        "assembly_alt": "L’assemblage d’une Ardent",
+        "adjustment_alt": "Le réglage d’une Ardent",
+        "control_alt": "Le contrôle d’une Ardent",
+        "closing_alt": "L’univers Ardent"
+      }
+    },
+    "configurator": {
+      "title": "Votre signature.",
+      "subtitle": "Un univers, votre caractère. Composez les détails qui font la différence.",
+      "fire": "L'univers du feu",
+      "water": "L'univers de l'eau",
+      "air": "L'univers du ciel",
+      "live": "Configuration en direct",
+      "preview_label": "Aperçu indicatif de votre configuration Ardent",
+      "preview_note": "Aperçu indicatif — les finitions réelles peuvent différer",
+      "personalize": "Le sens du détail.",
+      "model": "Modèle",
+      "case": "Boîtier & bracelet",
+      "dial": "Cadran",
+      "hands": "Aiguilles",
+      "movement": "Mouvement",
+      "estimate": "Estimation",
+      "estimate_note": "Prix, compatibilité et disponibilité à confirmer avant commande. La copie conserve vos choix ; elle ne passe pas de commande.",
+      "confirm_price": "À confirmer",
+      "copy": "Copier ma configuration",
+      "copy_success": "Votre configuration a été copiée.",
+      "javascript_required": "Activez JavaScript dans votre navigateur pour personnaliser votre montre."
+    }
+  },
+  "ardent_elements": {
+    "home": {
+      "title": "Trois éléments. Une signature.",
+      "edition": "Les éléments",
+      "three": "Feu · Eau · Air",
+      "carousel": "Carrousel des trois univers",
+      "fire": "Le feu",
+      "water": "L’eau",
+      "air": "L’air & le ciel",
+      "meridian_hook": "L’instinct du feu.",
+      "meridian_body": "Une ligne affirmée. Une présence incandescente. Pour ceux qui suivent leur propre impulsion.",
+      "bastille_hook": "La force tranquille.",
+      "bastille_body": "Des lignes fluides, un caractère profond. Le calme en surface. L’intensité au cœur.",
+      "elysee_hook": "Libre par nature.",
+      "elysee_body": "La lumière pour horizon. Une élégance qui prend de la hauteur et ouvre le champ des possibles.",
+      "watches": "Nos montres",
+      "configure": "Explorer l’atelier",
+      "choose": "Choisir un univers",
+      "pause": "Suspendre les animations",
+      "play": "Reprendre les animations",
+      "scroll": "Explorer la maison",
+      "manifesto_kicker": "Une maison. Trois tempéraments.",
+      "manifesto_title": "Ne choisissez pas seulement une montre. Choisissez votre élément.",
+      "manifesto_body": "Le feu qui vous anime. La profondeur qui vous définit. La liberté qui vous porte. Trois univers pour une signature personnelle.",
+      "visual_note": "Visuels de présentation. Les univers feu, eau et ciel sont artistiques : ils ne constituent pas une garantie de résistance à la chaleur ou à l’immersion.",
+      "signature_kicker": "Le geste Ardent",
+      "signature_title": "Ce qui fait la différence tient dans les détails.",
+      "signature_body": "Une ligne, une couleur, un reflet. Découvrez le regard qui façonne l’univers Ardent, puis composez une montre qui vous ressemble.",
+      "craft": "Découvrir notre savoir-faire"
+    },
+    "menu": {
+      "open": "Ouvrir le menu Ardent",
+      "close": "Fermer le menu",
+      "navigation": "Navigation principale Ardent",
+      "home": "Accueil",
+      "collections": "Collections",
+      "configurator": "Configurateur",
+      "craft": "Savoir-faire horloger",
+      "service": "Achats & service",
+      "signature": "Trois éléments. Une signature.",
+      "language": "Langue",
+      "choose_language": "Choisir la langue",
+      "apply": "Appliquer",
+      "collections_intro": "Trois univers. Trouvez celui qui vous ressemble.",
+      "configurator_intro": "Explorez les trois univers de l’atelier Ardent.",
+      "fire": "Le feu",
+      "water": "L’eau",
+      "sky": "L’air & le ciel",
+      "craft_1": "L’anatomie d’une Ardent",
+      "craft_2": "Le geste Ardent",
+      "service_1": "Entretien de votre montre",
+      "service_2": "Le service de votre Ardent"
+    },
+    "atelier": {
+      "heading": "Votre univers, votre signature",
+      "description": "Explorez les trois univers Ardent. La personnalisation ouvrira lorsque chaque composant et chaque association auront été vérifiés.",
+      "image_alt": "{{ model }} — visuel d’intention, caractéristiques à confirmer",
+      "visual_label": "Visuel d’intention",
+      "step": "01 / Choisir un univers",
+      "question": "Quel monde vous ressemble ?",
+      "lead": "La lumière change. L’exigence Ardent reste la même.",
+      "choose_label": "Choisir une collection",
+      "status": "Atelier en préparation",
+      "status_body": "Les composants, leurs associations et les prix de vente sont encore en validation. Aucun choix de pièce ni commande n’est proposé à ce stade.",
+      "disclaimer": "Les montres et décors présentés expriment une direction artistique. Ils ne confirment ni les caractéristiques ni la disponibilité d’un produit.",
+      "collection_link": "Découvrir la collection"
+    },
+    "collection": {
+      "home": "Accueil",
+      "collection": "Collection",
+      "pause": "Suspendre l’animation",
+      "resume": "Reprendre l’animation",
+      "eyebrow": "Ardent · Les éléments",
+      "meridian_title": "Méridian",
+      "bastille_title": "Bastille",
+      "elysee_title": "Élysée",
+      "meridian_hook": "Une présence. Incandescente.",
+      "bastille_hook": "La profondeur pour horizon.",
+      "elysee_hook": "L’allure prend de la hauteur.",
+      "meridian_journey": "Défilez vers le cœur du feu",
+      "bastille_journey": "Défilez pour explorer les profondeurs",
+      "elysee_journey": "Défilez au-delà des nuages",
+      "configure": "Explorer l’atelier",
+      "configure_model": "Explorer l’atelier {{ model }}",
+      "explorations": "Explorations de la collection",
+      "editorial_notice": "Visuels de présentation — modèles et disponibilités à confirmer. Ces images ne constituent pas des offres de vente.",
+      "study_1": "La ligne",
+      "study_2": "La lumière",
+      "study_3": "Le caractère",
+      "image_pending": "Visuel du modèle à confirmer",
+      "explore_atelier": "Explorer l’atelier",
+      "swipe": "Faites glisser pour explorer",
+      "from": "À partir de",
+      "unavailable": "Indisponible actuellement",
+      "discover": "Découvrir la montre",
+      "pagination": "Pages de la collection",
+      "end_label": "À vous d’écrire la suite",
+      "end_title": "Un élément. Votre signature.",
+      "end_copy": "Poursuivez dans l’atelier et découvrez l’univers de ce modèle. Les options seront présentées après validation.",
+      "other_worlds": "Découvrir les autres univers"
+    },
+    "footer": {
+      "home": "Ardent — Accueil",
+      "signature_first": "Le temps ne se suit pas.",
+      "signature_second": "Il se signe.",
+      "elements": "Feu · Eau · Air",
+      "about": "À propos de nous",
+      "origin": "La naissance d’Ardent",
+      "spirit": "L’esprit Ardent",
+      "vision": "Notre vision",
+      "contact": "Parlons de votre Ardent",
+      "instagram_soon": "Instagram — bientôt",
+      "tiktok_soon": "TikTok — bientôt",
+      "service": "Achats & service",
+      "collections": "Nos collections",
+      "policies": "Informations légales",
+      "payments": "Moyens de paiement acceptés"
+    }
+  }
+}
+
+
+
