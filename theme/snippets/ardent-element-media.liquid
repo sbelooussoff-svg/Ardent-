@@ -1,0 +1,25 @@
+{% doc %}
+  Returns the URL of an Ardent presentation visual.
+  @param {string} model - meridian, bastille or elysee.
+  @param {string} context - hero, collection or configurator.
+  @param {number} [variant] - Editorial image index.
+{% enddoc %}
+{%- liquid
+  assign use_model = model | default: 'meridian'
+  assign use_context = 'cover'
+  if context == 'hero' or context == 'configurator' or variant == 2
+    assign use_context = 'hero'
+  endif
+  assign filename = 'ardent-elements-' | append: use_model | append: '-' | append: use_context | append: '-v1.webp'
+  if variant == 3
+    case use_model
+      when 'meridian'
+        assign filename = 'Meridian_cadran_barre_bleu.png'
+      when 'elysee'
+        assign filename = 'elysee_cadran_bleu_ciel.png'
+      when 'bastille'
+        assign filename = 'ardent-elements-bastille-hero-v1.webp'
+    endcase
+  endif
+  echo filename | file_url
+-%}
