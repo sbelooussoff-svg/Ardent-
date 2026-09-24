@@ -1,0 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "ardent-origin-story",
+      "settings": {
+        "hero_image": "shopify://shop_images/cadran_elysee.png",
+        "origin_image": "shopify://shop_images/croquis.png",
+        "craft_image": "shopify://shop_images/savoir_faire_horloger.png",
+        "detail_image": "shopify://shop_images/elysee_cadran_bleu_ciel.png",
+        "closing_image": "shopify://shop_images/meridian_or_rose.png"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
