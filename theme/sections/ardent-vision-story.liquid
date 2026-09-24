@@ -1,0 +1,167 @@
+{% liquid
+  assign hero_image = section.settings.hero_image
+  assign horizon_image = section.settings.horizon_image
+  assign world_image = section.settings.world_image
+  assign relationship_image = section.settings.relationship_image
+  assign closing_image = section.settings.closing_image
+  assign hero_alt = 'ardent.vision.images.hero_alt' | t
+  assign horizon_alt = 'ardent.vision.images.horizon_alt' | t
+  assign world_alt = 'ardent.vision.images.world_alt' | t
+  assign relationship_alt = 'ardent.vision.images.relationship_alt' | t
+  assign closing_alt = 'ardent.vision.images.closing_alt' | t
+%}
+
+<ardent-vision-story class="ardent-vision" {{ section.shopify_attributes }}>
+  <header class="ardent-vision__hero">
+    <div class="ardent-vision__hero-media">
+      {% if hero_image != blank %}
+        {{ hero_image | image_url: width: 2400 | image_tag: class: 'ardent-vision__image', loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1600, 2000, 2400', sizes: '100vw', alt: hero_alt }}
+      {% else %}
+        <div class="ardent-vision__placeholder"></div>
+      {% endif %}
+    </div>
+    <div class="ardent-vision__hero-shade"></div>
+    <div class="ardent-vision__hero-copy">
+      <p class="ardent-vision__eyebrow" data-vision-reveal>{{ 'ardent.vision.hero.eyebrow' | t }}</p>
+      <h1 data-vision-reveal>{{ 'ardent.vision.hero.title' | t }}</h1>
+      <p class="ardent-vision__lead" data-vision-reveal>{{ 'ardent.vision.hero.lead' | t }}</p>
+    </div>
+    <span class="ardent-vision__hero-index" aria-hidden="true">03</span>
+  </header>
+
+  <section class="ardent-vision__opening">
+    <p class="ardent-vision__eyebrow" data-vision-reveal>{{ 'ardent.vision.opening.eyebrow' | t }}</p>
+    <div class="ardent-vision__opening-grid">
+      <h2 data-vision-reveal>{{ 'ardent.vision.opening.title' | t }}</h2>
+      <div class="ardent-vision__opening-copy" data-vision-reveal>
+        <p>{{ 'ardent.vision.opening.copy_one' | t }}</p>
+        <p>{{ 'ardent.vision.opening.copy_two' | t }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ardent-vision__horizon">
+    <figure class="ardent-vision__horizon-image" data-vision-reveal>
+      {% if horizon_image != blank %}
+        {{ horizon_image | image_url: width: 2200 | image_tag: class: 'ardent-vision__image', loading: 'lazy', widths: '750, 1100, 1600, 2200', sizes: '100vw', alt: horizon_alt }}
+      {% else %}
+        <div class="ardent-vision__placeholder"></div>
+      {% endif %}
+    </figure>
+    <div class="ardent-vision__horizon-copy" data-vision-reveal>
+      <p class="ardent-vision__eyebrow">{{ 'ardent.vision.horizon.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.vision.horizon.title' | t }}</h2>
+      <p>{{ 'ardent.vision.horizon.copy' | t }}</p>
+    </div>
+  </section>
+
+  <section class="ardent-vision__pillars">
+    <p class="ardent-vision__eyebrow" data-vision-reveal>{{ 'ardent.vision.pillars.eyebrow' | t }}</p>
+    <div class="ardent-vision__pillar-list">
+      <article class="ardent-vision__pillar" data-vision-reveal>
+        <span>01</span>
+        <h2>{{ 'ardent.vision.pillars.first_title' | t }}</h2>
+        <p>{{ 'ardent.vision.pillars.first_copy' | t }}</p>
+      </article>
+      <article class="ardent-vision__pillar" data-vision-reveal>
+        <span>02</span>
+        <h2>{{ 'ardent.vision.pillars.second_title' | t }}</h2>
+        <p>{{ 'ardent.vision.pillars.second_copy' | t }}</p>
+      </article>
+      <article class="ardent-vision__pillar" data-vision-reveal>
+        <span>03</span>
+        <h2>{{ 'ardent.vision.pillars.third_title' | t }}</h2>
+        <p>{{ 'ardent.vision.pillars.third_copy' | t }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="ardent-vision__world">
+    <div class="ardent-vision__world-copy" data-vision-reveal>
+      <p class="ardent-vision__eyebrow">{{ 'ardent.vision.world.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.vision.world.title' | t }}</h2>
+      <p>{{ 'ardent.vision.world.copy' | t }}</p>
+    </div>
+    <figure class="ardent-vision__world-image" data-vision-reveal>
+      {% if world_image != blank %}
+        {{ world_image | image_url: width: 1800 | image_tag: class: 'ardent-vision__image', loading: 'lazy', widths: '600, 900, 1300, 1800', sizes: '(min-width: 990px) 48vw, 92vw', alt: world_alt }}
+      {% else %}
+        <div class="ardent-vision__placeholder"></div>
+      {% endif %}
+    </figure>
+  </section>
+
+  <section class="ardent-vision__relationship">
+    <figure class="ardent-vision__relationship-image">
+      {% if relationship_image != blank %}
+        {{ relationship_image | image_url: width: 2200 | image_tag: class: 'ardent-vision__image', loading: 'lazy', widths: '750, 1100, 1600, 2200', sizes: '100vw', alt: relationship_alt }}
+      {% else %}
+        <div class="ardent-vision__placeholder"></div>
+      {% endif %}
+    </figure>
+    <div class="ardent-vision__relationship-card" data-vision-reveal>
+      <p class="ardent-vision__eyebrow">{{ 'ardent.vision.relationship.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.vision.relationship.title' | t }}</h2>
+      <p>{{ 'ardent.vision.relationship.copy' | t }}</p>
+    </div>
+  </section>
+
+  <section class="ardent-vision__closing">
+    <figure class="ardent-vision__closing-image">
+      {% if closing_image != blank %}
+        {{ closing_image | image_url: width: 2200 | image_tag: class: 'ardent-vision__image', loading: 'lazy', widths: '750, 1100, 1600, 2200', sizes: '100vw', alt: closing_alt }}
+      {% else %}
+        <div class="ardent-vision__placeholder"></div>
+      {% endif %}
+    </figure>
+    <div class="ardent-vision__closing-copy">
+      <p class="ardent-vision__eyebrow" data-vision-reveal>{{ 'ardent.vision.closing.eyebrow' | t }}</p>
+      <p class="ardent-vision__quote" data-vision-reveal>{{ 'ardent.vision.closing.quote' | t }}</p>
+    </div>
+  </section>
+</ardent-vision-story>
+
+{% stylesheet %}
+.ardent-vision{--ink:#171313;--paper:#f1ede7;--sand:#d8cec3;--rose:#bd8579;background:var(--paper);color:var(--ink);display:block;overflow:clip}.ardent-vision__hero,.ardent-vision__relationship,.ardent-vision__closing{isolation:isolate;position:relative}.ardent-vision__hero{align-items:flex-end;background:var(--ink);color:#fff;display:flex;min-height:min(940px,100svh);padding:clamp(30px,7.5vw,126px)}.ardent-vision__hero-media,.ardent-vision__hero-shade{inset:0;position:absolute}.ardent-vision__hero-media{overflow:hidden}.ardent-vision__image{display:block;height:100%;object-fit:cover;width:100%}.ardent-vision__hero-shade{background:linear-gradient(90deg,rgba(16,12,12,.78),rgba(16,12,12,.12) 72%),linear-gradient(0deg,rgba(16,12,12,.38),transparent 55%)}.ardent-vision__hero-copy{max-width:980px;position:relative;z-index:1}.ardent-vision__eyebrow{color:var(--rose);font-size:.68rem;font-weight:600;letter-spacing:.2em;margin:0 0 18px;text-transform:uppercase}.ardent-vision h1,.ardent-vision h2,.ardent-vision__quote{font-family:var(--font-heading--family,Georgia,serif);font-weight:400}.ardent-vision h1{font-size:clamp(4.5rem,12vw,11.8rem);letter-spacing:-.08em;line-height:.78;margin:0;max-width:950px}.ardent-vision__lead{font-size:clamp(1rem,1.55vw,1.26rem);line-height:1.55;margin:38px 0 0;max-width:470px}.ardent-vision__hero-index{bottom:clamp(28px,6vw,88px);font-family:var(--font-heading--family,Georgia,serif);font-size:clamp(2rem,4vw,4rem);letter-spacing:-.06em;position:absolute;right:clamp(28px,6vw,88px);z-index:1}.ardent-vision__opening{background:#fff;padding:clamp(100px,16vw,255px) clamp(24px,7vw,112px)}.ardent-vision__opening-grid{align-items:end;display:grid;gap:clamp(40px,10vw,150px);grid-template-columns:minmax(0,1.2fr) minmax(280px,.7fr);margin:0 auto;max-width:1500px}.ardent-vision h2{font-size:clamp(3rem,6vw,6.6rem);letter-spacing:-.07em;line-height:.88;margin:0}.ardent-vision__opening-copy{font-size:1.05rem;line-height:1.7;max-width:500px}.ardent-vision__opening-copy p{margin:0 0 24px}.ardent-vision__opening-copy p:last-child{margin-bottom:0}.ardent-vision__horizon{background:var(--sand);padding:clamp(28px,5vw,76px)}.ardent-vision__horizon-image{aspect-ratio:16/8;margin:0;overflow:hidden;position:relative}.ardent-vision__horizon-image:after{border:1px solid rgba(255,255,255,.72);content:'';inset:clamp(12px,2vw,34px);position:absolute}.ardent-vision__horizon-copy{background:var(--ink);color:#fff;margin:-9vw 8% 0 auto;max-width:580px;padding:clamp(34px,5vw,74px);position:relative}.ardent-vision__horizon-copy h2{font-size:clamp(2.8rem,5vw,5.5rem);margin-bottom:28px}.ardent-vision__horizon-copy>p:not(.ardent-vision__eyebrow),.ardent-vision__world-copy>p:not(.ardent-vision__eyebrow),.ardent-vision__relationship-card>p:not(.ardent-vision__eyebrow){font-size:1.05rem;line-height:1.7;margin:0}.ardent-vision__pillars{background:#fff;padding:clamp(110px,16vw,250px) clamp(24px,7vw,112px)}.ardent-vision__pillar-list{border-top:1px solid rgba(23,19,19,.22);margin:40px auto 0;max-width:1500px}.ardent-vision__pillar{align-items:start;border-bottom:1px solid rgba(23,19,19,.22);display:grid;gap:24px;grid-template-columns:70px minmax(220px,.92fr) minmax(260px,.7fr);padding:clamp(28px,4vw,58px) 0}.ardent-vision__pillar span{color:var(--rose);font-size:.72rem;letter-spacing:.15em;padding-top:13px}.ardent-vision__pillar h2{font-size:clamp(2.2rem,4vw,4.2rem)}.ardent-vision__pillar p{font-size:1rem;line-height:1.65;margin:10px 0 0;max-width:360px}.ardent-vision__world{align-items:center;background:var(--ink);color:#fff;display:grid;gap:clamp(40px,8vw,130px);grid-template-columns:minmax(0,.8fr) minmax(320px,1fr);padding:clamp(90px,13vw,210px) clamp(24px,8vw,130px)}.ardent-vision__world-copy{margin-left:auto;max-width:530px}.ardent-vision__world-copy h2{font-size:clamp(3rem,5.7vw,6.2rem);margin-bottom:32px}.ardent-vision__world-image{aspect-ratio:4/5;margin:0;overflow:hidden}.ardent-vision__world-image .ardent-vision__placeholder,.ardent-vision__relationship .ardent-vision__placeholder,.ardent-vision__closing .ardent-vision__placeholder{height:100%}.ardent-vision__relationship{background:#242020;min-height:min(860px,92svh)}.ardent-vision__relationship-image,.ardent-vision__closing-image{inset:0;position:absolute}.ardent-vision__relationship-image:after,.ardent-vision__closing-image:after{background:linear-gradient(90deg,rgba(19,15,14,.78),rgba(19,15,14,.08));content:'';inset:0;position:absolute}.ardent-vision__relationship-card{background:rgba(245,241,235,.94);bottom:clamp(28px,8vw,126px);color:var(--ink);left:clamp(24px,8vw,126px);max-width:500px;padding:clamp(34px,5vw,70px);position:absolute;z-index:1}.ardent-vision__relationship-card h2{font-size:clamp(2.9rem,4.8vw,5.2rem);margin-bottom:28px}.ardent-vision__closing{background:var(--ink);color:#fff;min-height:min(790px,84svh)}.ardent-vision__closing-image:after{background:rgba(12,10,10,.43)}.ardent-vision__closing-copy{align-items:center;display:flex;flex-direction:column;inset:0;justify-content:center;padding:30px;position:absolute;text-align:center;z-index:1}.ardent-vision__closing-copy .ardent-vision__eyebrow{color:#fff}.ardent-vision__quote{font-size:clamp(3.4rem,8.8vw,9.4rem);letter-spacing:-.08em;line-height:.8;margin:0;max-width:1200px}.ardent-vision__placeholder{background:linear-gradient(135deg,rgba(189,133,121,.62),transparent 56%),linear-gradient(45deg,#332a29,#0d0b0b);height:100%;width:100%}[data-vision-reveal]{opacity:0;transform:translateY(30px);transition:opacity .85s cubic-bezier(.2,.65,.2,1),transform .85s cubic-bezier(.2,.65,.2,1)}[data-vision-reveal].is-visible{opacity:1;transform:none}@media(max-width:749px){.ardent-vision__hero{min-height:690px}.ardent-vision h1{font-size:clamp(4rem,20vw,6.7rem)}.ardent-vision__opening-grid,.ardent-vision__world{grid-template-columns:1fr}.ardent-vision__horizon{padding:18px}.ardent-vision__horizon-image{aspect-ratio:4/5}.ardent-vision__horizon-copy{margin:-18% 8% 0 auto}.ardent-vision__pillar{grid-template-columns:42px 1fr}.ardent-vision__pillar p{grid-column:2}.ardent-vision__world-copy{margin-left:0}.ardent-vision__world-image{max-width:500px}.ardent-vision__relationship{min-height:690px}.ardent-vision__relationship-card{bottom:24px;left:24px;right:24px}.ardent-vision__quote{font-size:clamp(3.2rem,14vw,5.2rem)}}@media(prefers-reduced-motion:reduce){[data-vision-reveal]{opacity:1;transform:none;transition:none}}
+{% endstylesheet %}
+
+{% javascript %}
+class ArdentVisionStory extends HTMLElement {
+  connectedCallback() {
+    const elements = this.querySelectorAll('[data-vision-reveal]');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      elements.forEach((element) => element.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+    elements.forEach((element) => observer.observe(element));
+    this.observer = observer;
+  }
+  disconnectedCallback() {
+    if (this.observer) this.observer.disconnect();
+  }
+}
+if (!customElements.get('ardent-vision-story')) customElements.define('ardent-vision-story', ArdentVisionStory);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Ardent — Notre vision",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Image héro grand format" },
+    { "type": "image_picker", "id": "horizon_image", "label": "Image horizon" },
+    { "type": "image_picker", "id": "world_image", "label": "Image ouverture au monde" },
+    { "type": "image_picker", "id": "relationship_image", "label": "Image relation et communauté" },
+    { "type": "image_picker", "id": "closing_image", "label": "Image de conclusion" }
+  ],
+  "presets": [{ "name": "Ardent — Notre vision" }]
+}
+{% endschema %}
+

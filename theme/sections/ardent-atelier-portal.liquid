@@ -1,0 +1,20 @@
+<section id="ArdentPortal-{{ section.id }}" class="ardent-portal" data-ardent-portal>
+  <div class="ardent-portal__top"><span>ATELIER / ÉTAPE 01</span><span>FAÇONNER L’INTENTION</span></div>
+  <div class="ardent-portal__wrap">
+    <div class="ardent-portal__intro"><p>Avant la matière, il y a votre regard.</p><h2>Choisissez ce<br><em>qui vous suit.</em></h2></div>
+    <div class="ardent-portal__cards">
+      <article><b>01</b><h3>La forme</h3><p>Un boîtier qui donne le rythme.</p></article>
+      <article><b>02</b><h3>La lumière</h3><p>Un cadran qui change avec vous.</p></article>
+      <article><b>03</b><h3>La signature</h3><p>Le détail que personne d’autre ne porte.</p></article>
+    </div>
+  </div>
+  <a class="ardent-portal__continue" href="#shopify-section-atelier_configurator"><span>Commencer la composition</span><i aria-hidden="true">↓</i></a>
+</section>
+
+<style>
+  #ArdentPortal-{{ section.id }}{position:relative;overflow:hidden;background:#0a0a0b;color:#eee9df;padding:clamp(4rem,7vw,7rem) clamp(1.5rem,8vw,10rem);min-height:90svh;display:flex;flex-direction:column;justify-content:space-between}#ArdentPortal-{{ section.id }}:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 100%,rgba(171,126,57,.25),transparent 48%),linear-gradient(110deg,#090909,#171310);pointer-events:none}.ardent-portal__top{position:relative;z-index:1;display:flex;justify-content:space-between;font:500 .64rem/1 Arial,sans-serif;letter-spacing:.2em;color:rgba(238,233,223,.55)}.ardent-portal__wrap{position:relative;z-index:1;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:3rem;margin:auto 0}.ardent-portal__intro>p{font:500 .65rem/1 Arial,sans-serif;letter-spacing:.2em;color:#d9b56e}.ardent-portal h2{margin:1.3rem 0 0;font:400 clamp(3.3rem,6.8vw,8rem)/.86 var(--font-heading-family,Georgia,serif);letter-spacing:-.07em}.ardent-portal h2 em{color:#d9b56e;font-weight:400}.ardent-portal__cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(238,233,223,.16);border:1px solid rgba(238,233,223,.16)}.ardent-portal__cards article{min-height:18rem;padding:1.35rem;display:flex;flex-direction:column;justify-content:flex-end;background:rgba(8,8,9,.86);transition:background .45s ease,transform .45s ease}.ardent-portal__cards article:hover{background:#b78c44;color:#17130e;transform:translateY(-.8rem)}.ardent-portal__cards b{margin-bottom:auto;font:400 .7rem/1 Arial,sans-serif;letter-spacing:.16em;opacity:.75}.ardent-portal__cards h3{margin:0;font:400 clamp(1.5rem,2.5vw,2.7rem)/.95 var(--font-heading-family,Georgia,serif);letter-spacing:-.04em}.ardent-portal__cards p{margin:.9rem 0 0;font:400 .82rem/1.5 var(--font-body-family,Arial,sans-serif);opacity:.7}.ardent-portal__continue{position:relative;z-index:1;align-self:flex-end;margin-top:3rem;display:flex;align-items:center;gap:2rem;color:#eee9df;text-decoration:none;font:600 .68rem/1 Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}.ardent-portal__continue i{display:grid;place-items:center;width:2.55rem;height:2.55rem;border:1px solid rgba(238,233,223,.5);border-radius:50%;font-size:1.1rem;font-style:normal;transition:background .3s,color .3s}.ardent-portal__continue:hover i{background:#d9b56e;color:#16120d}@media(max-width:749px){#ArdentPortal-{{ section.id }}{min-height:48rem;padding:3.5rem 1.5rem}.ardent-portal__top span:last-child{display:none}.ardent-portal__wrap{display:block;margin:auto 0}.ardent-portal h2{font-size:clamp(3.2rem,14vw,4.8rem)}.ardent-portal__cards{margin-top:3rem}.ardent-portal__cards article{min-height:13rem;padding:1rem}.ardent-portal__cards h3{font-size:1.45rem}.ardent-portal__cards p{font-size:.7rem}.ardent-portal__continue{align-self:flex-start}}
+</style>
+
+{% schema %}
+{"name":"Ardent — Portail","tag":"section","class":"section-ardent-portal","settings":[],"presets":[{"name":"Ardent — Portail"}]}
+{% endschema %}

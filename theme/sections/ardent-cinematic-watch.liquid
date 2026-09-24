@@ -1,0 +1,135 @@
+{% liquid
+  assign image = section.settings.image
+%}
+
+<section
+  id="ArdentCinematic-{{ section.id }}"
+  class="ardent-cinematic"
+  data-ardent-cinematic
+  aria-label="{{ section.settings.eyebrow | escape }}"
+>
+  <div class="ardent-cinematic__sticky">
+    <div class="ardent-cinematic__grain" aria-hidden="true"></div>
+    <div class="ardent-cinematic__grid" aria-hidden="true"></div>
+    <div class="ardent-cinematic__halo" aria-hidden="true"></div>
+    <div class="ardent-cinematic__beam" aria-hidden="true"></div>
+
+    <div class="ardent-cinematic__coordinates ardent-cinematic__coordinates--top" aria-hidden="true">
+      <span>ARDENT / 01</span><span>48° 51′ N · 2° 21′ E</span>
+    </div>
+
+    <div class="ardent-cinematic__watch-wrap" aria-hidden="true">
+      <span class="ardent-cinematic__ring ardent-cinematic__ring--one"></span>
+      <span class="ardent-cinematic__ring ardent-cinematic__ring--two"></span>
+      <span class="ardent-cinematic__ring ardent-cinematic__ring--three"></span>
+      <span class="ardent-cinematic__orbit ardent-cinematic__orbit--one"></span>
+      <span class="ardent-cinematic__orbit ardent-cinematic__orbit--two"></span>
+      {% if image != blank %}
+        {{ image | image_url: width: 1800 | image_tag: loading: 'eager', widths: '640, 900, 1200, 1500, 1800', class: 'ardent-cinematic__watch', alt: image.alt | default: section.settings.title }}
+      {% else %}
+        <div class="ardent-cinematic__placeholder"></div>
+      {% endif %}
+      <span class="ardent-cinematic__glint"></span>
+    </div>
+
+    <div class="ardent-cinematic__copy">
+      <p class="ardent-cinematic__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h1 class="ardent-cinematic__title">{{ section.settings.title | escape }}</h1>
+      <p class="ardent-cinematic__body">{{ section.settings.body | escape }}</p>
+      {% if section.settings.cta_label != blank and section.settings.cta_link != blank %}
+        <a class="ardent-cinematic__cta" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label | escape }} <span aria-hidden="true">↗</span></a>
+      {% endif %}
+    </div>
+
+    <div class="ardent-cinematic__annotation ardent-cinematic__annotation--left" aria-hidden="true">
+      <span class="ardent-cinematic__line"></span>
+      <div><b>01</b><small>BOÎTIER<br>EN MOUVEMENT</small></div>
+    </div>
+    <div class="ardent-cinematic__annotation ardent-cinematic__annotation--right" aria-hidden="true">
+      <span class="ardent-cinematic__line"></span>
+      <div><b>02</b><small>VOTRE<br>SIGNATURE</small></div>
+    </div>
+    <div class="ardent-cinematic__progress" aria-hidden="true"><span></span></div>
+    <p class="ardent-cinematic__scroll" aria-hidden="true">DÉFILEZ POUR ENTRER</p>
+  </div>
+</section>
+
+<style>
+  #ArdentCinematic-{{ section.id }} { --p: 0; --mx: 0; --my: 0; position: relative; height: 420vh; background:#050505; color:#f6f4f0; overflow:clip; }
+  #ArdentCinematic-{{ section.id }} * { box-sizing:border-box; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__sticky { position:sticky; top:0; height:100svh; overflow:hidden; isolation:isolate; background:radial-gradient(circle at 50% 52%, #2b2927 0, #101010 34%, #050505 75%); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__grain { position:absolute; inset:-30%; z-index:8; opacity:.12; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E"); mix-blend-mode:screen; animation:ardentGrain .18s steps(2) infinite; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__grid { position:absolute; inset:0; z-index:-1; opacity:calc(.18 - var(--p) * .09); background:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px); background-size:clamp(36px,5vw,80px) clamp(36px,5vw,80px); mask-image:radial-gradient(ellipse at center,black,transparent 72%); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__halo { position:absolute; width:min(95vw,1050px); aspect-ratio:1; left:50%; top:48%; z-index:0; border-radius:50%; transform:translate(-50%,-50%) scale(calc(.55 + var(--p) * 1.25)); background:radial-gradient(circle,rgba(212,177,146,.28) 0,rgba(212,177,146,.08) 26%,transparent 67%); filter:blur(10px); opacity:calc(.36 + var(--p) * .64); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__beam { position:absolute; width:22vw; height:150vh; left:calc(50% + var(--mx) * 4vw); top:-25vh; z-index:3; transform:rotate(calc(-24deg + var(--p) * 44deg)); transform-origin:center; background:linear-gradient(90deg,transparent,rgba(255,236,211,.22),transparent); filter:blur(12px); mix-blend-mode:screen; opacity:calc(.1 + var(--p) * .7); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__watch-wrap { position:absolute; z-index:2; left:50%; top:51%; width:min(72vw,830px); aspect-ratio:1; transform:translate(calc(-50% + var(--mx) * 16px),calc(-50% + var(--my) * 12px)) scale(calc(.68 + var(--p) * .58)) rotate(calc(-13deg + var(--p) * 21deg)); will-change:transform; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__watch { position:absolute; z-index:3; width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 42px 48px rgba(0,0,0,.6)) contrast(1.09) saturate(.9); transform:translateY(calc((1 - var(--p)) * 12vh)); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__placeholder { position:absolute; inset:24%; border-radius:50%; border:1px solid rgba(255,255,255,.5); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__ring { position:absolute; inset:7%; border:1px solid rgba(239,220,199,.27); border-radius:50%; transform:scale(calc(1.06 + var(--p) * .48)) rotate(calc(var(--p) * 95deg)); opacity:calc(.2 + var(--p) * .8); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__ring--two { inset:17%; border-style:dashed; transform:scale(calc(.92 + var(--p) * .72)) rotate(calc(-30deg - var(--p) * 170deg)); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__ring--three { inset:-9%; opacity:calc(.12 + var(--p) * .42); border-color:rgba(255,255,255,.18); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__orbit { position:absolute; z-index:1; left:50%; top:50%; width:130%; height:35%; border-top:1px solid rgba(245,235,222,.45); border-radius:50%; transform:translate(-50%,-50%) rotate(calc(15deg + var(--p) * 110deg)); opacity:calc(.05 + var(--p) * .95); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__orbit--two { width:112%; height:82%; border-top-color:rgba(211,173,138,.42); transform:translate(-50%,-50%) rotate(calc(-48deg - var(--p) * 140deg)); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__glint { position:absolute; z-index:4; inset:8%; border-radius:50%; background:linear-gradient(125deg,transparent 42%,rgba(255,255,255,.8) 49%,transparent 54%); mix-blend-mode:screen; transform:translateX(calc(-65% + var(--p) * 132%)); opacity:calc(var(--p) * .85); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__copy { position:absolute; z-index:6; left:clamp(22px,7vw,120px); bottom:clamp(45px,11vh,115px); width:min(530px,65vw); transform:translateY(calc((1 - var(--p)) * 30px)); opacity:clamp(0,calc((var(--p) - .13) * 3),1); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__eyebrow, #ArdentCinematic-{{ section.id }} .ardent-cinematic__coordinates, #ArdentCinematic-{{ section.id }} .ardent-cinematic__scroll { font:500 10px/1.2 Arial,sans-serif; letter-spacing:.2em; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__eyebrow { margin:0 0 15px; color:#d8b89b; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__title { margin:0; max-width:8ch; font:400 clamp(44px,6.8vw,112px)/.88 Georgia,serif; letter-spacing:-.055em; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__body { margin:23px 0 0; max-width:32ch; color:rgba(246,244,240,.76); font:400 14px/1.55 Arial,sans-serif; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__cta { display:inline-flex; gap:14px; margin-top:28px; padding-bottom:8px; border-bottom:1px solid #d8b89b; color:inherit; text-decoration:none; font:600 11px Arial,sans-serif; letter-spacing:.13em; text-transform:uppercase; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__cta span { font-size:17px; line-height:.6; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__coordinates { position:absolute; z-index:5; left:clamp(22px,3vw,52px); right:clamp(22px,3vw,52px); display:flex; justify-content:space-between; color:rgba(255,255,255,.6); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__coordinates--top { top:clamp(22px,4vh,45px); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__annotation { position:absolute; z-index:5; top:48%; display:flex; align-items:center; gap:12px; opacity:calc(var(--p) * 1.4); transform:translateY(calc((.7 - var(--p)) * 40px)); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__annotation--left { left:3vw; } #ArdentCinematic-{{ section.id }} .ardent-cinematic__annotation--right { right:3vw; flex-direction:row-reverse; text-align:right; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__line { display:block; width:clamp(40px,9vw,150px); border-top:1px solid rgba(255,255,255,.6); }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__annotation b { display:block; margin-bottom:5px; color:#d8b89b; font:500 10px Arial,sans-serif; letter-spacing:.2em; } #ArdentCinematic-{{ section.id }} .ardent-cinematic__annotation small { font:500 9px/1.35 Arial,sans-serif; letter-spacing:.14em; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__progress { position:absolute; z-index:6; right:3vw; bottom:clamp(23px,4vh,42px); width:100px; height:1px; background:rgba(255,255,255,.2); } #ArdentCinematic-{{ section.id }} .ardent-cinematic__progress span { display:block; width:calc(var(--p) * 100%); height:100%; background:#d8b89b; }
+  #ArdentCinematic-{{ section.id }} .ardent-cinematic__scroll { position:absolute; z-index:6; right:3vw; bottom:clamp(43px,7vh,70px); margin:0; transform:rotate(-90deg); transform-origin:right bottom; color:rgba(255,255,255,.6); opacity:calc(1 - var(--p) * 2.8); }
+  @keyframes ardentGrain { 0% { transform:translate(0,0); } 25% { transform:translate(3%,-2%); } 50% { transform:translate(-2%,4%); } 75% { transform:translate(5%,2%); } }
+  @media (max-width: 749px) { #ArdentCinematic-{{ section.id }} { height:360vh; } #ArdentCinematic-{{ section.id }} .ardent-cinematic__watch-wrap { top:43%; width:112vw; } #ArdentCinematic-{{ section.id }} .ardent-cinematic__copy { bottom:70px; width:calc(100% - 44px); } #ArdentCinematic-{{ section.id }} .ardent-cinematic__title { font-size:50px; } #ArdentCinematic-{{ section.id }} .ardent-cinematic__annotation { display:none; } #ArdentCinematic-{{ section.id }} .ardent-cinematic__coordinates span:last-child { display:none; } }
+  @media (prefers-reduced-motion: reduce) { #ArdentCinematic-{{ section.id }} { height:100vh; } #ArdentCinematic-{{ section.id }} .ardent-cinematic__grain { animation:none; } }
+</style>
+
+<script>
+  (() => {
+    const section = document.getElementById('ArdentCinematic-{{ section.id }}');
+    if (!section || section.dataset.ready) return;
+    section.dataset.ready = 'true';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let frame;
+    const update = () => {
+      const rect = section.getBoundingClientRect();
+      const distance = Math.max(1, section.offsetHeight - window.innerHeight);
+      const progress = Math.min(1, Math.max(0, -rect.top / distance));
+      section.style.setProperty('--p', reduce ? 1 : progress.toFixed(4));
+      frame = null;
+    };
+    const requestUpdate = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    section.addEventListener('pointermove', (event) => {
+      if (reduce || event.pointerType === 'touch') return;
+      const rect = section.getBoundingClientRect();
+      section.style.setProperty('--mx', (((event.clientX - rect.left) / rect.width) - .5).toFixed(3));
+      section.style.setProperty('--my', (((event.clientY - rect.top) / Math.max(1, rect.height)) - .5).toFixed(3));
+    });
+    section.addEventListener('pointerleave', () => { section.style.setProperty('--mx', 0); section.style.setProperty('--my', 0); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Ardent — film interactif",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Montre principale" },
+    { "type": "text", "id": "eyebrow", "label": "Surtitre", "default": "ARDENT / CONFIGURATEUR" },
+    { "type": "text", "id": "title", "label": "Titre", "default": "Votre montre. En mouvement." },
+    { "type": "textarea", "id": "body", "label": "Texte", "default": "Entrez dans l’atelier. Composez une montre qui porte votre identité." },
+    { "type": "text", "id": "cta_label", "label": "Texte du bouton", "default": "Configurer la mienne" },
+    { "type": "url", "id": "cta_link", "label": "Lien du bouton" }
+  ],
+  "presets": [{ "name": "Ardent — film interactif" }]
+}
+{% endschema %}

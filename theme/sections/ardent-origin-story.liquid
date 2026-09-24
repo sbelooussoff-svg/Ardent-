@@ -1,0 +1,528 @@
+{% liquid
+  assign hero_image = section.settings.hero_image
+  assign origin_image = section.settings.origin_image
+  assign craft_image = section.settings.craft_image
+  assign detail_image = section.settings.detail_image
+  assign closing_image = section.settings.closing_image
+  assign hero_alt = 'ardent.origin.images.hero_alt' | t
+  assign origin_alt = 'ardent.origin.images.origin_alt' | t
+  assign craft_alt = 'ardent.origin.images.craft_alt' | t
+  assign detail_alt = 'ardent.origin.images.detail_alt' | t
+  assign closing_alt = 'ardent.origin.images.closing_alt' | t
+%}
+
+<ardent-origin-story class="ardent-origin" {{ section.shopify_attributes }}>
+  <header class="ardent-origin__hero">
+    <div class="ardent-origin__hero-media">
+      {% if hero_image != blank %}
+        {{ hero_image | image_url: width: 2400 | image_tag: class: 'ardent-origin__image', loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1600, 2000, 2400', sizes: '100vw', alt: hero_alt }}
+      {% endif %}
+    </div>
+    <div class="ardent-origin__hero-shade"></div>
+    <div class="ardent-origin__hero-content">
+      <p class="ardent-origin__eyebrow ardent-origin__reveal" data-ardent-reveal>{{ 'ardent.origin.hero.eyebrow' | t }}</p>
+      <h1 class="ardent-origin__title ardent-origin__reveal" data-ardent-reveal>{{ 'ardent.origin.hero.title' | t }}</h1>
+      <p class="ardent-origin__lead ardent-origin__reveal" data-ardent-reveal>{{ 'ardent.origin.hero.lead' | t }}</p>
+    </div>
+    <div class="ardent-origin__scroll" aria-hidden="true">
+      <span>{{ 'ardent.origin.hero.scroll' | t }}</span>
+      <i></i>
+    </div>
+  </header>
+
+  <section class="ardent-origin__opening">
+    <div class="ardent-origin__opening-copy ardent-origin__reveal" data-ardent-reveal>
+      <p class="ardent-origin__eyebrow">{{ 'ardent.origin.opening.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.origin.opening.title' | t }}</h2>
+      <p>Ardent naît d’un désir précis : imaginer des montres dont la présence se ressent avant même qu’elles ne se remarquent. Des pièces pensées avec attention pour les lignes, les proportions et la sensation d’un objet juste.</p>
+      <p>{{ 'ardent.origin.opening.copy_two' | t }}</p>
+    </div>
+    <figure class="ardent-origin__opening-image ardent-origin__reveal" data-ardent-reveal>
+      {% if origin_image != blank %}
+        {{ origin_image | image_url: width: 1600 | image_tag: class: 'ardent-origin__image', loading: 'lazy', widths: '500, 750, 1100, 1600', sizes: '(min-width: 990px) 42vw, 92vw', alt: origin_alt }}
+      {% else %}
+        <div class="ardent-origin__image-placeholder"></div>
+      {% endif %}
+    </figure>
+  </section>
+
+  <section class="ardent-origin__chapters">
+    <div class="ardent-origin__chapters-heading ardent-origin__reveal" data-ardent-reveal>
+      <p class="ardent-origin__eyebrow">{{ 'ardent.origin.chapters.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.origin.chapters.title' | t }}</h2>
+    </div>
+    <ol class="ardent-origin__chapter-list">
+      <li class="ardent-origin__chapter ardent-origin__reveal" data-ardent-reveal>
+        <span>01</span>
+        <div>
+          <h3>{{ 'ardent.origin.chapters.first_title' | t }}</h3>
+          <p>{{ 'ardent.origin.chapters.first_copy' | t }}</p>
+        </div>
+      </li>
+      <li class="ardent-origin__chapter ardent-origin__reveal" data-ardent-reveal>
+        <span>02</span>
+        <div>
+          <h3>{{ 'ardent.origin.chapters.second_title' | t }}</h3>
+          <p>{{ 'ardent.origin.chapters.second_copy' | t }}</p>
+        </div>
+      </li>
+      <li class="ardent-origin__chapter ardent-origin__reveal" data-ardent-reveal>
+        <span>03</span>
+        <div>
+          <h3>{{ 'ardent.origin.chapters.third_title' | t }}</h3>
+          <p>{{ 'ardent.origin.chapters.third_copy' | t }}</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="ardent-origin__craft">
+    <figure class="ardent-origin__craft-image ardent-origin__reveal" data-ardent-reveal>
+      {% if craft_image != blank %}
+        {{ craft_image | image_url: width: 2200 | image_tag: class: 'ardent-origin__image', loading: 'lazy', widths: '750, 1100, 1600, 2200', sizes: '100vw', alt: craft_alt }}
+      {% else %}
+        <div class="ardent-origin__image-placeholder"></div>
+      {% endif %}
+    </figure>
+    <div class="ardent-origin__craft-caption ardent-origin__reveal" data-ardent-reveal>
+      <p>{{ 'ardent.origin.craft.caption' | t }}</p>
+    </div>
+  </section>
+
+  <section class="ardent-origin__detail">
+    <div class="ardent-origin__detail-copy ardent-origin__reveal" data-ardent-reveal>
+      <p class="ardent-origin__eyebrow">{{ 'ardent.origin.detail.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.origin.detail.title' | t }}</h2>
+      <p>{{ 'ardent.origin.detail.copy' | t }}</p>
+    </div>
+    <figure class="ardent-origin__detail-image ardent-origin__reveal" data-ardent-reveal>
+      {% if detail_image != blank %}
+        {{ detail_image | image_url: width: 1400 | image_tag: class: 'ardent-origin__image', loading: 'lazy', widths: '500, 750, 1100, 1400', sizes: '(min-width: 990px) 34vw, 80vw', alt: detail_alt }}
+      {% else %}
+        <div class="ardent-origin__image-placeholder"></div>
+      {% endif %}
+    </figure>
+  </section>
+
+  <section class="ardent-origin__closing">
+    <figure class="ardent-origin__closing-image">
+      {% if closing_image != blank %}
+        {{ closing_image | image_url: width: 2200 | image_tag: class: 'ardent-origin__image', loading: 'lazy', widths: '750, 1100, 1600, 2200', sizes: '100vw', alt: closing_alt }}
+      {% else %}
+        <div class="ardent-origin__image-placeholder"></div>
+      {% endif %}
+    </figure>
+    <div class="ardent-origin__closing-overlay">
+      <p class="ardent-origin__eyebrow ardent-origin__reveal" data-ardent-reveal>{{ 'ardent.origin.closing.eyebrow' | t }}</p>
+      <p class="ardent-origin__closing-quote ardent-origin__reveal" data-ardent-reveal>{{ 'ardent.origin.closing.quote' | t }}</p>
+    </div>
+  </section>
+</ardent-origin-story>
+
+{% stylesheet %}
+.ardent-origin {
+  --ardent-ink: #171311;
+  --ardent-paper: #f4f0eb;
+  --ardent-rose: #bd8579;
+  background: var(--ardent-paper);
+  color: var(--ardent-ink);
+  display: block;
+  overflow: clip;
+}
+
+.ardent-origin__hero,
+.ardent-origin__craft,
+.ardent-origin__closing {
+  background: var(--ardent-ink);
+  color: #fff;
+  min-height: min(840px, 100svh);
+  position: relative;
+}
+
+.ardent-origin__hero {
+  align-items: flex-end;
+  display: flex;
+  isolation: isolate;
+  padding: clamp(32px, 7vw, 112px);
+}
+
+.ardent-origin__hero-media,
+.ardent-origin__hero-shade,
+.ardent-origin__closing-image,
+.ardent-origin__closing-overlay {
+  inset: 0;
+  position: absolute;
+}
+
+.ardent-origin__hero-media,
+.ardent-origin__closing-image {
+  overflow: hidden;
+}
+
+.ardent-origin__hero-media::after,
+.ardent-origin__closing-image::after {
+  background: linear-gradient(110deg, rgba(14, 11, 10, .58), rgba(14, 11, 10, .08) 68%);
+  content: '';
+  inset: 0;
+  position: absolute;
+}
+
+.ardent-origin__hero-shade {
+  background: radial-gradient(circle at 70% 12%, rgba(189, 133, 121, .2), transparent 34%);
+  pointer-events: none;
+}
+
+.ardent-origin__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.ardent-origin__hero-content {
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+.ardent-origin__eyebrow {
+  color: var(--ardent-rose);
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+}
+
+.ardent-origin__title,
+.ardent-origin h2,
+.ardent-origin h3,
+.ardent-origin__closing-quote {
+  font-family: var(--font-heading--family, Georgia, serif);
+  font-weight: 400;
+}
+
+.ardent-origin__title {
+  font-size: clamp(4.25rem, 11vw, 10.5rem);
+  letter-spacing: -.065em;
+  line-height: .82;
+  margin: 0;
+  max-width: 760px;
+}
+
+.ardent-origin__lead {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.55;
+  margin: 38px 0 0;
+  max-width: 475px;
+}
+
+.ardent-origin__scroll {
+  align-items: center;
+  bottom: 32px;
+  display: flex;
+  font-size: .625rem;
+  gap: 12px;
+  letter-spacing: .18em;
+  position: absolute;
+  right: clamp(32px, 7vw, 112px);
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.ardent-origin__scroll i {
+  animation: ardent-origin-scroll 1.8s ease-in-out infinite;
+  background: var(--ardent-rose);
+  display: block;
+  height: 1px;
+  transform-origin: left;
+  width: 38px;
+}
+
+.ardent-origin__opening,
+.ardent-origin__detail {
+  align-items: center;
+  display: grid;
+  gap: clamp(42px, 8vw, 150px);
+  grid-template-columns: minmax(0, .8fr) minmax(300px, 1.1fr);
+  margin: 0 auto;
+  max-width: 1500px;
+  padding: clamp(84px, 14vw, 210px) clamp(24px, 6vw, 92px);
+}
+
+.ardent-origin__opening-copy {
+  max-width: 470px;
+}
+
+.ardent-origin h2 {
+  font-size: clamp(2.75rem, 5.5vw, 5.5rem);
+  letter-spacing: -.055em;
+  line-height: .92;
+  margin: 0 0 32px;
+}
+
+.ardent-origin__opening-copy > p:not(.ardent-origin__eyebrow),
+.ardent-origin__detail-copy > p:not(.ardent-origin__eyebrow) {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+
+.ardent-origin__opening-image {
+  aspect-ratio: 4 / 5;
+  margin: 0;
+}
+
+.ardent-origin__image-placeholder {
+  background:
+    linear-gradient(135deg, rgba(189, 133, 121, .22), transparent 55%),
+    #25201e;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.ardent-origin__image-placeholder::after {
+  border: 1px solid rgba(255, 255, 255, .23);
+  content: '';
+  inset: 9%;
+  position: absolute;
+}
+
+.ardent-origin__chapters {
+  background: var(--ardent-ink);
+  color: #fff;
+  padding: clamp(84px, 13vw, 185px) clamp(24px, 6vw, 92px);
+}
+
+.ardent-origin__chapters-heading,
+.ardent-origin__chapter-list {
+  margin: 0 auto;
+  max-width: 1320px;
+}
+
+.ardent-origin__chapters-heading {
+  max-width: 1320px;
+}
+
+.ardent-origin__chapters-heading h2 {
+  max-width: 700px;
+}
+
+.ardent-origin__chapter-list {
+  list-style: none;
+  margin-top: clamp(56px, 9vw, 125px);
+  padding: 0;
+}
+
+.ardent-origin__chapter {
+  border-top: 1px solid rgba(255, 255, 255, .25);
+  display: grid;
+  gap: 36px;
+  grid-template-columns: 90px minmax(0, 1fr);
+  padding: 30px 0;
+}
+
+.ardent-origin__chapter:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, .25);
+}
+
+.ardent-origin__chapter > span {
+  color: var(--ardent-rose);
+  font-size: .75rem;
+  letter-spacing: .15em;
+  padding-top: 10px;
+}
+
+.ardent-origin__chapter h3 {
+  font-size: clamp(2rem, 3.8vw, 4rem);
+  letter-spacing: -.045em;
+  line-height: 1;
+  margin: 0;
+}
+
+.ardent-origin__chapter p {
+  color: rgba(255, 255, 255, .72);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 12px 0 0;
+  max-width: 510px;
+}
+
+.ardent-origin__craft {
+  min-height: min(900px, 92svh);
+}
+
+.ardent-origin__craft-image {
+  inset: 0;
+  margin: 0;
+  position: absolute;
+}
+
+.ardent-origin__craft-caption {
+  bottom: clamp(26px, 5vw, 76px);
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  left: clamp(24px, 6vw, 92px);
+  line-height: 1.08;
+  max-width: 620px;
+  position: absolute;
+  z-index: 1;
+}
+
+.ardent-origin__craft-caption p {
+  margin: 0;
+}
+
+.ardent-origin__detail {
+  grid-template-columns: minmax(0, 1fr) minmax(250px, .62fr);
+}
+
+.ardent-origin__detail-copy {
+  max-width: 610px;
+}
+
+.ardent-origin__detail-image {
+  aspect-ratio: 1 / 1.25;
+  margin: 0;
+}
+
+.ardent-origin__closing {
+  min-height: min(720px, 82svh);
+}
+
+.ardent-origin__closing-overlay {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  text-align: center;
+  z-index: 1;
+}
+
+.ardent-origin__closing-overlay .ardent-origin__eyebrow {
+  color: #fff;
+}
+
+.ardent-origin__closing-quote {
+  font-size: clamp(3rem, 8vw, 7.5rem);
+  letter-spacing: -.06em;
+  line-height: .9;
+  margin: 0;
+  max-width: 1100px;
+}
+
+.ardent-origin__reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .8s cubic-bezier(.2, .65, .2, 1), transform .8s cubic-bezier(.2, .65, .2, 1);
+}
+
+.ardent-origin__reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes ardent-origin-scroll {
+  50% { transform: scaleX(.35); }
+}
+
+@media (max-width: 749px) {
+  .ardent-origin__hero {
+    min-height: 680px;
+  }
+
+  .ardent-origin__title {
+    font-size: clamp(3.75rem, 19vw, 6.25rem);
+  }
+
+  .ardent-origin__scroll {
+    bottom: 20px;
+    left: 24px;
+    right: auto;
+  }
+
+  .ardent-origin__opening,
+  .ardent-origin__detail {
+    grid-template-columns: 1fr;
+  }
+
+  .ardent-origin__opening-image {
+    grid-row: 1;
+  }
+
+  .ardent-origin__chapter {
+    gap: 18px;
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .ardent-origin__craft {
+    min-height: 620px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ardent-origin__reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .ardent-origin__scroll i {
+    animation: none;
+  }
+}
+{% endstylesheet %}
+
+{% javascript %}
+class ArdentOriginStory extends HTMLElement {
+  connectedCallback() {
+    const revealElements = this.querySelectorAll('[data-ardent-reveal]');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      revealElements.forEach((element) => element.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16 }
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+    this.observer = observer;
+  }
+
+  disconnectedCallback() {
+    if (this.observer) this.observer.disconnect();
+  }
+}
+
+if (!customElements.get('ardent-origin-story')) {
+  customElements.define('ardent-origin-story', ArdentOriginStory);
+}
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Ardent — La naissance",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Image héro grand format" },
+    { "type": "image_picker", "id": "origin_image", "label": "Image des origines" },
+    { "type": "image_picker", "id": "craft_image", "label": "Image savoir-faire grand format" },
+    { "type": "image_picker", "id": "detail_image", "label": "Image détail" },
+    { "type": "image_picker", "id": "closing_image", "label": "Image de conclusion" }
+  ],
+  "presets": [
+    { "name": "Ardent — La naissance" }
+  ]
+}
+{% endschema %}
+

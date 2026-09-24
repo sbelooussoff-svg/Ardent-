@@ -1,0 +1,237 @@
+{% liquid
+  assign model = collection.handle
+  unless model == 'meridian' or model == 'bastille' or model == 'elysee'
+    assign model = section.settings.model
+  endunless
+  assign element = 'fire'
+  if model == 'bastille'
+    assign element = 'water'
+  elsif model == 'elysee'
+    assign element = 'air'
+  endif
+  assign scene_filename = 'meridian-fire-v1.jpg'
+  if model == 'bastille'
+    assign scene_filename = 'bastille-water-v1.jpg'
+  elsif model == 'elysee'
+    assign scene_filename = 'elysee-air-v1.jpg'
+  endif
+  assign title_key = 'ardent_elements.collection.' | append: model | append: '_title'
+  assign hook_key = 'ardent_elements.collection.' | append: model | append: '_hook'
+  assign journey_key = 'ardent_elements.collection.' | append: model | append: '_journey'
+  assign config_url = routes.root_url | append: '/pages/configurateur?model=' | append: model | replace: '//', '/'
+  assign block_product_count = 0
+  for block in section.blocks
+    if block.settings.product != blank
+      assign block_product_count = block_product_count | plus: 1
+    endif
+  endfor
+  assign editorial = false
+  if collection.products_count == 0 and block_product_count == 0
+    assign editorial = true
+  endif
+%}
+<section id="ArdentDepth-{{ section.id }}" class="ae-depth ae-depth--{{ element }}" data-ardent-depth data-model="{{ model }}" aria-labelledby="ArdentDepthTitle-{{ section.id }}">
+  <div class="ae-depth-stage" aria-hidden="true">
+    <div class="ae-depth-stage__scene" style="--ae-scene-image:url('{{ scene_filename | file_url }}')"></div>
+    <div class="ae-depth-stage__shade"></div>
+    <div class="ae-depth-stage__grain"></div>
+  </div>
+  <div class="ae-depth-toolbar">
+    <a href="{{ routes.root_url }}">{{ 'ardent_elements.collection.home' | t }}</a>
+    <span class="ae-depth-toolbar__label">{{ 'ardent_elements.collection.collection' | t }}</span>
+    <button type="button" data-depth-pause aria-pressed="false">
+      <span data-depth-pause-label>{{ 'ardent_elements.collection.pause' | t }}</span>
+      <span data-depth-resume-label hidden>{{ 'ardent_elements.collection.resume' | t }}</span>
+    </button>
+  </div>
+  <header class="ae-depth-intro">
+    <p class="ae-depth-eyebrow">{{ 'ardent_elements.collection.eyebrow' | t }}</p>
+    <h1 id="ArdentDepthTitle-{{ section.id }}">{{ title_key | t }}</h1>
+    <p class="ae-depth-hook">{{ hook_key | t }}</p>
+    <a class="ae-depth-cta" href="{{ config_url }}">{{ 'ardent_elements.collection.configure' | t }} <span aria-hidden="true">↗</span></a>
+    <p class="ae-depth-scroll"><span aria-hidden="true">↓</span> {{ journey_key | t }}</p>
+  </header>
+  <div class="ae-depth-content">
+    {% if editorial %}
+      <div class="ae-depth-editorial-notice" role="note">
+        <span>{{ 'ardent_elements.collection.explorations' | t }}</span>
+        <p>{{ 'ardent_elements.collection.editorial_notice' | t }}</p>
+      </div>
+      <div class="ae-depth-group" data-depth-group>
+        {% for index in (1..3) %}
+          {% capture editorial_image %}{% render 'ardent-element-media', model: model, context: 'collection', variant: index %}{% endcapture %}
+          {% assign editorial_image = editorial_image | strip %}
+          {% assign study_key = 'ardent_elements.collection.study_' | append: index %}
+          <article class="ae-depth-card ae-depth-card--editorial">
+            <a class="ae-depth-card__visual" href="{{ config_url }}" aria-label="{{ 'ardent_elements.collection.configure_model' | t: model: collection.title | escape }}">
+              {% if editorial_image != blank %}
+                <img class="ae-depth-card__image" src="{{ editorial_image | escape }}" alt="{{ title_key | t | escape }} — {{ study_key | t | escape }}" width="1200" height="1200" loading="lazy">
+              {% else %}
+                <span class="ae-depth-card__empty" aria-hidden="true">A</span>
+                <span class="ae-depth-card__pending">{{ 'ardent_elements.collection.image_pending' | t }}</span>
+              {% endif %}
+              <span class="ae-depth-card__index" aria-hidden="true">0{{ index }}</span>
+            </a>
+            <div class="ae-depth-card__body">
+              <p class="ae-depth-card__overline">{{ title_key | t }}</p>
+              <h2>{{ study_key | t }}</h2>
+              <a class="ae-depth-link" href="{{ config_url }}">{{ 'ardent_elements.collection.explore_atelier' | t }} <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+      <p class="ae-depth-swipe">{{ 'ardent_elements.collection.swipe' | t }} <span aria-hidden="true">↔</span></p>
+    {% elsif collection.products_count > 0 %}
+      {% paginate collection.products by 24 %}
+        {% assign last_group = collection.products.size | divided_by: 3.0 | ceil | minus: 1 %}
+        {% for group_index in (0..last_group) %}
+          {% assign group_offset = group_index | times: 3 %}
+          <div class="ae-depth-group" data-depth-group>
+            {% for product in collection.products limit: 3 offset: group_offset %}
+              {% assign card_index = group_offset | plus: forloop.index %}
+              {% render 'ardent-element-product-card', product: product, index: card_index %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+        {% if paginate.pages > 1 %}
+          <nav class="ae-depth-pagination" aria-label="{{ 'ardent_elements.collection.pagination' | t }}">{{ paginate | default_pagination }}</nav>
+        {% endif %}
+      {% endpaginate %}
+    {% else %}
+      {% assign product_index = 0 %}
+      {% assign last_group = section.blocks.size | divided_by: 3.0 | ceil | minus: 1 %}
+      {% for group_index in (0..last_group) %}
+        {% assign group_offset = group_index | times: 3 %}
+        <div class="ae-depth-group" data-depth-group>
+          {% for block in section.blocks limit: 3 offset: group_offset %}
+            {% assign product = block.settings.product %}
+            {% if product != blank %}
+              {% assign product_index = product_index | plus: 1 %}
+              <div class="ae-depth-block" {{ block.shopify_attributes }}>{% render 'ardent-element-product-card', product: product, index: product_index %}</div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <footer class="ae-depth-end">
+    <span class="ae-depth-end__line" aria-hidden="true"></span>
+    <p class="ae-depth-eyebrow">{{ 'ardent_elements.collection.end_label' | t }}</p>
+    <h2>{{ 'ardent_elements.collection.end_title' | t }}</h2>
+    <p>{{ 'ardent_elements.collection.end_copy' | t }}</p>
+    <a class="ae-depth-cta" href="{{ config_url }}">{{ 'ardent_elements.collection.configure' | t }} <span aria-hidden="true">↗</span></a>
+    <a class="ae-depth-end__home" href="{{ routes.root_url }}">{{ 'ardent_elements.collection.other_worlds' | t }}</a>
+  </footer>
+</section>
+{% stylesheet %}
+  .ae-depth{--ae-depth-ink:#f6efe4;--ae-depth-muted:rgba(246,239,228,.67);--ae-depth-accent:#ddae85;position:relative;isolation:isolate;color:var(--ae-depth-ink);background:#08090c;overflow:clip;font-family:var(--font-body--family,Arial,sans-serif)}
+  .ae-depth--water{--ae-depth-accent:#a9d1d2}.ae-depth--air{--ae-depth-accent:#d7e4f1}
+  .ae-depth a{color:inherit;text-decoration:none}.ae-depth button{font:inherit}.ae-depth a:focus-visible,.ae-depth button:focus-visible{outline:2px solid var(--ae-depth-accent);outline-offset:6px}
+  .ae-depth-stage{position:sticky;top:0;height:100svh;min-height:540px;margin-bottom:max(-100svh,-100vh);z-index:-1;pointer-events:none}
+  .ae-depth-stage__scene{position:absolute;inset:-3%;background-image:var(--ae-scene-image);background-position:center;background-size:cover;transform:translate3d(0,var(--ae-scene-shift,0px),0) scale(1.04);will-change:transform}
+  .ae-depth--fire .ae-depth-stage__scene{background-position:55% center}.ae-depth--water .ae-depth-stage__scene{background-position:center 55%}.ae-depth--air .ae-depth-stage__scene{background-position:center 48%}
+  .ae-depth-stage__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,7,10,.57),rgba(4,7,10,.2) 35%,rgba(4,7,10,.28) 70%,rgba(4,7,10,.6))}
+  .ae-depth--air .ae-depth-stage__shade{background:linear-gradient(180deg,rgba(8,19,32,.58),rgba(8,19,32,.29) 48%,rgba(4,7,12,.45))}
+  .ae-depth-stage__grain{position:absolute;inset:0;opacity:.09;background-image:repeating-linear-gradient(103deg,transparent 0 3px,rgba(255,255,255,.035) 4px 5px);mix-blend-mode:screen}
+  .ae-depth-toolbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:30px 5vw;font-size:10px;letter-spacing:.13em;text-transform:uppercase;position:relative;z-index:2}
+  .ae-depth-toolbar a{padding:10px 0}.ae-depth-toolbar__label{opacity:.55}.ae-depth-toolbar button{background:none;border:0;color:var(--ae-depth-muted);padding:10px 0;cursor:pointer;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+  .ae-depth-intro{min-height:77svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px 36px;position:relative}
+  .ae-depth-eyebrow{margin:0 0 22px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ae-depth-accent)}
+  .ae-depth h1{font-family:var(--font-heading--family,Georgia,serif);font-size:clamp(78px,12.5vw,190px);font-weight:400;letter-spacing:-.055em;line-height:.9;margin:0 0 28px}
+  .ae-depth-hook{font-family:var(--font-heading--family,Georgia,serif);font-size:clamp(21px,2.6vw,36px);font-weight:400;margin:0 0 35px;color:var(--ae-depth-ink);max-width:600px}
+  .ae-depth-cta{display:inline-flex;align-items:center;gap:38px;border:1px solid rgba(246,239,228,.42);padding:17px 24px;font-size:11px;letter-spacing:.08em;backdrop-filter:blur(9px);background:rgba(4,7,10,.15);transition:background .25s,border-color .25s}
+  .ae-depth-cta:hover{background:rgba(246,239,228,.12);border-color:var(--ae-depth-ink)}.ae-depth-cta span{font-size:18px}
+  .ae-depth-scroll{display:flex;align-items:center;gap:13px;font-size:10px;letter-spacing:.12em;margin:65px 0 0;color:var(--ae-depth-muted)}.ae-depth-scroll span{font-size:22px}
+  .ae-depth-content{position:relative;padding:0 4vw}
+  .ae-depth-editorial-notice{max-width:660px;margin:8vh auto 0;text-align:center;padding:16px 24px;color:var(--ae-depth-muted)}.ae-depth-editorial-notice>span{font-size:10px;letter-spacing:.23em;text-transform:uppercase;color:var(--ae-depth-accent)}.ae-depth-editorial-notice p{font-size:11px;line-height:1.8;margin:12px 0 0}
+  .ae-depth-group{min-height:96svh;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,56px);align-items:center;padding:65px 0 100px;transform:perspective(1600px) translate3d(0,var(--depth-y,0px),0) scale(var(--depth-scale,1));opacity:var(--depth-opacity,1);transform-origin:center;will-change:transform,opacity}
+  .ae-depth-card,.ae-depth-block{min-width:0}.ae-depth-block>.ae-depth-card{height:100%}
+  .ae-depth-card__visual{height:clamp(320px,43vw,580px);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;isolation:isolate}
+  .ae-depth-card__image{display:block;width:100%;height:100%;object-fit:contain;transition:transform .8s cubic-bezier(.2,.7,.3,1);filter:drop-shadow(0 26px 28px rgba(0,0,0,.28))}.ae-depth-card__visual:hover .ae-depth-card__image{transform:translateY(-9px) scale(1.025)}
+  .ae-depth-card--editorial .ae-depth-card__image{object-fit:cover;border-radius:45% 45% 4% 4%;mask-image:linear-gradient(180deg,#000 68%,transparent 100%);filter:none}
+  .ae-depth-card__index{position:absolute;left:0;bottom:6%;font-family:var(--font-heading--family,Georgia,serif);font-size:16px;opacity:.58;letter-spacing:.06em}
+  .ae-depth-card__empty{font-family:var(--font-heading--family,Georgia,serif);font-size:clamp(100px,15vw,240px);opacity:.15;line-height:1;position:relative}
+  .ae-depth-card__empty:after{content:"";position:absolute;width:120%;aspect-ratio:1;border:1px solid rgba(255,255,255,.3);border-radius:50%;left:-10%;top:50%;transform:translateY(-50%)}
+  .ae-depth-card__pending{position:absolute;bottom:18%;font-size:9px;letter-spacing:.08em;color:var(--ae-depth-muted);text-align:center;padding:0 20px}
+  .ae-depth-card__body{padding:10px 0 0;border-top:1px solid rgba(246,239,228,.21)}
+  .ae-depth-card h2{font-family:var(--font-heading--family,Georgia,serif);font-size:clamp(22px,2.15vw,34px);font-weight:400;line-height:1.15;margin:16px 0 12px}.ae-depth-card__overline{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ae-depth-accent);margin:10px 0 -4px}
+  .ae-depth-card__price{font-size:12px;letter-spacing:.03em;margin:10px 0 22px;color:var(--ae-depth-muted)}.ae-depth-card__availability{display:block;font-size:10px;margin-top:8px}
+  .ae-depth-link{display:inline-flex;align-items:center;gap:20px;font-size:10px;letter-spacing:.08em;padding:10px 0;border-bottom:1px solid rgba(246,239,228,.3)}.ae-depth-link span{font-size:16px;transition:transform .2s}.ae-depth-link:hover span{transform:translate(2px,-2px)}
+  .ae-depth-swipe{display:none}.ae-depth-pagination{display:flex;align-items:center;justify-content:center;gap:20px;padding:35px 0;font-size:13px}.ae-depth-pagination a,.ae-depth-pagination span{padding:10px}
+  .ae-depth-end{position:relative;min-height:70svh;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:80px 24px 110px;background:linear-gradient(transparent,rgba(4,7,10,.63))}.ae-depth-end__line{display:block;width:1px;height:64px;background:linear-gradient(transparent,var(--ae-depth-accent));margin-bottom:38px}.ae-depth-end h2{font-family:var(--font-heading--family,Georgia,serif);font-size:clamp(34px,5.5vw,76px);font-weight:400;line-height:1.07;letter-spacing:-.025em;margin:0 0 20px;max-width:760px}.ae-depth-end>p:not(.ae-depth-eyebrow){font-size:13px;line-height:1.8;color:var(--ae-depth-muted);max-width:460px;margin:0 0 28px}.ae-depth-end__home{font-size:10px;letter-spacing:.07em;margin-top:25px;text-decoration:underline!important;text-underline-offset:5px;color:var(--ae-depth-muted)!important}
+  @media(max-width:989px){.ae-depth-group{gap:20px}.ae-depth-card__visual{height:41vw;min-height:260px}.ae-depth-card h2{font-size:25px}}
+  @media(max-width:749px){.ae-depth-stage{min-height:0}.ae-depth-stage__scene{inset:0;transform:none;background-position:center}.ae-depth--fire .ae-depth-stage__scene{background-position:61% center}.ae-depth--water .ae-depth-stage__scene{background-position:52% center}.ae-depth--air .ae-depth-stage__scene{background-position:54% center}.ae-depth-toolbar{padding:19px 22px;gap:12px}.ae-depth-toolbar__label{display:none}.ae-depth-toolbar button{font-size:9px}.ae-depth-intro{min-height:78svh;padding-top:60px}.ae-depth h1{font-size:clamp(72px,21vw,130px)}.ae-depth-hook{font-size:24px}.ae-depth-scroll{margin-top:55px;font-size:9px;max-width:280px;line-height:1.8}.ae-depth-content{padding:0}.ae-depth-editorial-notice{margin-top:30px;padding:20px 28px}.ae-depth-group{display:grid;grid-template-columns:none;grid-auto-columns:78vw;grid-auto-flow:column;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:11vw;gap:7vw;padding:45px 11vw 55px;min-height:0;scrollbar-width:none;transform:none;opacity:1}.ae-depth-group::-webkit-scrollbar{display:none}.ae-depth-card,.ae-depth-block{scroll-snap-align:center}.ae-depth-card__visual{height:50svh;min-height:300px;max-height:530px}.ae-depth-card h2{font-size:29px}.ae-depth-card__body{padding-top:10px}.ae-depth-swipe{display:flex;align-items:center;justify-content:center;gap:15px;font-size:10px;color:var(--ae-depth-muted);margin:0 0 65px}.ae-depth-end{padding:40px 24px 90px;min-height:72svh}.ae-depth-end h2{font-size:41px}.ae-depth-end__line{height:45px}}
+  @media(prefers-reduced-motion:reduce){.ae-depth-stage__scene{transform:none!important;will-change:auto}.ae-depth-group{transform:none!important;opacity:1!important;will-change:auto}.ae-depth-card__image,.ae-depth-cta,.ae-depth-link span{transition:none}.ae-depth-card__visual:hover .ae-depth-card__image{transform:none}.ae-depth-group{scroll-behavior:auto}}
+{% endstylesheet %}
+{% javascript %}
+  (() => {
+    const selectors = '[data-ardent-depth]';
+    const attached = new WeakMap();
+    function mount(section) {
+      if (attached.has(section)) return;
+      const scene = section.querySelector('.ae-depth-stage__scene');
+      const groups = Array.from(section.querySelectorAll('[data-depth-group]'));
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const pauseButton = section.querySelector('[data-depth-pause]');
+      let frame = 0, visible = false, lastProgress = -1, paused = false;
+      function update() {
+        frame = 0;
+        if (!section.isConnected) { destroy(); return; }
+        const rect = section.getBoundingClientRect();
+        const viewport = window.innerHeight;
+        const travel = Math.max(1, section.offsetHeight - viewport);
+        const progress = Math.min(1, Math.max(0, -rect.top / travel));
+        if (Math.abs(progress - lastProgress) > .002 && !paused && !reduced.matches) {
+          scene.style.setProperty('--ae-scene-shift', `${Math.round(progress * -26)}px`);
+          lastProgress = progress;
+        }
+        if (!reduced.matches && window.innerWidth > 749) {
+          groups.forEach(group => {
+            const r = group.getBoundingClientRect();
+            const center = (r.top + r.height / 2 - viewport / 2) / viewport;
+            const distance = Math.min(1, Math.abs(center));
+            group.style.setProperty('--depth-scale', String(1 - distance * .095));
+            group.style.setProperty('--depth-opacity', String(1 - distance * .38));
+            group.style.setProperty('--depth-y', `${Math.max(-34, Math.min(34, center * 34))}px`);
+          });
+        }
+      }
+      function schedule() { if (visible && !frame) frame = requestAnimationFrame(update); }
+      function togglePause() {
+        paused = !paused;
+        pauseButton.setAttribute('aria-pressed', String(paused));
+        pauseButton.querySelector('[data-depth-pause-label]').hidden = paused;
+        pauseButton.querySelector('[data-depth-resume-label]').hidden = !paused;
+        if (!paused) schedule();
+      }
+      const observer = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; if (visible) schedule(); }, { rootMargin: '200px 0px' });
+      observer.observe(section);
+      const resizeObserver = new ResizeObserver(schedule); resizeObserver.observe(section);
+      window.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', schedule, { passive: true });
+      pauseButton.addEventListener('click', togglePause);
+      reduced.addEventListener('change', schedule);
+      function destroy() { cancelAnimationFrame(frame); observer.disconnect(); resizeObserver.disconnect(); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); pauseButton.removeEventListener('click', togglePause); reduced.removeEventListener('change', schedule); attached.delete(section); }
+      attached.set(section, destroy);
+    }
+    function scan(root) { root.querySelectorAll(selectors).forEach(mount); }
+    scan(document);
+    document.addEventListener('shopify:section:load', event => scan(event.target));
+    document.addEventListener('shopify:section:unload', event => { event.target.querySelectorAll(selectors).forEach(section => { const destroy = attached.get(section); if (destroy) destroy(); }); });
+  })();
+{% endjavascript %}
+{% schema %}
+{
+  "name": "Ardent · Collection",
+  "settings": [
+    { "type": "select", "id": "model", "label": "Modèle de secours", "default": "meridian", "options": [ { "value": "meridian", "label": "Meridian · Feu" }, { "value": "bastille", "label": "Bastille · Eau" }, { "value": "elysee", "label": "Élysée · Air" } ] },
+    { "type": "paragraph", "content": "Les produits de la collection sont prioritaires. Sans produits publiés, sélectionnez des produits ci-dessous. À défaut, trois visuels de présentation clairement identifiés apparaissent." }
+  ],
+  "blocks": [
+    { "type": "product", "name": "Produit", "settings": [ { "type": "product", "id": "product", "label": "Produit publié" } ] }
+  ],
+  "max_blocks": 12,
+  "presets": [ { "name": "Ardent · Collection élément" } ],
+  "enabled_on": { "templates": ["collection"] }
+}
+{% endschema %}

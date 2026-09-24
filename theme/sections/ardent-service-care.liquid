@@ -1,0 +1,58 @@
+{% liquid
+  assign is_care = false
+  if page.handle == 'lentretien-de-votre-ardent'
+    assign is_care = true
+  endif
+%}
+
+<section class="ardent-care" {{ section.shopify_attributes }}>
+  <div class="ardent-care__halo"></div>
+  <header class="ardent-care__hero">
+    <p class="ardent-care__eyebrow">ARDENT / APRÈS L’ATELIER</p>
+    {% if is_care %}
+      <h1>Prendre soin<br>du temps.</h1>
+      <p>Quelques gestes simples suffisent à préserver l’allure et la présence de votre Ardent, jour après jour.</p>
+    {% else %}
+      <h1>À vos côtés,<br>dans le temps.</h1>
+      <p>Une question sur votre Ardent ? Notre maison vous accompagne pour vous orienter avec attention.</p>
+    {% endif %}
+  </header>
+
+  {% if is_care %}
+    <section class="ardent-care__guide">
+      <p class="ardent-care__eyebrow">LE RITUEL</p>
+      <div class="ardent-care__grid">
+        <article><span>01</span><h2>Après le porter</h2><p>Essuyez délicatement le boîtier et le bracelet avec un chiffon doux et sec avant de ranger votre montre.</p></article>
+        <article><span>02</span><h2>Le bon écrin</h2><p>Conservez-la à l’abri de l’humidité, des aimants et des chocs, idéalement dans son écrin.</p></article>
+        <article><span>03</span><h2>Un geste juste</h2><p>Évitez les produits abrasifs et les contacts inutiles avec parfums ou solvants afin de préserver les finitions.</p></article>
+      </div>
+    </section>
+    <section class="ardent-care__note">
+      <p>Une montre se porte, se marque, se raconte. L’entretien ne lui enlève rien : il lui permet de rester fidèle à vous.</p>
+    </section>
+  {% else %}
+    <section class="ardent-care__guide">
+      <p class="ardent-care__eyebrow">L’ACCOMPAGNEMENT ARDENT</p>
+      <div class="ardent-care__grid">
+        <article><span>01</span><h2>Une question</h2><p>Écrivez-nous en précisant votre modèle et votre besoin ; nous vous répondrons avec les premières indications utiles.</p></article>
+        <article><span>02</span><h2>Une attention</h2><p>Pour un ajustement, un conseil d’entretien ou une demande particulière, chaque situation est regardée avec soin.</p></article>
+        <article><span>03</span><h2>La suite</h2><p>Lorsque votre demande exige une intervention, nous vous indiquerons simplement la marche à suivre avant tout envoi.</p></article>
+      </div>
+    </section>
+    <section class="ardent-care__note">
+      <p>Une maison horlogère ne s’arrête pas au moment où la montre est choisie. C’est là que la relation commence.</p>
+    </section>
+  {% endif %}
+
+  <footer class="ardent-care__footer">
+    <a href="/pages/atelier-ardent">Entrer dans l’Atelier Ardent <span>↗</span></a>
+  </footer>
+</section>
+
+{% stylesheet %}
+.ardent-care{--ink:#151211;--paper:#f4f0eb;--rose:#bd8579;background:var(--paper);color:var(--ink);display:block;overflow:hidden;position:relative}.ardent-care__halo{background:radial-gradient(circle,rgba(189,133,121,.26),transparent 67%);height:90vw;max-height:1100px;opacity:.8;pointer-events:none;position:absolute;right:-27vw;top:-42vw;width:90vw}.ardent-care__hero{min-height:min(760px,88svh);padding:clamp(110px,16vw,230px) clamp(24px,9vw,150px) clamp(68px,9vw,130px);position:relative}.ardent-care__eyebrow{color:#986f65;font-size:.68rem;font-weight:600;letter-spacing:.2em;margin:0 0 22px;text-transform:uppercase}.ardent-care h1,.ardent-care h2,.ardent-care__note p{font-family:var(--font-heading--family,Georgia,serif);font-weight:400}.ardent-care h1{font-size:clamp(4.4rem,11.5vw,11.5rem);letter-spacing:-.085em;line-height:.78;margin:0;max-width:1050px}.ardent-care__hero>p:last-child{font-size:clamp(1rem,1.45vw,1.22rem);line-height:1.65;margin:42px 0 0;max-width:470px}.ardent-care__guide{background:var(--ink);color:#fff;padding:clamp(76px,11vw,155px) clamp(24px,8vw,136px)}.ardent-care__grid{border-top:1px solid rgba(255,255,255,.28);display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px}.ardent-care__grid article{border-right:1px solid rgba(255,255,255,.28);min-height:350px;padding:32px clamp(22px,3.5vw,54px) 24px}.ardent-care__grid article:first-child{padding-left:0}.ardent-care__grid article:last-child{border:0}.ardent-care__grid span{color:var(--rose);font-size:.72rem;letter-spacing:.18em}.ardent-care h2{font-size:clamp(2.2rem,3.6vw,4rem);letter-spacing:-.06em;line-height:.93;margin:74px 0 23px}.ardent-care__grid p{color:rgba(255,255,255,.73);font-size:1rem;line-height:1.65;max-width:320px}.ardent-care__note{align-items:center;background:#e8dfd5;display:flex;min-height:54vw;padding:clamp(70px,11vw,170px) clamp(24px,12vw,220px)}.ardent-care__note p{font-size:clamp(2.8rem,6vw,7rem);letter-spacing:-.075em;line-height:.9;margin:0;max-width:1100px}.ardent-care__footer{background:var(--ink);padding:42px clamp(24px,8vw,136px)}.ardent-care__footer a{color:#fff;display:flex;font-size:.75rem;justify-content:space-between;letter-spacing:.16em;text-decoration:none;text-transform:uppercase}.ardent-care__footer span{color:var(--rose);font-size:1rem}.ardent-care__footer a:hover span{transform:translate(3px,-3px)}@media(max-width:749px){.ardent-care__hero{min-height:620px}.ardent-care h1{font-size:clamp(4rem,18vw,6.5rem)}.ardent-care__grid{display:block;margin-top:35px}.ardent-care__grid article,.ardent-care__grid article:first-child{border-bottom:1px solid rgba(255,255,255,.28);border-right:0;min-height:0;padding:30px 0}.ardent-care__grid article:last-child{border-bottom:0}.ardent-care h2{margin:40px 0 16px}}
+{% endstylesheet %}
+
+{% schema %}
+{"name":"Ardent — Achat & service","settings":[],"presets":[{"name":"Ardent — Achat & service"}]}
+{% endschema %}

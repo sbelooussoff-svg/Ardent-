@@ -1,0 +1,117 @@
+{% liquid
+  assign base_url = routes.root_url
+  assign last_character = base_url | slice: -1, 1
+  unless last_character == '/'
+    assign base_url = base_url | append: '/'
+  endunless
+  assign current_year = 'now' | date: '%Y'
+%}
+<footer class="ardent-element-footer" aria-labelledby="ArdentFooterTitle-{{ section.id }}">
+  <div class="ardent-element-footer__inner">
+    <div class="ardent-element-footer__top">
+      <div class="ardent-element-footer__identity">
+        <a class="ardent-element-footer__brand" href="{{ routes.root_url }}" aria-label="{{ 'ardent_elements.footer.home' | t | escape }}">
+          {% if settings.logo != blank %}
+            {{ settings.logo | image_url: width: 320 | image_tag: class: 'ardent-element-footer__logo', alt: shop.name, loading: 'lazy' }}
+          {% else %}
+            <span>ARDENT</span>
+          {% endif %}
+        </a>
+        <p class="ardent-element-footer__signature" id="ArdentFooterTitle-{{ section.id }}">{{ 'ardent_elements.footer.signature_first' | t }}<br><span>{{ 'ardent_elements.footer.signature_second' | t }}</span></p>
+        <p class="ardent-element-footer__elements">{{ 'ardent_elements.footer.elements' | t }}</p>
+      </div>
+      <nav class="ardent-element-footer__column" aria-labelledby="ArdentFooterAbout-{{ section.id }}">
+        <h2 id="ArdentFooterAbout-{{ section.id }}">{{ 'ardent_elements.footer.about' | t }}</h2>
+        <ul role="list">
+          <li><a href="{{ base_url }}pages/la-naissance-d-ardent">{{ 'ardent_elements.footer.origin' | t }}</a></li>
+          <li><a href="{{ base_url }}pages/l-esprit-ardent">{{ 'ardent_elements.footer.spirit' | t }}</a></li>
+          <li><a href="{{ base_url }}pages/notre-vision">{{ 'ardent_elements.footer.vision' | t }}</a></li>
+        </ul>
+      </nav>
+      <div class="ardent-element-footer__column ardent-element-footer__contact">
+        <h2>{{ 'ardent_elements.footer.contact' | t }}</h2>
+        <a class="ardent-element-footer__email" href="mailto:ardent.gasha@gmail.com">ardent.gasha@gmail.com<span aria-hidden="true">↗</span></a>
+        <div class="ardent-element-footer__socials">
+          <span class="ardent-element-footer__social" role="img" aria-label="{{ 'ardent_elements.footer.instagram_soon' | t | escape }}" title="{{ 'ardent_elements.footer.instagram_soon' | t | escape }}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.6" cy="6.5" r="1" fill="currentColor"/></svg>
+          </span>
+          <span class="ardent-element-footer__social" role="img" aria-label="{{ 'ardent_elements.footer.tiktok_soon' | t | escape }}" title="{{ 'ardent_elements.footer.tiktok_soon' | t | escape }}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3h3c.3 2.4 1.6 3.8 4 4.2v3.2a9 9 0 0 1-4-1.2v6.1a6.2 6.2 0 1 1-6.2-6.2v3.2a3 3 0 1 0 3.2 3V3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <a class="ardent-element-footer__care" href="{{ base_url }}pages/le-service-de-votre-ardent">{{ 'ardent_elements.footer.service' | t }}<span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="ardent-element-footer__collection-row">
+      <span>{{ 'ardent_elements.footer.collections' | t }}</span>
+      <nav aria-label="{{ 'ardent_elements.footer.collections' | t | escape }}">
+        <a href="{{ base_url }}collections/meridian">Méridian<span aria-hidden="true">↗</span></a>
+        <a href="{{ base_url }}collections/bastille">Bastille<span aria-hidden="true">↗</span></a>
+        <a href="{{ base_url }}collections/elysee">Élysée<span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+    <div class="ardent-element-footer__watermark" aria-hidden="true">ARDENT</div>
+    <div class="ardent-element-footer__bottom">
+      <small>© {{ current_year }} ARDENT</small>
+      <nav class="ardent-element-footer__policies" aria-label="{{ 'ardent_elements.footer.policies' | t | escape }}">
+        {% for policy in shop.policies %}
+          {% if policy != blank %}<a href="{{ policy.url }}">{{ policy.title | escape }}</a>{% endif %}
+        {% endfor %}
+      </nav>
+      {% if shop.enabled_payment_types.size > 0 %}
+        <ul class="ardent-element-footer__payments" role="list" aria-label="{{ 'ardent_elements.footer.payments' | t | escape }}">
+          {% for type in shop.enabled_payment_types %}<li>{{ type | payment_type_svg_tag: class: 'ardent-element-footer__payment-icon' }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+{% stylesheet %}
+  .ardent-element-footer { --footer-ink: #eeebe5; --footer-muted: #bbb6ae; --footer-line: #ffffff24; position: relative; overflow: hidden; color: var(--footer-ink); background: #141517; isolation: isolate; }
+  .ardent-element-footer::before { position: absolute; content: ''; pointer-events: none; inset: 0; background: radial-gradient(ellipse at 7% 0, #94674715, transparent 48%); z-index: -1; }
+  .ardent-element-footer__inner { width: min(1440px, 100%); margin-inline: auto; padding: 80px clamp(24px, 5vw, 88px) 24px; }
+  .ardent-element-footer__top { display: grid; grid-template-columns: 1.5fr 1fr 1.05fr; gap: clamp(30px, 5vw, 88px); }
+  .ardent-element-footer a { color: inherit; text-decoration: none; }
+  .ardent-element-footer a:focus-visible { outline: 1px solid #e0c5a5; outline-offset: 6px; }
+  .ardent-element-footer__brand { display: inline-block; margin-bottom: 30px; font-size: 20px; line-height: 1; letter-spacing: .24em; }
+  .ardent-element-footer__logo { width: auto; height: auto; max-width: 148px; max-height: 48px; display: block; filter: brightness(0) invert(1); }
+  .ardent-element-footer__signature { font-family: var(--font-heading--family, Georgia, serif); font-size: clamp(26px, 2.65vw, 40px); line-height: 1.14; letter-spacing: -.035em; margin: 0 0 22px; }
+  .ardent-element-footer__signature span { color: #bf9f7d; }
+  .ardent-element-footer__elements { font-size: 10px; letter-spacing: .21em; line-height: 1.8; text-transform: uppercase; color: var(--footer-muted); margin: 0; }
+  .ardent-element-footer__column { padding-top: 3px; }
+  .ardent-element-footer__column h2 { color: var(--footer-ink); font: inherit; font-size: 11px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; line-height: 1.3; margin: 0 0 31px; }
+  .ardent-element-footer__column ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 17px; }
+  .ardent-element-footer__column li a, .ardent-element-footer__care { font-size: 13px; color: var(--footer-muted); line-height: 1.5; }
+  .ardent-element-footer__column li a { transition: color .25s; }
+  .ardent-element-footer__column li a:hover, .ardent-element-footer__care:hover { color: var(--footer-ink); }
+  .ardent-element-footer__email { display: inline-flex; align-items: center; gap: 14px; font-size: clamp(12px, 1.05vw, 15px); line-height: 1.5; padding-bottom: 9px; border-bottom: 1px solid var(--footer-line); }
+  .ardent-element-footer__email span, .ardent-element-footer__care span { transition: transform .3s; }
+  .ardent-element-footer__email:hover span, .ardent-element-footer__care:hover span { transform: translate(2px, -2px); }
+  .ardent-element-footer__socials { display: flex; gap: 12px; margin-top: 20px; }
+  .ardent-element-footer__social { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--footer-line); border-radius: 50%; color: var(--footer-muted); }
+  .ardent-element-footer__care { display: inline-flex; gap: 15px; margin-top: 23px; }
+  .ardent-element-footer__collection-row { margin-top: 60px; padding-block: 23px; border-top: 1px solid var(--footer-line); border-bottom: 1px solid var(--footer-line); display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+  .ardent-element-footer__collection-row > span { font-size: 10px; letter-spacing: .13em; text-transform: uppercase; color: var(--footer-muted); }
+  .ardent-element-footer__collection-row nav { display: flex; align-items: center; gap: clamp(28px, 6vw, 90px); }
+  .ardent-element-footer__collection-row a { display: flex; align-items: baseline; gap: 22px; font-family: var(--font-heading--family, Georgia, serif); font-size: 22px; font-weight: 400; line-height: 1.2; }
+  .ardent-element-footer__collection-row a span { font: 13px/1 Arial, sans-serif; opacity: .5; transition: transform .3s, opacity .3s; }
+  .ardent-element-footer__collection-row a:hover span { transform: translate(2px, -2px); opacity: 1; }
+  .ardent-element-footer__watermark { margin: 30px -.055em 18px; color: transparent; -webkit-text-stroke: 1px #ffffff21; font-family: var(--font-heading--family, Georgia, serif); font-size: clamp(90px, 17.4vw, 249px); letter-spacing: -.055em; font-weight: 400; line-height: .98; text-align: center; pointer-events: none; user-select: none; }
+  .ardent-element-footer__bottom { display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--footer-line); color: var(--footer-muted); }
+  .ardent-element-footer__bottom small { font-size: 10px; letter-spacing: .06em; white-space: nowrap; }
+  .ardent-element-footer__policies { display: flex; flex: 1; align-items: center; justify-content: center; gap: 10px 17px; flex-wrap: wrap; font-size: 10px; line-height: 1.6; }
+  .ardent-element-footer__policies:empty { display: none; }
+  .ardent-element-footer__policies a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .ardent-element-footer__payments { display: flex; flex-wrap: wrap; gap: 5px; list-style: none; padding: 0; margin: 0; max-width: 255px; }
+  .ardent-element-footer__payments li { line-height: 0; }.ardent-element-footer__payment-icon { width: 30px; height: 19px; }
+  @media (max-width: 950px) { .ardent-element-footer__top { grid-template-columns: 1.3fr 1fr; gap: 40px; }.ardent-element-footer__identity { grid-column: 1 / -1; }.ardent-element-footer__signature { font-size: 34px; }.ardent-element-footer__brand { margin-bottom: 22px; }.ardent-element-footer__bottom { justify-content: flex-start; }.ardent-element-footer__policies { justify-content: flex-start; }.ardent-element-footer__payments { max-width: 100%; } }
+  @media (max-width: 600px) { .ardent-element-footer__inner { padding: 50px 24px 25px; }.ardent-element-footer__top { grid-template-columns: 1fr; gap: 38px; }.ardent-element-footer__column h2 { margin-bottom: 23px; }.ardent-element-footer__column ul { gap: 14px; }.ardent-element-footer__collection-row { margin-top: 44px; align-items: flex-start; flex-direction: column; gap: 24px; }.ardent-element-footer__collection-row nav { width: 100%; justify-content: space-between; gap: 12px; }.ardent-element-footer__collection-row a { font-size: 20px; gap: 8px; }.ardent-element-footer__collection-row a span { font-size: 11px; }.ardent-element-footer__watermark { font-size: 20vw; margin: 30px -.04em 20px; }.ardent-element-footer__bottom { align-items: flex-start; flex-direction: column; gap: 18px; }.ardent-element-footer__policies { gap: 8px 16px; }.ardent-element-footer__email { font-size: 15px; } }
+  @media (prefers-reduced-motion: reduce) { .ardent-element-footer *, .ardent-element-footer *::after { transition: none !important; } }
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Ardent · Pied de page",
+  "settings": [],
+  "presets": [{ "name": "Ardent · Pied de page" }]
+}
+{% endschema %}

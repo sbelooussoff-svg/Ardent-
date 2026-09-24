@@ -1,0 +1,130 @@
+{% comment %}
+  Editorial atelier. No purchasable configurations are presented until the
+  collection catalog and component compatibility have been confirmed.
+{% endcomment %}
+{% liquid
+  assign default_heading = 'ardent_elements.atelier.heading' | t
+  assign default_description = 'ardent_elements.atelier.description' | t
+%}
+<section id="ArdentAtelier-{{ section.id }}" class="ardent-atelier" data-ardent-atelier aria-labelledby="ArdentAtelierTitle-{{ section.id }}">
+  <header class="ardent-atelier__intro">
+    <p class="ardent-atelier__eyebrow">Ardent · Atelier</p>
+    <h1 id="ArdentAtelierTitle-{{ section.id }}">{{ section.settings.heading | default: default_heading | escape }}</h1>
+    <p>{{ section.settings.description | default: default_description | escape }}</p>
+  </header>
+  <div class="ardent-atelier__layout">
+    <div class="ardent-atelier__gallery">
+      {% for index in (1..3) %}
+        {% case index %}
+          {% when 1 %}
+            {% assign model = 'meridian' %}
+            {% assign model_name = 'Méridian' %}
+            {% assign element_name = 'ardent_elements.home.fire' | t %}
+            {% assign atmosphere = 'meridian-fire-v1.jpg' %}
+          {% when 2 %}
+            {% assign model = 'bastille' %}
+            {% assign model_name = 'Bastille' %}
+            {% assign element_name = 'ardent_elements.home.water' | t %}
+            {% assign atmosphere = 'bastille-water-v1.jpg' %}
+          {% when 3 %}
+            {% assign model = 'elysee' %}
+            {% assign model_name = 'Élysée' %}
+            {% assign element_name = 'ardent_elements.home.air' | t %}
+            {% assign atmosphere = 'elysee-air-v1.jpg' %}
+        {% endcase %}
+        {% capture watch_image %}{% render 'ardent-element-media', model: model, context: 'configurator' %}{% endcapture %}
+        {% assign watch_image = watch_image | strip %}
+        <article class="ardent-atelier__scene ardent-atelier__scene--{{ model }}" data-atelier-scene="{{ model }}" {% unless index == 1 %}hidden{% endunless %}>
+          <div class="ardent-atelier__atmosphere" style="--atelier-image:url('{{ atmosphere | file_url }}')" aria-hidden="true"></div>
+          <div class="ardent-atelier__scene-top"><span>0{{ index }} / 03</span><span>{{ element_name }}</span></div>
+          <div class="ardent-atelier__watch">
+            <img src="{{ watch_image | escape }}" alt="{{ 'ardent_elements.atelier.image_alt' | t: model: model_name | escape }}" width="1000" height="1000" {% unless index == 1 %}loading="lazy"{% endunless %}>
+          </div>
+          <div class="ardent-atelier__scene-bottom"><span>{{ model_name }}</span><span>{{ 'ardent_elements.atelier.visual_label' | t }}</span></div>
+        </article>
+      {% endfor %}
+    </div>
+    <div class="ardent-atelier__panel">
+      <div class="ardent-atelier__panel-inner">
+        <p class="ardent-atelier__eyebrow">{{ 'ardent_elements.atelier.step' | t }}</p>
+        <h2>{{ 'ardent_elements.atelier.question' | t }}</h2>
+        <p class="ardent-atelier__lead">{{ 'ardent_elements.atelier.lead' | t }}</p>
+        <div class="ardent-atelier__choices" role="group" aria-label="{{ 'ardent_elements.atelier.choose_label' | t | escape }}">
+          <button type="button" data-atelier-choice="meridian" aria-pressed="true"><span>01</span><strong>Méridian</strong><small>{{ 'ardent_elements.home.fire' | t }}</small></button>
+          <button type="button" data-atelier-choice="bastille" aria-pressed="false"><span>02</span><strong>Bastille</strong><small>{{ 'ardent_elements.home.water' | t }}</small></button>
+          <button type="button" data-atelier-choice="elysee" aria-pressed="false"><span>03</span><strong>Élysée</strong><small>{{ 'ardent_elements.home.air' | t }}</small></button>
+        </div>
+        <div class="ardent-atelier__status" role="note">
+          <p class="ardent-atelier__status-label">{{ 'ardent_elements.atelier.status' | t }}</p>
+          <p>{{ 'ardent_elements.atelier.status_body' | t }}</p>
+        </div>
+        <div class="ardent-atelier__footer">
+          <p>{{ 'ardent_elements.atelier.disclaimer' | t }}</p>
+          <a href="{{ routes.root_url }}collections/meridian" data-atelier-link data-root-url="{{ routes.root_url }}">{{ 'ardent_elements.atelier.collection_link' | t }} <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% stylesheet %}
+  .ardent-atelier{--ink:#f5f3ee;--accent:#cda581;background:#080808;color:var(--ink);overflow:clip;font-family:var(--font-body--family,Arial,sans-serif)}
+  .ardent-atelier *{box-sizing:border-box}.ardent-atelier [hidden]{display:none!important}
+  .ardent-atelier__intro{text-align:center;max-width:800px;margin:auto;padding:clamp(100px,11vw,175px) 24px clamp(48px,6vw,85px)}
+  .ardent-atelier__eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 22px}
+  .ardent-atelier h1,.ardent-atelier h2{font-family:var(--font-heading--family,Georgia,serif);font-weight:400;letter-spacing:-.04em}
+  .ardent-atelier h1{font-size:clamp(43px,6vw,86px);line-height:1.05;margin:0 0 25px}.ardent-atelier__intro>p:last-child{color:#b9b7b1;line-height:1.7;font-size:14px;max-width:540px;margin:auto}
+  .ardent-atelier__layout{display:grid;grid-template-columns:minmax(0,1.16fr) minmax(420px,.84fr);min-height:740px}
+  .ardent-atelier__gallery{min-height:740px;position:relative;overflow:hidden;background:#151a1e}
+  .ardent-atelier__scene{position:absolute;inset:0;isolation:isolate;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .ardent-atelier__atmosphere{position:absolute;inset:0;background:var(--atelier-image) center/cover no-repeat;z-index:-2;filter:saturate(.84)}
+  .ardent-atelier__scene:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0808087a 0%,transparent 28%,transparent 65%,#080808a6 100%);z-index:-1}
+  .ardent-atelier__watch{width:min(70%,570px);aspect-ratio:1;display:grid;place-items:center;filter:drop-shadow(0 26px 45px #0009)}
+  .ardent-atelier__watch img{width:100%;height:100%;object-fit:contain}
+  .ardent-atelier__scene-top,.ardent-atelier__scene-bottom{position:absolute;left:clamp(24px,4vw,62px);right:clamp(24px,4vw,62px);display:flex;justify-content:space-between;align-items:center;gap:15px;text-transform:uppercase;font-size:10px;letter-spacing:.2em;color:#f5f3eee0}
+  .ardent-atelier__scene-top{top:32px}.ardent-atelier__scene-bottom{bottom:34px}.ardent-atelier__scene-bottom span:first-child{font-family:var(--font-heading--family,Georgia,serif);font-size:clamp(35px,4.5vw,67px);text-transform:none;letter-spacing:-.04em;color:#f5f3ee}
+  .ardent-atelier__panel{background:#f5f3ee;color:#111;padding:clamp(42px,5vw,84px);display:flex;align-items:center}.ardent-atelier__panel-inner{width:100%;max-width:620px;margin:auto}
+  .ardent-atelier__panel .ardent-atelier__eyebrow{color:#83694d}.ardent-atelier h2{font-size:clamp(36px,3.7vw,60px);line-height:1.07;margin:0 0 18px}.ardent-atelier__lead{font-size:14px;line-height:1.6;color:#66645e;margin:0 0 38px}
+  .ardent-atelier__choices{border-top:1px solid #c8c4bc}.ardent-atelier__choices button{appearance:none;background:transparent;border:0;border-bottom:1px solid #c8c4bc;width:100%;min-height:82px;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:16px;padding:12px 0;color:#171717;text-align:left;cursor:pointer;transition:padding .25s,background .25s}.ardent-atelier__choices button[aria-pressed="true"]{padding-left:16px;background:#e9e4db}.ardent-atelier__choices button:hover{background:#ede8df}.ardent-atelier__choices button span,.ardent-atelier__choices button small{font-size:10px;letter-spacing:.1em;color:#78736b}.ardent-atelier__choices button strong{font:400 clamp(24px,2.4vw,36px) var(--font-heading--family,Georgia,serif)}.ardent-atelier__choices button small{text-transform:uppercase}
+  .ardent-atelier__status{margin:40px 0 28px;padding:24px;border-left:2px solid #98866d;background:#eae5dc}.ardent-atelier__status-label{text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:#5e4c38;margin:0 0 10px}.ardent-atelier__status p:last-child{color:#4d4c48;font-size:12px;line-height:1.7;margin:0}
+  .ardent-atelier__footer{border-top:1px solid #c8c4bc;padding-top:22px}.ardent-atelier__footer p{font-size:11px;line-height:1.6;color:#737068;margin:0 0 26px}.ardent-atelier__footer a{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#151515;color:#f5f3ee;text-decoration:none;font-size:11px;letter-spacing:.08em;text-transform:uppercase;min-height:54px}.ardent-atelier__footer a:hover{background:#333}.ardent-atelier__footer a span{font-size:19px}
+  .ardent-atelier button:focus-visible,.ardent-atelier a:focus-visible{outline:2px solid #8f6a42;outline-offset:4px}
+  @media(max-width:1100px){.ardent-atelier__layout{grid-template-columns:minmax(0,1fr) minmax(380px,.9fr)}.ardent-atelier__panel{padding:36px}.ardent-atelier__gallery{min-height:650px}.ardent-atelier__layout{min-height:650px}}
+  @media(max-width:800px){.ardent-atelier__layout{display:block}.ardent-atelier__gallery{min-height:70svh}.ardent-atelier__panel{padding:55px 28px}.ardent-atelier__watch{width:min(66%,480px)}}
+  @media(max-width:500px){.ardent-atelier__intro{padding-top:100px}.ardent-atelier__gallery{min-height:530px;height:65svh}.ardent-atelier__watch{width:82%}.ardent-atelier__scene-top,.ardent-atelier__scene-bottom{left:20px;right:20px}.ardent-atelier__scene-bottom span:first-child{font-size:38px}.ardent-atelier__scene-bottom span:last-child{font-size:8px}.ardent-atelier__panel{padding:40px 22px}.ardent-atelier__choices button{min-height:72px}}
+  @media(prefers-reduced-motion:reduce){.ardent-atelier__choices button{transition:none}}
+{% endstylesheet %}
+{% javascript %}
+  (() => {
+    function mount(root) {
+      if (root.dataset.atelierReady) return;
+      root.dataset.atelierReady = 'true';
+      const choices = Array.from(root.querySelectorAll('[data-atelier-choice]'));
+      const scenes = Array.from(root.querySelectorAll('[data-atelier-scene]'));
+      const link = root.querySelector('[data-atelier-link]');
+      const allowed = ['meridian', 'bastille', 'elysee'];
+      function choose(model) {
+        if (!allowed.includes(model)) return;
+        choices.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.atelierChoice === model)));
+        scenes.forEach(scene => { scene.hidden = scene.dataset.atelierScene !== model; });
+        link.href = `${link.dataset.rootUrl}collections/${model}`;
+      }
+      choices.forEach(button => button.addEventListener('click', () => choose(button.dataset.atelierChoice)));
+      const requested = new URLSearchParams(window.location.search).get('model');
+      if (requested) choose(requested.toLowerCase());
+    }
+    function scan(scope) { if (scope.matches?.('[data-ardent-atelier]')) mount(scope); scope.querySelectorAll('[data-ardent-atelier]').forEach(mount); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => scan(document), { once: true });
+    else scan(document);
+    document.addEventListener('shopify:section:load', event => scan(event.target));
+  })();
+{% endjavascript %}
+{% schema %}
+{
+  "name": "Atelier Ardent",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre personnalisé (facultatif)" },
+    { "type": "textarea", "id": "description", "label": "Description personnalisée (facultatif)" }
+  ],
+  "presets": [{ "name": "Atelier Ardent" }]
+}
+{% endschema %}

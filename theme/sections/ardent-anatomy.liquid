@@ -1,0 +1,179 @@
+{% liquid
+  assign hero_image = section.settings.hero_image
+  assign case_image = section.settings.case_image
+  assign movement_image = section.settings.movement_image
+  assign custom_image = section.settings.custom_image
+  assign water_image = section.settings.water_image
+  assign closing_image = section.settings.closing_image
+  assign hero_alt = 'ardent.anatomy.images.hero_alt' | t
+  assign case_alt = 'ardent.anatomy.images.case_alt' | t
+  assign movement_alt = 'ardent.anatomy.images.movement_alt' | t
+  assign custom_alt = 'ardent.anatomy.images.custom_alt' | t
+  assign water_alt = 'ardent.anatomy.images.water_alt' | t
+  assign closing_alt = 'ardent.anatomy.images.closing_alt' | t
+%}
+
+<ardent-anatomy class="ardent-anatomy" {{ section.shopify_attributes }}>
+  <header class="ardent-anatomy__hero">
+    <div class="ardent-anatomy__hero-media">
+      {% if hero_image != blank %}
+        {{ hero_image | image_url: width: 2400 | image_tag: class: 'ardent-anatomy__image', loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1600, 2000, 2400', sizes: '100vw', alt: hero_alt }}
+      {% else %}
+        <div class="ardent-anatomy__placeholder"></div>
+      {% endif %}
+    </div>
+    <div class="ardent-anatomy__hero-shade"></div>
+    <div class="ardent-anatomy__hero-copy">
+      <p class="ardent-anatomy__eyebrow" data-anatomy-reveal>{{ 'ardent.anatomy.hero.eyebrow' | t }}</p>
+      <h1 data-anatomy-reveal>{{ 'ardent.anatomy.hero.title' | t }}</h1>
+      <p class="ardent-anatomy__lead" data-anatomy-reveal>{{ 'ardent.anatomy.hero.lead' | t }}</p>
+    </div>
+    <div class="ardent-anatomy__hero-spec" data-anatomy-reveal>
+      <span>{{ 'ardent.anatomy.hero.spec_one' | t }}</span>
+      <span>{{ 'ardent.anatomy.hero.spec_two' | t }}</span>
+      <span>{{ 'ardent.anatomy.hero.spec_three' | t }}</span>
+    </div>
+  </header>
+
+  <section class="ardent-anatomy__intro">
+    <p class="ardent-anatomy__eyebrow" data-anatomy-reveal>{{ 'ardent.anatomy.intro.eyebrow' | t }}</p>
+    <div class="ardent-anatomy__intro-grid">
+      <h2 data-anatomy-reveal>{{ 'ardent.anatomy.intro.title' | t }}</h2>
+      <p data-anatomy-reveal>{{ 'ardent.anatomy.intro.copy' | t }}</p>
+    </div>
+  </section>
+
+  <section class="ardent-anatomy__case">
+    <figure class="ardent-anatomy__case-image" data-anatomy-reveal>
+      {% if case_image != blank %}
+        {{ case_image | image_url: width: 2000 | image_tag: class: 'ardent-anatomy__image', loading: 'lazy', widths: '700, 1000, 1500, 2000', sizes: '(min-width: 990px) 58vw, 100vw', alt: case_alt }}
+      {% else %}
+        <div class="ardent-anatomy__placeholder"></div>
+      {% endif %}
+    </figure>
+    <div class="ardent-anatomy__case-copy" data-anatomy-reveal>
+      <span class="ardent-anatomy__number">01</span>
+      <p class="ardent-anatomy__eyebrow">{{ 'ardent.anatomy.case.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.anatomy.case.title' | t }}</h2>
+      <p>{{ 'ardent.anatomy.case.copy' | t }}</p>
+    </div>
+  </section>
+
+  <section class="ardent-anatomy__movement">
+    <div class="ardent-anatomy__movement-copy" data-anatomy-reveal>
+      <span class="ardent-anatomy__number">02</span>
+      <p class="ardent-anatomy__eyebrow">{{ 'ardent.anatomy.movement.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.anatomy.movement.title' | t }}</h2>
+      <p>{{ 'ardent.anatomy.movement.copy' | t }}</p>
+      <div class="ardent-anatomy__calibres" aria-label="{{ 'ardent.anatomy.movement.aria' | t }}">
+        <span>NH35</span><span>NH70</span>
+      </div>
+    </div>
+    <figure class="ardent-anatomy__movement-image" data-anatomy-reveal>
+      {% if movement_image != blank %}
+        {{ movement_image | image_url: width: 1800 | image_tag: class: 'ardent-anatomy__image', loading: 'lazy', widths: '600, 900, 1300, 1800', sizes: '(min-width: 990px) 40vw, 88vw', alt: movement_alt }}
+      {% else %}
+        <div class="ardent-anatomy__placeholder"></div>
+      {% endif %}
+    </figure>
+  </section>
+
+  <section class="ardent-anatomy__custom">
+    <figure class="ardent-anatomy__custom-image">
+      {% if custom_image != blank %}
+        {{ custom_image | image_url: width: 2200 | image_tag: class: 'ardent-anatomy__image', loading: 'lazy', widths: '750, 1100, 1600, 2200', sizes: '100vw', alt: custom_alt }}
+      {% else %}
+        <div class="ardent-anatomy__placeholder"></div>
+      {% endif %}
+    </figure>
+    <div class="ardent-anatomy__custom-card" data-anatomy-reveal>
+      <span class="ardent-anatomy__number">03</span>
+      <p class="ardent-anatomy__eyebrow">{{ 'ardent.anatomy.custom.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.anatomy.custom.title' | t }}</h2>
+      <p>{{ 'ardent.anatomy.custom.copy' | t }}</p>
+      <ul>
+        <li>{{ 'ardent.anatomy.custom.first' | t }}</li>
+        <li>{{ 'ardent.anatomy.custom.second' | t }}</li>
+        <li>{{ 'ardent.anatomy.custom.third' | t }}</li>
+        <li>{{ 'ardent.anatomy.custom.fourth' | t }}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ardent-anatomy__water">
+    <div class="ardent-anatomy__water-copy" data-anatomy-reveal>
+      <span class="ardent-anatomy__number">04</span>
+      <p class="ardent-anatomy__eyebrow">{{ 'ardent.anatomy.water.eyebrow' | t }}</p>
+      <p class="ardent-anatomy__water-value">50 <em>ATM</em></p>
+      <h2>{{ 'ardent.anatomy.water.title' | t }}</h2>
+      <p>{{ 'ardent.anatomy.water.copy' | t }}</p>
+    </div>
+    <figure class="ardent-anatomy__water-image" data-anatomy-reveal>
+      {% if water_image != blank %}
+        {{ water_image | image_url: width: 1800 | image_tag: class: 'ardent-anatomy__image', loading: 'lazy', widths: '600, 900, 1300, 1800', sizes: '(min-width: 990px) 44vw, 88vw', alt: water_alt }}
+      {% else %}
+        <div class="ardent-anatomy__placeholder"></div>
+      {% endif %}
+    </figure>
+  </section>
+
+  <section class="ardent-anatomy__closing">
+    <figure class="ardent-anatomy__closing-image">
+      {% if closing_image != blank %}
+        {{ closing_image | image_url: width: 2200 | image_tag: class: 'ardent-anatomy__image', loading: 'lazy', widths: '750, 1100, 1600, 2200', sizes: '100vw', alt: closing_alt }}
+      {% else %}
+        <div class="ardent-anatomy__placeholder"></div>
+      {% endif %}
+    </figure>
+    <div class="ardent-anatomy__closing-copy">
+      <p class="ardent-anatomy__eyebrow" data-anatomy-reveal>{{ 'ardent.anatomy.closing.eyebrow' | t }}</p>
+      <p class="ardent-anatomy__quote" data-anatomy-reveal>{{ 'ardent.anatomy.closing.quote' | t }}</p>
+    </div>
+  </section>
+</ardent-anatomy>
+
+{% stylesheet %}
+.ardent-anatomy{--ink:#151212;--paper:#eeebe5;--metal:#c9c4bd;--rose:#bd8579;background:var(--paper);color:var(--ink);display:block;overflow:clip}.ardent-anatomy__hero,.ardent-anatomy__custom,.ardent-anatomy__closing{isolation:isolate;position:relative}.ardent-anatomy__hero{align-items:flex-end;background:var(--ink);color:#fff;display:flex;min-height:min(920px,100svh);padding:clamp(30px,7vw,118px)}.ardent-anatomy__hero-media,.ardent-anatomy__hero-shade{inset:0;position:absolute}.ardent-anatomy__hero-media{overflow:hidden}.ardent-anatomy__image{display:block;height:100%;object-fit:cover;width:100%}.ardent-anatomy__hero-shade{background:linear-gradient(90deg,rgba(12,10,10,.8),rgba(12,10,10,.1) 75%),linear-gradient(0deg,rgba(12,10,10,.5),transparent 60%)}.ardent-anatomy__hero-copy{max-width:890px;position:relative;z-index:1}.ardent-anatomy__eyebrow{color:var(--rose);font-size:.68rem;font-weight:600;letter-spacing:.2em;margin:0 0 18px;text-transform:uppercase}.ardent-anatomy h1,.ardent-anatomy h2,.ardent-anatomy__quote,.ardent-anatomy__water-value{font-family:var(--font-heading--family,Georgia,serif);font-weight:400}.ardent-anatomy h1{font-size:clamp(4.2rem,11vw,10.8rem);letter-spacing:-.08em;line-height:.78;margin:0}.ardent-anatomy__lead{font-size:clamp(1rem,1.6vw,1.27rem);line-height:1.55;margin:38px 0 0;max-width:500px}.ardent-anatomy__hero-spec{bottom:clamp(24px,5vw,74px);display:flex;gap:clamp(16px,3vw,42px);position:absolute;right:clamp(24px,5vw,74px);z-index:1}.ardent-anatomy__hero-spec span{border-top:1px solid rgba(255,255,255,.5);font-size:.66rem;letter-spacing:.13em;padding-top:10px;text-transform:uppercase}.ardent-anatomy__intro{background:#fff;padding:clamp(95px,15vw,235px) clamp(24px,7vw,112px)}.ardent-anatomy__intro-grid{align-items:end;display:grid;gap:clamp(40px,9vw,140px);grid-template-columns:minmax(0,1.15fr) minmax(290px,.7fr);margin:0 auto;max-width:1480px}.ardent-anatomy h2{font-size:clamp(3rem,5.8vw,6.2rem);letter-spacing:-.07em;line-height:.88;margin:0}.ardent-anatomy__intro-grid>p{font-size:1.08rem;line-height:1.7;margin:0;max-width:500px}.ardent-anatomy__case{align-items:center;background:var(--metal);display:grid;gap:clamp(40px,8vw,135px);grid-template-columns:minmax(0,1.18fr) minmax(290px,.65fr);padding:clamp(28px,5vw,76px)}.ardent-anatomy__case-image{aspect-ratio:1.2/1;margin:0;overflow:hidden}.ardent-anatomy__case-copy{max-width:430px}.ardent-anatomy__number{color:var(--rose);display:block;font-size:.72rem;letter-spacing:.17em;margin-bottom:52px}.ardent-anatomy__case-copy h2,.ardent-anatomy__movement-copy h2,.ardent-anatomy__custom-card h2,.ardent-anatomy__water-copy h2{font-size:clamp(2.7rem,4.8vw,5.3rem);margin-bottom:28px}.ardent-anatomy__case-copy>p:not(.ardent-anatomy__eyebrow),.ardent-anatomy__movement-copy>p:not(.ardent-anatomy__eyebrow),.ardent-anatomy__custom-card>p:not(.ardent-anatomy__eyebrow),.ardent-anatomy__water-copy>p:not(.ardent-anatomy__eyebrow){font-size:1.04rem;line-height:1.7;margin:0}.ardent-anatomy__movement{align-items:center;background:var(--ink);color:#fff;display:grid;gap:clamp(40px,9vw,150px);grid-template-columns:minmax(0,.78fr) minmax(330px,1fr);padding:clamp(100px,14vw,215px) clamp(24px,8vw,128px)}.ardent-anatomy__movement-copy{margin-left:auto;max-width:485px}.ardent-anatomy__movement-image{aspect-ratio:1/1.16;margin:0;overflow:hidden}.ardent-anatomy__calibres{display:flex;gap:11px;margin-top:42px}.ardent-anatomy__calibres span{border:1px solid rgba(255,255,255,.55);font-size:.72rem;letter-spacing:.16em;padding:12px 16px}.ardent-anatomy__custom{background:#312728;min-height:min(900px,93svh)}.ardent-anatomy__custom-image,.ardent-anatomy__closing-image{inset:0;position:absolute}.ardent-anatomy__custom-image:after,.ardent-anatomy__closing-image:after{background:linear-gradient(90deg,rgba(16,12,12,.77),rgba(16,12,12,.08));content:'';inset:0;position:absolute}.ardent-anatomy__custom-card{background:rgba(245,242,236,.95);bottom:clamp(28px,8vw,124px);color:var(--ink);left:clamp(24px,8vw,124px);max-width:510px;padding:clamp(34px,5vw,68px);position:absolute;z-index:1}.ardent-anatomy__custom-card ul{border-top:1px solid rgba(21,18,18,.2);list-style:none;margin:36px 0 0;padding:0}.ardent-anatomy__custom-card li{border-bottom:1px solid rgba(21,18,18,.2);font-size:.8rem;letter-spacing:.1em;padding:13px 0;text-transform:uppercase}.ardent-anatomy__water{align-items:center;background:#fff;display:grid;gap:clamp(40px,9vw,150px);grid-template-columns:minmax(0,.72fr) minmax(320px,1fr);padding:clamp(100px,15vw,235px) clamp(24px,8vw,128px)}.ardent-anatomy__water-copy{margin-left:auto;max-width:450px}.ardent-anatomy__water-value{color:var(--rose);font-size:clamp(5rem,10vw,10rem);letter-spacing:-.09em;line-height:.75;margin:12px 0 32px}.ardent-anatomy__water-value em{font-family:var(--font-body--family,Arial,sans-serif);font-size:.13em;font-style:normal;letter-spacing:.16em}.ardent-anatomy__water-image{aspect-ratio:4/5;margin:0;overflow:hidden}.ardent-anatomy__closing{background:var(--ink);color:#fff;min-height:min(760px,82svh)}.ardent-anatomy__closing-image:after{background:rgba(12,10,10,.48)}.ardent-anatomy__closing-copy{align-items:center;display:flex;flex-direction:column;inset:0;justify-content:center;padding:30px;position:absolute;text-align:center;z-index:1}.ardent-anatomy__closing-copy .ardent-anatomy__eyebrow{color:#fff}.ardent-anatomy__quote{font-size:clamp(3.4rem,8.5vw,9rem);letter-spacing:-.08em;line-height:.8;margin:0;max-width:1160px}.ardent-anatomy__placeholder{background:linear-gradient(135deg,rgba(189,133,121,.55),transparent 57%),linear-gradient(42deg,#161212,#4b3d3d);height:100%;width:100%}[data-anatomy-reveal]{opacity:0;transform:translateY(30px);transition:opacity .85s cubic-bezier(.2,.65,.2,1),transform .85s cubic-bezier(.2,.65,.2,1)}[data-anatomy-reveal].is-visible{opacity:1;transform:none}@media(max-width:749px){.ardent-anatomy__hero{min-height:700px}.ardent-anatomy h1{font-size:clamp(3.9rem,19vw,6.5rem)}.ardent-anatomy__hero-spec{display:none}.ardent-anatomy__intro-grid,.ardent-anatomy__case,.ardent-anatomy__movement,.ardent-anatomy__water{grid-template-columns:1fr}.ardent-anatomy__case{padding:18px}.ardent-anatomy__case-copy{padding:48px 24px 64px}.ardent-anatomy__movement-copy,.ardent-anatomy__water-copy{margin-left:0}.ardent-anatomy__movement-image,.ardent-anatomy__water-image{max-width:520px}.ardent-anatomy__custom{min-height:700px}.ardent-anatomy__custom-card{bottom:24px;left:24px;right:24px}.ardent-anatomy__quote{font-size:clamp(3.1rem,14vw,5rem)}}@media(prefers-reduced-motion:reduce){[data-anatomy-reveal]{opacity:1;transform:none;transition:none}}
+{% endstylesheet %}
+
+{% javascript %}
+class ArdentAnatomy extends HTMLElement {
+  connectedCallback() {
+    const elements = this.querySelectorAll('[data-anatomy-reveal]');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      elements.forEach((element) => element.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+    elements.forEach((element) => observer.observe(element));
+    this.observer = observer;
+  }
+  disconnectedCallback() {
+    if (this.observer) this.observer.disconnect();
+  }
+}
+if (!customElements.get('ardent-anatomy')) customElements.define('ardent-anatomy', ArdentAnatomy);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Ardent — Anatomie",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Image héro de la montre" },
+    { "type": "image_picker", "id": "case_image", "label": "Image boîtier, cadran ou bracelet" },
+    { "type": "image_picker", "id": "movement_image", "label": "Image mouvement" },
+    { "type": "image_picker", "id": "custom_image", "label": "Image personnalisation" },
+    { "type": "image_picker", "id": "water_image", "label": "Image étanchéité" },
+    { "type": "image_picker", "id": "closing_image", "label": "Image de conclusion" }
+  ],
+  "presets": [{ "name": "Ardent — Anatomie" }]
+}
+{% endschema %}
+

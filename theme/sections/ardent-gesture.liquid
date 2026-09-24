@@ -1,0 +1,166 @@
+{% liquid
+  assign hero_image = section.settings.hero_image
+  assign selection_image = section.settings.selection_image
+  assign assembly_image = section.settings.assembly_image
+  assign adjustment_image = section.settings.adjustment_image
+  assign control_image = section.settings.control_image
+  assign closing_image = section.settings.closing_image
+  assign hero_alt = 'ardent.gesture.images.hero_alt' | t
+  assign selection_alt = 'ardent.gesture.images.selection_alt' | t
+  assign assembly_alt = 'ardent.gesture.images.assembly_alt' | t
+  assign adjustment_alt = 'ardent.gesture.images.adjustment_alt' | t
+  assign control_alt = 'ardent.gesture.images.control_alt' | t
+  assign closing_alt = 'ardent.gesture.images.closing_alt' | t
+%}
+
+<ardent-gesture class="ardent-gesture" {{ section.shopify_attributes }}>
+  <header class="ardent-gesture__hero">
+    <div class="ardent-gesture__hero-media">
+      {% if hero_image != blank %}
+        {{ hero_image | image_url: width: 2400 | image_tag: class: 'ardent-gesture__image', loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1600, 2000, 2400', sizes: '100vw', alt: hero_alt }}
+      {% else %}
+        <div class="ardent-gesture__placeholder"></div>
+      {% endif %}
+    </div>
+    <div class="ardent-gesture__hero-shade"></div>
+    <div class="ardent-gesture__hero-copy">
+      <p class="ardent-gesture__eyebrow" data-gesture-reveal>{{ 'ardent.gesture.hero.eyebrow' | t }}</p>
+      <h1 data-gesture-reveal>{{ 'ardent.gesture.hero.title' | t }}</h1>
+      <p class="ardent-gesture__lead" data-gesture-reveal>{{ 'ardent.gesture.hero.lead' | t }}</p>
+    </div>
+    <p class="ardent-gesture__scroll" data-gesture-reveal>{{ 'ardent.gesture.hero.scroll' | t }}</p>
+  </header>
+
+  <section class="ardent-gesture__opening">
+    <p class="ardent-gesture__eyebrow" data-gesture-reveal>{{ 'ardent.gesture.opening.eyebrow' | t }}</p>
+    <div class="ardent-gesture__opening-grid">
+      <h2 data-gesture-reveal>{{ 'ardent.gesture.opening.title' | t }}</h2>
+      <p data-gesture-reveal>{{ 'ardent.gesture.opening.copy' | t }}</p>
+    </div>
+  </section>
+
+  <section class="ardent-gesture__step ardent-gesture__step--selection">
+    <div class="ardent-gesture__step-copy" data-gesture-reveal>
+      <span class="ardent-gesture__number">01</span>
+      <p class="ardent-gesture__eyebrow">{{ 'ardent.gesture.selection.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.gesture.selection.title' | t }}</h2>
+      <p>{{ 'ardent.gesture.selection.copy' | t }}</p>
+    </div>
+    <figure class="ardent-gesture__selection-image" data-gesture-reveal>
+      {% if selection_image != blank %}
+        {{ selection_image | image_url: width: 1800 | image_tag: class: 'ardent-gesture__image', loading: 'lazy', widths: '600, 900, 1300, 1800', sizes: '(min-width: 990px) 42vw, 88vw', alt: selection_alt }}
+      {% else %}
+        <div class="ardent-gesture__placeholder"></div>
+      {% endif %}
+    </figure>
+  </section>
+
+  <section class="ardent-gesture__assembly">
+    <figure class="ardent-gesture__assembly-image">
+      {% if assembly_image != blank %}
+        {{ assembly_image | image_url: width: 2200 | image_tag: class: 'ardent-gesture__image', loading: 'lazy', widths: '750, 1100, 1600, 2200', sizes: '100vw', alt: assembly_alt }}
+      {% else %}
+        <div class="ardent-gesture__placeholder"></div>
+      {% endif %}
+    </figure>
+    <div class="ardent-gesture__assembly-card" data-gesture-reveal>
+      <span class="ardent-gesture__number">02</span>
+      <p class="ardent-gesture__eyebrow">{{ 'ardent.gesture.assembly.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.gesture.assembly.title' | t }}</h2>
+      <p>{{ 'ardent.gesture.assembly.copy' | t }}</p>
+    </div>
+  </section>
+
+  <section class="ardent-gesture__step ardent-gesture__step--adjustment">
+    <figure class="ardent-gesture__adjustment-image" data-gesture-reveal>
+      {% if adjustment_image != blank %}
+        {{ adjustment_image | image_url: width: 1800 | image_tag: class: 'ardent-gesture__image', loading: 'lazy', widths: '600, 900, 1300, 1800', sizes: '(min-width: 990px) 46vw, 88vw', alt: adjustment_alt }}
+      {% else %}
+        <div class="ardent-gesture__placeholder"></div>
+      {% endif %}
+    </figure>
+    <div class="ardent-gesture__step-copy" data-gesture-reveal>
+      <span class="ardent-gesture__number">03</span>
+      <p class="ardent-gesture__eyebrow">{{ 'ardent.gesture.adjustment.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.gesture.adjustment.title' | t }}</h2>
+      <p>{{ 'ardent.gesture.adjustment.copy' | t }}</p>
+    </div>
+  </section>
+
+  <section class="ardent-gesture__control">
+    <div class="ardent-gesture__control-copy" data-gesture-reveal>
+      <span class="ardent-gesture__number">04</span>
+      <p class="ardent-gesture__eyebrow">{{ 'ardent.gesture.control.eyebrow' | t }}</p>
+      <h2>{{ 'ardent.gesture.control.title' | t }}</h2>
+      <p>{{ 'ardent.gesture.control.copy' | t }}</p>
+      <span class="ardent-gesture__control-line"></span>
+    </div>
+    <figure class="ardent-gesture__control-image" data-gesture-reveal>
+      {% if control_image != blank %}
+        {{ control_image | image_url: width: 1800 | image_tag: class: 'ardent-gesture__image', loading: 'lazy', widths: '600, 900, 1300, 1800', sizes: '(min-width: 990px) 44vw, 88vw', alt: control_alt }}
+      {% else %}
+        <div class="ardent-gesture__placeholder"></div>
+      {% endif %}
+    </figure>
+  </section>
+
+  <section class="ardent-gesture__closing">
+    <figure class="ardent-gesture__closing-image">
+      {% if closing_image != blank %}
+        {{ closing_image | image_url: width: 2200 | image_tag: class: 'ardent-gesture__image', loading: 'lazy', widths: '750, 1100, 1600, 2200', sizes: '100vw', alt: closing_alt }}
+      {% else %}
+        <div class="ardent-gesture__placeholder"></div>
+      {% endif %}
+    </figure>
+    <div class="ardent-gesture__closing-copy">
+      <p class="ardent-gesture__eyebrow" data-gesture-reveal>{{ 'ardent.gesture.closing.eyebrow' | t }}</p>
+      <p class="ardent-gesture__quote" data-gesture-reveal>{{ 'ardent.gesture.closing.quote' | t }}</p>
+    </div>
+  </section>
+</ardent-gesture>
+
+{% stylesheet %}
+.ardent-gesture{--ink:#151112;--clay:#d6c7ba;--paper:#f0ebe4;--rose:#bd8579;background:var(--paper);color:var(--ink);display:block;overflow:clip}.ardent-gesture__hero,.ardent-gesture__assembly,.ardent-gesture__closing{isolation:isolate;position:relative}.ardent-gesture__hero{align-items:flex-end;background:var(--ink);color:#fff;display:flex;min-height:min(910px,100svh);padding:clamp(30px,7vw,120px)}.ardent-gesture__hero-media,.ardent-gesture__hero-shade{inset:0;position:absolute}.ardent-gesture__hero-media{overflow:hidden}.ardent-gesture__image{display:block;height:100%;object-fit:cover;width:100%}.ardent-gesture__hero-shade{background:linear-gradient(90deg,rgba(12,9,9,.75),rgba(12,9,9,.06) 75%),linear-gradient(0deg,rgba(12,9,9,.48),transparent 58%)}.ardent-gesture__hero-copy{max-width:930px;position:relative;z-index:1}.ardent-gesture__eyebrow{color:var(--rose);font-size:.68rem;font-weight:600;letter-spacing:.2em;margin:0 0 18px;text-transform:uppercase}.ardent-gesture h1,.ardent-gesture h2,.ardent-gesture__quote{font-family:var(--font-heading--family,Georgia,serif);font-weight:400}.ardent-gesture h1{font-size:clamp(4.5rem,12vw,11.5rem);letter-spacing:-.08em;line-height:.78;margin:0}.ardent-gesture__lead{font-size:clamp(1rem,1.6vw,1.27rem);line-height:1.58;margin:38px 0 0;max-width:495px}.ardent-gesture__scroll{bottom:clamp(24px,5vw,76px);font-size:.68rem;letter-spacing:.18em;margin:0;position:absolute;right:clamp(24px,5vw,76px);text-transform:uppercase;writing-mode:vertical-rl;z-index:1}.ardent-gesture__opening{background:#fff;padding:clamp(100px,15vw,240px) clamp(24px,7vw,112px)}.ardent-gesture__opening-grid{align-items:end;display:grid;gap:clamp(40px,10vw,150px);grid-template-columns:minmax(0,1.15fr) minmax(280px,.7fr);margin:0 auto;max-width:1500px}.ardent-gesture h2{font-size:clamp(3rem,5.8vw,6.3rem);letter-spacing:-.07em;line-height:.88;margin:0}.ardent-gesture__opening-grid>p{font-size:1.08rem;line-height:1.7;margin:0;max-width:510px}.ardent-gesture__step{align-items:center;display:grid;gap:clamp(42px,9vw,150px);padding:clamp(95px,14vw,220px) clamp(24px,8vw,128px)}.ardent-gesture__step--selection{background:var(--clay);grid-template-columns:minmax(0,.74fr) minmax(330px,1fr)}.ardent-gesture__step--adjustment{background:#fff;grid-template-columns:minmax(330px,1fr) minmax(0,.74fr)}.ardent-gesture__step-copy{max-width:485px}.ardent-gesture__number{color:var(--rose);display:block;font-size:.72rem;letter-spacing:.17em;margin-bottom:50px}.ardent-gesture__step-copy h2,.ardent-gesture__assembly-card h2,.ardent-gesture__control-copy h2{font-size:clamp(2.7rem,4.8vw,5.2rem);margin-bottom:28px}.ardent-gesture__step-copy>p:not(.ardent-gesture__eyebrow),.ardent-gesture__assembly-card>p:not(.ardent-gesture__eyebrow),.ardent-gesture__control-copy>p:not(.ardent-gesture__eyebrow){font-size:1.04rem;line-height:1.7;margin:0}.ardent-gesture__selection-image,.ardent-gesture__adjustment-image,.ardent-gesture__control-image{aspect-ratio:4/5;margin:0;overflow:hidden}.ardent-gesture__assembly{background:#292122;min-height:min(880px,92svh)}.ardent-gesture__assembly-image,.ardent-gesture__closing-image{inset:0;position:absolute}.ardent-gesture__assembly-image:after,.ardent-gesture__closing-image:after{background:linear-gradient(90deg,rgba(15,11,11,.78),rgba(15,11,11,.08));content:'';inset:0;position:absolute}.ardent-gesture__assembly-card{background:rgba(247,243,237,.94);bottom:clamp(28px,8vw,124px);color:var(--ink);left:clamp(24px,8vw,124px);max-width:510px;padding:clamp(34px,5vw,68px);position:absolute;z-index:1}.ardent-gesture__control{align-items:center;background:var(--ink);color:#fff;display:grid;gap:clamp(42px,9vw,150px);grid-template-columns:minmax(0,.75fr) minmax(330px,1fr);padding:clamp(95px,14vw,220px) clamp(24px,8vw,128px)}.ardent-gesture__control-copy{margin-left:auto;max-width:480px}.ardent-gesture__control-line{background:var(--rose);display:block;height:1px;margin-top:45px;width:110px}.ardent-gesture__closing{background:var(--ink);color:#fff;min-height:min(760px,82svh)}.ardent-gesture__closing-image:after{background:rgba(12,9,9,.5)}.ardent-gesture__closing-copy{align-items:center;display:flex;flex-direction:column;inset:0;justify-content:center;padding:30px;position:absolute;text-align:center;z-index:1}.ardent-gesture__closing-copy .ardent-gesture__eyebrow{color:#fff}.ardent-gesture__quote{font-size:clamp(3.4rem,8.5vw,9rem);letter-spacing:-.08em;line-height:.8;margin:0;max-width:1140px}.ardent-gesture__placeholder{background:linear-gradient(135deg,rgba(189,133,121,.55),transparent 56%),linear-gradient(45deg,#151111,#554744);height:100%;width:100%}[data-gesture-reveal]{opacity:0;transform:translateY(30px);transition:opacity .85s cubic-bezier(.2,.65,.2,1),transform .85s cubic-bezier(.2,.65,.2,1)}[data-gesture-reveal].is-visible{opacity:1;transform:none}@media(max-width:749px){.ardent-gesture__hero{min-height:690px}.ardent-gesture h1{font-size:clamp(4rem,20vw,6.6rem)}.ardent-gesture__scroll{display:none}.ardent-gesture__opening-grid,.ardent-gesture__step--selection,.ardent-gesture__step--adjustment,.ardent-gesture__control{grid-template-columns:1fr}.ardent-gesture__step--adjustment .ardent-gesture__adjustment-image{grid-row:1}.ardent-gesture__control-copy{margin-left:0}.ardent-gesture__selection-image,.ardent-gesture__adjustment-image,.ardent-gesture__control-image{max-width:520px}.ardent-gesture__assembly{min-height:690px}.ardent-gesture__assembly-card{bottom:24px;left:24px;right:24px}.ardent-gesture__quote{font-size:clamp(3.1rem,14vw,5rem)}}@media(prefers-reduced-motion:reduce){[data-gesture-reveal]{opacity:1;transform:none;transition:none}}
+{% endstylesheet %}
+
+{% javascript %}
+class ArdentGesture extends HTMLElement {
+  connectedCallback() {
+    const elements = this.querySelectorAll('[data-gesture-reveal]');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      elements.forEach((element) => element.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+    elements.forEach((element) => observer.observe(element));
+    this.observer = observer;
+  }
+  disconnectedCallback() {
+    if (this.observer) this.observer.disconnect();
+  }
+}
+if (!customElements.get('ardent-gesture')) customElements.define('ardent-gesture', ArdentGesture);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Ardent — Le geste",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Image héro atelier" },
+    { "type": "image_picker", "id": "selection_image", "label": "Image sélection des composants" },
+    { "type": "image_picker", "id": "assembly_image", "label": "Image assemblage" },
+    { "type": "image_picker", "id": "adjustment_image", "label": "Image réglage et finition" },
+    { "type": "image_picker", "id": "control_image", "label": "Image contrôle" },
+    { "type": "image_picker", "id": "closing_image", "label": "Image de conclusion" }
+  ],
+  "presets": [{ "name": "Ardent — Le geste" }]
+}
+{% endschema %}
+

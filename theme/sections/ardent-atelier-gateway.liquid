@@ -1,0 +1,20 @@
+<section class="ardent-gateway" id="ardent-gateway-{{ section.id }}">
+  <div class="ardent-gateway__line" aria-hidden="true"></div>
+  <div class="ardent-gateway__copy">
+    <p>ATELIER ARDENT</p>
+    <h2>Une montre ne se choisit pas.<br><em>Elle se compose.</em></h2>
+    <a href="/pages/atelier-ardent" class="ardent-gateway__link"><span>Entrer dans l’atelier</span><b aria-hidden="true">↗</b></a>
+  </div>
+  <div class="ardent-gateway__visual" aria-hidden="true">
+    <span class="ardent-gateway__ring"></span><span class="ardent-gateway__ring ardent-gateway__ring--two"></span>
+    <img src="https://cdn.shopify.com/s/files/1/1033/9267/4139/files/ardent-elysee-cinematic-hero-v2.png?v=1789491653" alt="" width="1400" height="1400" loading="lazy">
+  </div>
+</section>
+
+{% stylesheet %}
+  .ardent-gateway{--gold:#dcc18e;position:relative;isolation:isolate;min-height:min(780px,100svh);overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(20rem,.88fr);align-items:center;padding:clamp(4.5rem,8vw,9rem);background:linear-gradient(130deg,#11100f,#1d1914 55%,#0d0e0f);color:#f5f1e9}.ardent-gateway:before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(circle at 74% 56%,rgba(210,175,115,.18),transparent 30%),linear-gradient(145deg,transparent 30%,rgba(255,255,255,.025))}.ardent-gateway__line{position:absolute;left:8%;right:8%;top:18%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.45}.ardent-gateway__copy{position:relative;z-index:2;max-width:51rem}.ardent-gateway__copy p{margin:0 0 2rem;font:600 .68rem/1 var(--font-body-family,Arial,sans-serif);letter-spacing:.24em;color:var(--gold)}.ardent-gateway h2{font-family:var(--font-heading-family,Georgia,serif);font-weight:400;font-size:clamp(2.8rem,5vw,6.4rem);letter-spacing:-.06em;line-height:.94;margin:0}.ardent-gateway h2 em{font-weight:400;color:var(--gold)}.ardent-gateway__link{display:inline-flex;align-items:center;gap:2.2rem;margin-top:2.6rem;padding:1rem 1.1rem 1rem 1.35rem;border:1px solid rgba(220,193,142,.6);border-radius:99px;color:#f5f1e9;text-decoration:none;font:600 .69rem/1 var(--font-body-family,Arial,sans-serif);text-transform:uppercase;letter-spacing:.14em;transition:background .35s,color .35s,transform .35s}.ardent-gateway__link:hover{background:var(--gold);color:#17130d;transform:translateY(-4px)}.ardent-gateway__link b{font-size:1.2rem}.ardent-gateway__visual{position:absolute;right:-8%;width:min(54vw,53rem);top:50%;transform:translateY(-50%);filter:drop-shadow(0 2.5rem 2rem rgba(0,0,0,.58));animation:gatewayFloat 8s ease-in-out infinite}.ardent-gateway__visual img{display:block;width:100%;height:auto;mix-blend-mode:screen;transform:rotate(14deg)}.ardent-gateway__ring{position:absolute;left:50%;top:50%;width:72%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(220,193,142,.32);transform:translate(-50%,-50%) rotateX(71deg);animation:gatewayRing 20s linear infinite}.ardent-gateway__ring--two{width:108%;border-color:rgba(220,193,142,.15);animation-direction:reverse;animation-duration:28s}@keyframes gatewayFloat{50%{transform:translateY(calc(-50% - 17px)) rotate(-2deg)}}@keyframes gatewayRing{to{transform:translate(-50%,-50%) rotateX(71deg) rotate(1turn)}}@media(max-width:749px){.ardent-gateway{grid-template-columns:1fr;align-items:start;min-height:44rem;padding:5rem 1.7rem}.ardent-gateway__line{top:10%;left:1.7rem;right:1.7rem}.ardent-gateway h2{font-size:clamp(3.1rem,14vw,4.8rem)}.ardent-gateway__visual{width:120vw;right:-54vw;top:67%;opacity:.74}}@media(prefers-reduced-motion:reduce){.ardent-gateway__visual,.ardent-gateway__ring{animation:none}}
+{% endstylesheet %}
+
+{% schema %}
+{"name":"Atelier Ardent","tag":"section","class":"section-ardent-gateway","settings":[],"presets":[{"name":"Atelier Ardent"}]}
+{% endschema %}

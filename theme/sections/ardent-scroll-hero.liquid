@@ -1,0 +1,2134 @@
+<section
+  id="ArdentScrollHero-{{ section.id }}"
+  class="ardent-scroll-hero"
+>
+  <div class="ardent-scroll-hero__sticky">
+
+    <!-- =====================================================
+         IMAGE PRINCIPALE
+    ====================================================== -->
+
+    <div class="ardent-scroll-hero__media ardent-scroll-hero__media--one">
+
+      {% if section.settings.image_1 != blank %}
+
+        {{
+          section.settings.image_1
+          | image_url: width: 2400
+          | image_tag:
+            loading: 'eager',
+            widths: '800, 1200, 1600, 2000, 2400',
+            class: 'ardent-scroll-hero__image'
+        }}
+
+      {% else %}
+
+        <div class="ardent-scroll-hero__placeholder">
+          AJOUTEZ VOTRE IMAGE
+        </div>
+
+      {% endif %}
+
+    </div>
+
+
+    <!-- =====================================================
+         FOND PERSONNALISATION
+    ====================================================== -->
+
+    <div class="ardent-customizer-background"></div>
+
+
+    <!-- =====================================================
+         OVERLAY
+    ====================================================== -->
+
+    <div class="ardent-scroll-hero__overlay"></div>
+
+
+    <!-- =====================================================
+         PREMIER ÉCRAN
+    ====================================================== -->
+
+    <div class="ardent-scroll-hero__content ardent-scroll-hero__content--one">
+
+      {% if section.settings.eyebrow_1 != blank %}
+
+        <p class="ardent-scroll-hero__eyebrow">
+          {{ section.settings.eyebrow_1 }}
+        </p>
+
+      {% endif %}
+
+
+      {% if section.settings.heading_1 != blank %}
+
+        <h1 class="ardent-scroll-hero__heading">
+          {{ section.settings.heading_1 }}
+        </h1>
+
+      {% endif %}
+
+
+      {% if section.settings.text_1 != blank %}
+
+        <div class="ardent-scroll-hero__text">
+          {{ section.settings.text_1 }}
+        </div>
+
+      {% endif %}
+
+
+      {% if section.settings.button_text_1 != blank
+        and section.settings.button_link_1 != blank %}
+
+        <a
+          href="{{ section.settings.button_link_1 }}"
+          class="ardent-scroll-hero__button"
+        >
+          {{ section.settings.button_text_1 }}
+        </a>
+
+      {% endif %}
+
+    </div>
+
+
+    <!-- =====================================================
+         PARTIE PERSONNALISATION
+    ====================================================== -->
+
+    <div class="ardent-customizer">
+
+      <div class="ardent-customizer__header">
+
+        {% if section.settings.eyebrow_2 != blank %}
+
+          <p class="ardent-customizer__eyebrow">
+            {{ section.settings.eyebrow_2 }}
+          </p>
+
+        {% endif %}
+
+
+        {% if section.settings.heading_2 != blank %}
+
+          <h2 class="ardent-customizer__heading">
+            {{ section.settings.heading_2 }}
+          </h2>
+
+        {% endif %}
+
+
+        {% if section.settings.text_2 != blank %}
+
+          <div class="ardent-customizer__description">
+            {{ section.settings.text_2 }}
+          </div>
+
+        {% endif %}
+
+      </div>
+
+
+      <!-- =================================================
+           TROIS MODÈLES
+      ================================================== -->
+
+      <div class="ardent-models">
+
+
+        <!-- MODÈLE 01 -->
+
+        <div
+          class="ardent-model"
+          data-model="1"
+        >
+
+          <div class="ardent-model__number">
+            01
+          </div>
+
+
+          <div class="ardent-model__image">
+
+            {% if section.settings.model_image_1 != blank %}
+
+              {{
+                section.settings.model_image_1
+                | image_url: width: 1200
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 800, 1000, 1200',
+                  class: 'ardent-model__photo'
+              }}
+
+            {% else %}
+
+              <div class="ardent-model__placeholder">
+                MODÈLE 01
+              </div>
+
+            {% endif %}
+
+          </div>
+
+
+          <div class="ardent-model__info">
+
+            <h3>
+              {{ section.settings.model_title_1 }}
+            </h3>
+
+
+            {% if section.settings.model_text_1 != blank %}
+
+              <p>
+                {{ section.settings.model_text_1 }}
+              </p>
+
+            {% endif %}
+
+
+            {% if section.settings.model_link_1 != blank %}
+
+              <a
+                href="{{ section.settings.model_link_1 }}"
+                class="ardent-model__button"
+              >
+                {{ section.settings.model_button_1 }}
+              </a>
+
+            {% endif %}
+
+          </div>
+
+        </div>
+
+
+        <!-- MODÈLE 02 -->
+
+        <div
+          class="ardent-model"
+          data-model="2"
+        >
+
+          <div class="ardent-model__number">
+            02
+          </div>
+
+
+          <div class="ardent-model__image">
+
+            {% if section.settings.model_image_2 != blank %}
+
+              {{
+                section.settings.model_image_2
+                | image_url: width: 1200
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 800, 1000, 1200',
+                  class: 'ardent-model__photo'
+              }}
+
+            {% else %}
+
+              <div class="ardent-model__placeholder">
+                MODÈLE 02
+              </div>
+
+            {% endif %}
+
+          </div>
+
+
+          <div class="ardent-model__info">
+
+            <h3>
+              {{ section.settings.model_title_2 }}
+            </h3>
+
+
+            {% if section.settings.model_text_2 != blank %}
+
+              <p>
+                {{ section.settings.model_text_2 }}
+              </p>
+
+            {% endif %}
+
+
+            {% if section.settings.model_link_2 != blank %}
+
+              <a
+                href="{{ section.settings.model_link_2 }}"
+                class="ardent-model__button"
+              >
+                {{ section.settings.model_button_2 }}
+              </a>
+
+            {% endif %}
+
+          </div>
+
+        </div>
+
+
+        <!-- MODÈLE 03 -->
+
+        <div
+          class="ardent-model"
+          data-model="3"
+        >
+
+          <div class="ardent-model__number">
+            03
+          </div>
+
+
+          <div class="ardent-model__image">
+
+            {% if section.settings.model_image_3 != blank %}
+
+              {{
+                section.settings.model_image_3
+                | image_url: width: 1200
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 800, 1000, 1200',
+                  class: 'ardent-model__photo'
+              }}
+
+            {% else %}
+
+              <div class="ardent-model__placeholder">
+                MODÈLE 03
+              </div>
+
+            {% endif %}
+
+          </div>
+
+
+          <div class="ardent-model__info">
+
+            <h3>
+              {{ section.settings.model_title_3 }}
+            </h3>
+
+
+            {% if section.settings.model_text_3 != blank %}
+
+              <p>
+                {{ section.settings.model_text_3 }}
+              </p>
+
+            {% endif %}
+
+
+            {% if section.settings.model_link_3 != blank %}
+
+              <a
+                href="{{ section.settings.model_link_3 }}"
+                class="ardent-model__button"
+              >
+                {{ section.settings.model_button_3 }}
+              </a>
+
+            {% endif %}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         INDICATEUR SCROLL
+    ====================================================== -->
+
+    {% if section.settings.show_scroll_indicator %}
+
+      <div class="ardent-scroll-hero__scroll">
+
+        <span>SCROLL</span>
+
+        <div class="ardent-scroll-hero__scroll-line"></div>
+
+      </div>
+
+    {% endif %}
+
+  </div>
+</section>
+
+
+<style>
+
+/* ==========================================================
+   SECTION
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }} {
+  position: relative;
+  width: 100%;
+  height: {{ section.settings.scroll_height }}vh;
+}
+
+
+/* ==========================================================
+   STICKY
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #111;
+}
+
+
+/* ==========================================================
+   IMAGE PRINCIPALE
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__media--one {
+  z-index: 1;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1);
+  will-change: transform, opacity;
+}
+
+
+/* ==========================================================
+   FOND PERSONNALISATION
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-customizer-background {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(15, 15, 15, 0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  will-change: opacity;
+}
+
+
+/* ==========================================================
+   OVERLAY
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: rgba(
+    0,
+    0,
+    0,
+    {{ section.settings.overlay_opacity | divided_by: 100.0 }}
+  );
+}
+
+
+/* ==========================================================
+   PREMIER CONTENU
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__content {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: {{ section.settings.text_alignment }};
+  justify-content: {{ section.settings.vertical_position }};
+  padding: 40px;
+  text-align: {{ section.settings.text_alignment }};
+  color: {{ section.settings.text_color_1 }};
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__eyebrow {
+  margin: 0 0 18px;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__heading {
+  margin: 0;
+  max-width: 1000px;
+  font-size: clamp(
+    48px,
+    8vw,
+    {{ section.settings.heading_size }}px
+  );
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__text {
+  max-width: 550px;
+  margin-top: 25px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__button {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 14px 30px;
+  background: {{ section.settings.button_background }};
+  color: {{ section.settings.button_text_color }};
+  border: 1px solid {{ section.settings.button_border_color }};
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__button:hover {
+  opacity: 0.7;
+}
+
+
+/* ==========================================================
+   PERSONNALISATION
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-customizer {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 45px 60px;
+  color: {{ section.settings.text_color_2 }};
+  opacity: 0;
+  transform: translateY(50px);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+
+/* ==========================================================
+   TITRE
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-customizer__header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-customizer__eyebrow {
+  margin: 0 0 12px;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-customizer__heading {
+  margin: 0;
+  font-size: clamp(38px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-customizer__description {
+  max-width: 550px;
+  margin: 16px auto 0;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.75;
+}
+
+
+/* ==========================================================
+   MODÈLES
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-models {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  align-items: center;
+}
+
+
+/* ==========================================================
+   CARTE
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model {
+  position: relative;
+  min-width: 0;
+  cursor: pointer;
+  opacity: 0.65;
+  transform: scale(0.94);
+  transition:
+    transform 0.8s cubic-bezier(.22,1,.36,1),
+    opacity 0.8s ease;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model.is-active {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+
+/* ==========================================================
+   NUMÉRO
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model__number {
+  margin-bottom: 8px;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  opacity: 0.55;
+}
+
+
+/* ==========================================================
+   IMAGE MODÈLE
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model__image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition:
+    transform 1s cubic-bezier(.22,1,.36,1);
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model.is-active
+.ardent-model__photo {
+  transform: scale(1.08);
+}
+
+
+/* ==========================================================
+   PLACEHOLDER
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+}
+
+
+/* ==========================================================
+   INFORMATIONS
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model__info {
+  padding-top: 14px;
+  text-align: center;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model__info h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model__info p {
+  margin: 7px 0 0;
+  font-size: 11px;
+  line-height: 1.4;
+  opacity: 0.6;
+}
+
+
+/* ==========================================================
+   BOUTON
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model__button {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 21px;
+  border: 1px solid {{ section.settings.button_border_color }};
+  color: {{ section.settings.text_color_2 }};
+  background: transparent;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s cubic-bezier(.22,1,.36,1),
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model.is-active
+.ardent-model__button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-model__button:hover {
+  background: {{ section.settings.text_color_2 }};
+  color: #111;
+}
+
+
+/* ==========================================================
+   SCROLL INDICATOR
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__scroll {
+  position: absolute;
+  z-index: 20;
+  bottom: 30px;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  opacity: 0.8;
+}
+
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__scroll-line {
+  width: 1px;
+  height: 45px;
+  margin-top: 12px;
+  background: #fff;
+  transform-origin: top;
+}
+
+
+/* ==========================================================
+   PLACEHOLDER PRINCIPAL
+========================================================== */
+
+#ArdentScrollHero-{{ section.id }}
+.ardent-scroll-hero__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #151515;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media screen and (max-width: 749px) {
+
+  #ArdentScrollHero-{{ section.id }} {
+    height: {{ section.settings.mobile_scroll_height }}vh;
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-scroll-hero__sticky {
+    height: 100svh;
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-customizer {
+    padding: 30px 14px;
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-customizer__header {
+    margin-bottom: 20px;
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-customizer__heading {
+    font-size: clamp(32px, 10vw, 50px);
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-customizer__description {
+    font-size: 11px;
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-models {
+    gap: 7px;
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-model {
+    transform: scale(0.96);
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-model.is-active {
+    transform: scale(1.04);
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-model__number {
+    font-size: 7px;
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-model__info {
+    padding-top: 8px;
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-model__info h3 {
+    font-size: 8px;
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-model__info p {
+    display: none;
+  }
+
+
+  #ArdentScrollHero-{{ section.id }}
+  .ardent-model__button {
+    margin-top: 8px;
+    padding: 7px 8px;
+    font-size: 6px;
+  }
+
+}
+
+</style>
+
+
+<script>
+(function () {
+
+  /*
+   * ==========================================================
+   * ARDENT SCROLL HERO
+   * Version robuste Shopify
+   * ==========================================================
+   */
+
+  const SECTION_ID =
+    'ArdentScrollHero-{{ section.id }}';
+
+  const SHOPIFY_SECTION_ID =
+    '{{ section.id }}';
+
+
+  let cleanup = null;
+  let animationFrame = null;
+
+
+  /* ==========================================================
+     INITIALISATION
+  ========================================================== */
+
+  function initArdentScrollHero() {
+
+    const section =
+      document.getElementById(
+        SECTION_ID
+      );
+
+
+    if (!section) {
+      return;
+    }
+
+
+    /*
+     * Si la section existe déjà,
+     * on nettoie l'ancienne instance.
+     */
+
+    if (cleanup) {
+      cleanup();
+    }
+
+
+    /* ========================================================
+       ÉLÉMENTS
+    ======================================================== */
+
+    const imageOne =
+      section.querySelector(
+        '.ardent-scroll-hero__media--one'
+      );
+
+
+    const imageOneElement =
+      section.querySelector(
+        '.ardent-scroll-hero__media--one .ardent-scroll-hero__image'
+      );
+
+
+    const background =
+      section.querySelector(
+        '.ardent-customizer-background'
+      );
+
+
+    const overlay =
+      section.querySelector(
+        '.ardent-scroll-hero__overlay'
+      );
+
+
+    const contentOne =
+      section.querySelector(
+        '.ardent-scroll-hero__content--one'
+      );
+
+
+    const customizer =
+      section.querySelector(
+        '.ardent-customizer'
+      );
+
+
+    const scrollLine =
+      section.querySelector(
+        '.ardent-scroll-hero__scroll-line'
+      );
+
+
+    const models =
+      section.querySelectorAll(
+        '.ardent-model'
+      );
+
+
+    if (!imageOne) {
+      return;
+    }
+
+
+    /* ========================================================
+       MODÈLES
+    ======================================================== */
+
+    const modelHandlers = [];
+
+
+    models.forEach(
+      function (model) {
+
+        function activateModel() {
+
+          models.forEach(
+            function (other) {
+
+              other.classList.remove(
+                'is-active'
+              );
+
+            }
+          );
+
+
+          model.classList.add(
+            'is-active'
+          );
+
+        }
+
+
+        model.addEventListener(
+          'mouseenter',
+          activateModel
+        );
+
+
+        model.addEventListener(
+          'click',
+          activateModel
+        );
+
+
+        modelHandlers.push({
+          element: model,
+          handler: activateModel
+        });
+
+      }
+    );
+
+
+    /* ========================================================
+       TROUVER LE CONTENEUR DE SCROLL
+    ======================================================== */
+
+    function findScrollContainer(
+      element
+    ) {
+
+      let parent =
+        element.parentElement;
+
+
+      while (parent) {
+
+        const style =
+          window.getComputedStyle(
+            parent
+          );
+
+
+        const overflowY =
+          style.overflowY;
+
+
+        const isScrollable =
+          (
+            overflowY === 'auto' ||
+            overflowY === 'scroll' ||
+            overflowY === 'overlay'
+          );
+
+
+        if (
+          isScrollable &&
+          parent.scrollHeight >
+          parent.clientHeight
+        ) {
+
+          return parent;
+
+        }
+
+
+        parent =
+          parent.parentElement;
+
+      }
+
+
+      return window;
+
+    }
+
+
+    let scrollContainer =
+      findScrollContainer(
+        section
+      );
+
+
+    /* ========================================================
+       ANIMATION
+    ======================================================== */
+
+    function updateAnimation() {
+
+      animationFrame = null;
+
+
+      /*
+       * On récupère la position réelle
+       * de la section dans le viewport.
+       */
+
+      const rect =
+        section.getBoundingClientRect();
+
+
+      const sectionHeight =
+        section.offsetHeight;
+
+
+      const viewportHeight =
+        window.innerHeight;
+
+
+      const scrollableDistance =
+        Math.max(
+          sectionHeight -
+          viewportHeight,
+          1
+        );
+
+
+      let progress =
+        -rect.top /
+        scrollableDistance;
+
+
+      progress =
+        Math.max(
+          0,
+          Math.min(
+            1,
+            progress
+          )
+        );
+
+
+      /* ======================================================
+         IMAGE — ZOOM
+      ====================================================== */
+
+      const imageProgress =
+        Math.min(
+          progress * 2,
+          1
+        );
+
+
+      if (imageOneElement) {
+
+        const zoom =
+          1 +
+          (
+            imageProgress *
+            (
+              {{ section.settings.zoom_amount }} /
+              100
+            )
+          );
+
+
+        imageOneElement.style.transform =
+          'scale(' +
+          zoom +
+          ')';
+
+      }
+
+
+      /* ======================================================
+         IMAGE — DISPARITION
+      ====================================================== */
+
+      const imageFade =
+        Math.max(
+          0,
+          Math.min(
+            1,
+            (
+              progress -
+              0.18
+            ) /
+            0.28
+          )
+        );
+
+
+      imageOne.style.opacity =
+        1 -
+        imageFade;
+
+
+      /* ======================================================
+         FOND SOMBRE
+      ====================================================== */
+
+      if (background) {
+
+        const backgroundProgress =
+          Math.max(
+            0,
+            Math.min(
+              1,
+              (
+                progress -
+                0.25
+              ) /
+              0.30
+            )
+          );
+
+
+        background.style.opacity =
+          backgroundProgress;
+
+      }
+
+
+      /* ======================================================
+         OVERLAY
+      ====================================================== */
+
+      if (overlay) {
+
+        const overlayFade =
+          Math.max(
+            0,
+            Math.min(
+              1,
+              (
+                progress -
+                0.15
+              ) /
+              0.25
+            )
+          );
+
+
+        overlay.style.opacity =
+          1 -
+          overlayFade;
+
+      }
+
+
+      /* ======================================================
+         PREMIER TEXTE
+      ====================================================== */
+
+      if (contentOne) {
+
+        const fadeOut =
+          Math.min(
+            progress /
+            0.20,
+            1
+          );
+
+
+        contentOne.style.opacity =
+          1 -
+          fadeOut;
+
+
+        contentOne.style.transform =
+          'translateY(' +
+          (
+            -50 *
+            fadeOut
+          ) +
+          'px)';
+
+      }
+
+
+      /* ======================================================
+         PERSONNALISATION
+      ====================================================== */
+
+      if (customizer) {
+
+        const customizerProgress =
+          Math.max(
+            0,
+            Math.min(
+              1,
+              (
+                progress -
+                0.32
+              ) /
+              0.28
+            )
+          );
+
+
+        customizer.style.opacity =
+          customizerProgress;
+
+
+        customizer.style.transform =
+          'translateY(' +
+          (
+            50 -
+            (
+              50 *
+              customizerProgress
+            )
+          ) +
+          'px)';
+
+
+        customizer.style.pointerEvents =
+          customizerProgress >
+          0.05
+            ? 'auto'
+            : 'none';
+
+      }
+
+
+      /* ======================================================
+         INDICATEUR
+      ====================================================== */
+
+      if (scrollLine) {
+
+        const lineScale =
+          Math.max(
+            0,
+            1 -
+            (
+              progress *
+              3
+            )
+          );
+
+
+        scrollLine.style.transform =
+          'scaleY(' +
+          lineScale +
+          ')';
+
+      }
+
+    }
+
+
+    /* ========================================================
+       DEMANDE ANIMATION
+    ======================================================== */
+
+    function requestAnimation() {
+
+      if (animationFrame !== null) {
+        return;
+      }
+
+
+      animationFrame =
+        window.requestAnimationFrame(
+          updateAnimation
+        );
+
+    }
+
+
+    /* ========================================================
+       SCROLL WINDOW
+    ======================================================== */
+
+    window.addEventListener(
+      'scroll',
+      requestAnimation,
+      {
+        passive: true
+      }
+    );
+
+
+    /* ========================================================
+       SCROLL CONTENEUR
+    ======================================================== */
+
+    if (
+      scrollContainer &&
+      scrollContainer !== window
+    ) {
+
+      scrollContainer.addEventListener(
+        'scroll',
+        requestAnimation,
+        {
+          passive: true
+        }
+      );
+
+    }
+
+
+    /* ========================================================
+       RESIZE
+    ======================================================== */
+
+    window.addEventListener(
+      'resize',
+      requestAnimation
+    );
+
+
+    /* ========================================================
+       RESIZE OBSERVER
+    ======================================================== */
+
+    let resizeObserver =
+      null;
+
+
+    if (
+      typeof ResizeObserver !==
+      'undefined'
+    ) {
+
+      resizeObserver =
+        new ResizeObserver(
+          function () {
+
+            requestAnimation();
+
+          }
+        );
+
+
+      resizeObserver.observe(
+        section
+      );
+
+    }
+
+
+    /* ========================================================
+       CHARGEMENT IMAGE
+    ======================================================== */
+
+    if (imageOneElement) {
+
+      imageOneElement.addEventListener(
+        'load',
+        requestAnimation
+      );
+
+    }
+
+
+    /* ========================================================
+       PREMIÈRE ANIMATION
+    ======================================================== */
+
+    requestAnimation();
+
+
+    /*
+     * Plusieurs recalculs permettent de prendre
+     * en compte le rendu du thème et des images.
+     */
+
+    window.setTimeout(
+      requestAnimation,
+      100
+    );
+
+
+    window.setTimeout(
+      requestAnimation,
+      500
+    );
+
+
+    window.setTimeout(
+      requestAnimation,
+      1000
+    );
+
+
+    /* ========================================================
+       NETTOYAGE
+    ======================================================== */
+
+    cleanup =
+      function () {
+
+
+        window.removeEventListener(
+          'scroll',
+          requestAnimation
+        );
+
+
+        window.removeEventListener(
+          'resize',
+          requestAnimation
+        );
+
+
+        if (
+          scrollContainer &&
+          scrollContainer !== window
+        ) {
+
+          scrollContainer.removeEventListener(
+            'scroll',
+            requestAnimation
+          );
+
+        }
+
+
+        if (resizeObserver) {
+
+          resizeObserver.disconnect();
+
+        }
+
+
+        if (imageOneElement) {
+
+          imageOneElement.removeEventListener(
+            'load',
+            requestAnimation
+          );
+
+        }
+
+
+        modelHandlers.forEach(
+          function (item) {
+
+            item.element.removeEventListener(
+              'mouseenter',
+              item.handler
+            );
+
+
+            item.element.removeEventListener(
+              'click',
+              item.handler
+            );
+
+          }
+        );
+
+
+        if (
+          animationFrame !== null
+        ) {
+
+          window.cancelAnimationFrame(
+            animationFrame
+          );
+
+          animationFrame =
+            null;
+
+        }
+
+
+        cleanup =
+          null;
+
+      };
+
+  }
+
+
+  /* ==========================================================
+     DÉMARRAGE
+  ========================================================== */
+
+  function startArdent() {
+
+    /*
+     * Shopify peut avoir besoin d'un petit délai
+     * pour terminer l'insertion de la section.
+     */
+
+    window.requestAnimationFrame(
+      function () {
+
+        initArdentScrollHero();
+
+      }
+    );
+
+  }
+
+
+  /* ==========================================================
+     CHARGEMENT NORMAL
+  ========================================================== */
+
+  if (
+    document.readyState ===
+    'loading'
+  ) {
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      startArdent,
+      {
+        once: true
+      }
+    );
+
+  } else {
+
+    startArdent();
+
+  }
+
+
+  /* ==========================================================
+     SHOPIFY — SECTION LOAD
+  ========================================================== */
+
+  document.addEventListener(
+    'shopify:section:load',
+    function (event) {
+
+      if (
+        event.detail &&
+        event.detail.sectionId ===
+        SHOPIFY_SECTION_ID
+      ) {
+
+        startArdent();
+
+      }
+
+    }
+  );
+
+
+  /* ==========================================================
+     SHOPIFY — SECTION UNLOAD
+  ========================================================== */
+
+  document.addEventListener(
+    'shopify:section:unload',
+    function (event) {
+
+      if (
+        event.detail &&
+        event.detail.sectionId ===
+        SHOPIFY_SECTION_ID
+      ) {
+
+        if (cleanup) {
+
+          cleanup();
+
+        }
+
+      }
+
+    }
+  );
+
+
+  /* ==========================================================
+     SHOPIFY — SECTION REORDER
+  ========================================================== */
+
+  document.addEventListener(
+    'shopify:section:reorder',
+    function (event) {
+
+      if (
+        event.detail &&
+        event.detail.sectionId ===
+        SHOPIFY_SECTION_ID
+      ) {
+
+        startArdent();
+
+      }
+
+    }
+  );
+
+
+  /* ==========================================================
+     SHOPIFY — SECTION SELECT
+  ========================================================== */
+
+  document.addEventListener(
+    'shopify:section:select',
+    function (event) {
+
+      if (
+        event.detail &&
+        event.detail.sectionId ===
+        SHOPIFY_SECTION_ID
+      ) {
+
+        startArdent();
+
+      }
+
+    }
+  );
+
+
+})();
+</script>
+
+
+{% schema %}
+
+{
+  "name": "Ardent Scroll Hero",
+
+  "settings": [
+
+    {
+      "type": "header",
+      "content": "Image principale"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Premier écran"
+    },
+
+    {
+      "type": "text",
+      "id": "eyebrow_1",
+      "label": "Petit titre",
+      "default": "ARDENT"
+    },
+
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Grand titre",
+      "default": "Le temps, autrement."
+    },
+
+    {
+      "type": "richtext",
+      "id": "text_1",
+      "label": "Description",
+      "default": "<p>Une nouvelle vision de l'horlogerie.</p>"
+    },
+
+    {
+      "type": "text",
+      "id": "button_text_1",
+      "label": "Texte du bouton",
+      "default": "Découvrir"
+    },
+
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Lien du bouton"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Section Personnalisé"
+    },
+
+    {
+      "type": "text",
+      "id": "eyebrow_2",
+      "label": "Petit titre",
+      "default": "PERSONNALISÉ"
+    },
+
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Grand titre",
+      "default": "Créez votre Ardent."
+    },
+
+    {
+      "type": "richtext",
+      "id": "text_2",
+      "label": "Description",
+      "default": "<p>Choisissez le modèle qui vous correspond.</p>"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Modèle 01"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "model_image_1",
+      "label": "Image modèle 01"
+    },
+
+    {
+      "type": "text",
+      "id": "model_title_1",
+      "label": "Nom modèle 01",
+      "default": "Ardent I"
+    },
+
+    {
+      "type": "text",
+      "id": "model_text_1",
+      "label": "Description modèle 01",
+      "default": "L'essentiel."
+    },
+
+    {
+      "type": "text",
+      "id": "model_button_1",
+      "label": "Texte bouton 01",
+      "default": "Personnaliser"
+    },
+
+    {
+      "type": "url",
+      "id": "model_link_1",
+      "label": "Lien modèle 01"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Modèle 02"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "model_image_2",
+      "label": "Image modèle 02"
+    },
+
+    {
+      "type": "text",
+      "id": "model_title_2",
+      "label": "Nom modèle 02",
+      "default": "Ardent II"
+    },
+
+    {
+      "type": "text",
+      "id": "model_text_2",
+      "label": "Description modèle 02",
+      "default": "La précision."
+    },
+
+    {
+      "type": "text",
+      "id": "model_button_2",
+      "label": "Texte bouton 02",
+      "default": "Personnaliser"
+    },
+
+    {
+      "type": "url",
+      "id": "model_link_2",
+      "label": "Lien modèle 02"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Modèle 03"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "model_image_3",
+      "label": "Image modèle 03"
+    },
+
+    {
+      "type": "text",
+      "id": "model_title_3",
+      "label": "Nom modèle 03",
+      "default": "Ardent III"
+    },
+
+    {
+      "type": "text",
+      "id": "model_text_3",
+      "label": "Description modèle 03",
+      "default": "L'exception."
+    },
+
+    {
+      "type": "text",
+      "id": "model_button_3",
+      "label": "Texte bouton 03",
+      "default": "Personnaliser"
+    },
+
+    {
+      "type": "url",
+      "id": "model_link_3",
+      "label": "Lien modèle 03"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Couleurs"
+    },
+
+    {
+      "type": "color",
+      "id": "text_color_1",
+      "label": "Couleur texte écran 1",
+      "default": "#FFFFFF"
+    },
+
+    {
+      "type": "color",
+      "id": "text_color_2",
+      "label": "Couleur texte personnalisation",
+      "default": "#FFFFFF"
+    },
+
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Fond bouton",
+      "default": "#000000"
+    },
+
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Texte bouton",
+      "default": "#FFFFFF"
+    },
+
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Bordure bouton",
+      "default": "#FFFFFF"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Position texte"
+    },
+
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Alignement",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Gauche"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "flex-end",
+          "label": "Droite"
+        }
+      ],
+      "default": "center"
+    },
+
+    {
+      "type": "select",
+      "id": "vertical_position",
+      "label": "Position verticale",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Haut"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bas"
+        }
+      ],
+      "default": "center"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+
+    {
+      "type": "range",
+      "id": "scroll_height",
+      "label": "Longueur animation",
+      "min": 250,
+      "max": 600,
+      "step": 10,
+      "unit": "vh",
+      "default": 400
+    },
+
+    {
+      "type": "range",
+      "id": "mobile_scroll_height",
+      "label": "Longueur mobile",
+      "min": 200,
+      "max": 450,
+      "step": 10,
+      "unit": "vh",
+      "default": 300
+    },
+
+    {
+      "type": "range",
+      "id": "zoom_amount",
+      "label": "Intensité du zoom",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "%",
+      "default": 8
+    },
+
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Taille du titre",
+      "min": 60,
+      "max": 160,
+      "step": 5,
+      "unit": "px",
+      "default": 120
+    },
+
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Obscurité image",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "%",
+      "default": 20
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_scroll_indicator",
+      "label": "Afficher indicateur de scroll",
+      "default": true
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Ardent Scroll Hero"
+    }
+  ]
+
+}
+
+{% endschema %}

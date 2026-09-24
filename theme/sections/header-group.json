@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:names.header",
+  "sections": {
+    "header_section": {
+      "type": "header",
+      "blocks": {
+        "header-logo": { "type": "_header-logo", "static": true, "settings": { "hide_logo_on_home_page": false, "padding-block-start": 0, "padding-block-end": 0 }, "blocks": {} },
+        "header-menu": { "type": "_header-menu", "static": true, "settings": { "menu": "menu-lat-ral", "background_color": "#ffffff", "text_color": "#111111", "type_font_primary_size": "0.875rem", "menu_font_style": "regular", "type_font_primary_link": "body", "type_case_primary_link": "none", "menu_style": "featured_products", "featured_products_aspect_ratio": "4 / 5", "featured_collections_aspect_ratio": "16 / 9", "image_border_radius": 0, "navigation_bar": false, "background_color_navigation_bar": "{{ settings.color_palette.background }}", "text_color_navigation_bar": "", "drawer_accordion": false, "drawer_accordion_expand_first": false, "drawer_dividers": false }, "blocks": {} }
+      },
+      "settings": { "logo_position": "center", "menu_position": "left", "menu_row": "top", "customer_account_menu": "menu-lat-ral", "show_search": true, "search_position": "right", "search_row": "top", "show_country": false, "country_selector_style": true, "show_language": true, "localization_font": "heading", "localization_font_size": "0.875rem", "localization_position": "right", "localization_row": "top", "section_width": "page-width", "section_height": "standard", "enable_sticky_header": "always", "divider_width": 0, "divider_size": "page-width", "divider_color": "", "border_width": 0, "bottom_border_color": "", "actions_display_style": "icon", "actions_font_size": "0.875rem", "actions_font": "body", "actions_text_case": "none", "background_color_top": "", "text_color_top": "", "background_color_bottom": "", "text_color_bottom": "", "bubble_style": "default", "bubble_background_color": "", "bubble_text_color": "", "enable_transparent_header_home": false, "home_inverse_logo": false, "text_color_transparent_home": "", "enable_transparent_header_product": false, "product_inverse_logo": false, "text_color_transparent_product": "", "enable_transparent_header_collection": false, "collection_inverse_logo": false, "text_color_transparent_collection": "" }
+    },
+    "ardent_header_override": { "type": "ardent-header-override", "settings": { "story_1_title": "La naissance d’Ardent", "story_1_image": "shopify://shop_images/ardent-cover-origin-v1.png", "story_2_title": "L’esprit Ardent", "story_2_image": "shopify://shop_images/ardent-cover-spirit-v1.png", "story_3_title": "Notre vision", "story_3_image": "shopify://shop_images/ardent-cover-vision-v1.png", "craft_1_title": "L’anatomie d’une Ardent", "craft_1_image": "shopify://shop_images/ardent-cover-anatomy-v1.png", "craft_2_title": "Le geste Ardent", "craft_2_image": "shopify://shop_images/ardent-cover-gesture-v1.png", "service_1_title": "Entretien de votre montre", "service_1_image": "shopify://shop_images/ardent-cover-care-v1.png", "service_2_title": "Le service de votre Ardent", "service_2_image": "shopify://shop_images/ardent-cover-service-v1.png", "story_1_link": "/pages/la-naissance-d-ardent", "story_2_link": "/pages/l-esprit-ardent", "story_3_link": "/pages/notre-vision", "craft_1_link": "/pages/anatomie-d-une-ardent", "craft_2_link": "/pages/le-geste-ardent", "service_1_link": "/pages/lentretien-de-votre-ardent", "service_2_link": "/pages/le-service-de-votre-ardent" } },
+    "header_announcements_zBXNaD": {
+      "type": "header-announcements",
+      "blocks": {
+        "announcement_WBb3My": { "type": "_announcement", "settings": { "text": "ARDENT — LE TEMPS VOUS APPARTIENT", "link": "", "font": "var(--font-body--family)", "font_size": "0.75rem", "weight": "", "letter_spacing": "0.18em", "case": "uppercase", "text_color": "#e0c5a5" }, "blocks": {} }
+      },
+      "block_order": ["announcement_WBb3My"],
+      "name": "t:names.announcement_bar",
+      "settings": { "speed": 5, "section_width": "full-width", "background_color": "#090807", "divider_width": 0, "divider_color": "", "padding-block-start": 10, "padding-block-end": 10 }
+    }
+  },
+  "order": ["header_section", "ardent_header_override", "header_announcements_zBXNaD"]
+}
