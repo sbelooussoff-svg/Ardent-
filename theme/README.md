@@ -1,7 +1,9 @@
 # Thème Shopify Ardent
 
-Ce dossier prépare l’import du thème brouillon **Ardent V2 Premium** de la boutique Shopify Ardent. Le thème publié est **Shopistart** et n’a pas été modifié.
+Ce dossier contient la copie du thème brouillon **Ardent V2 Premium** de la boutique Shopify Ardent : les huit dossiers du thème et 519 fichiers (516 fichiers exportés, plus trois décors JPG intégrés dans `assets/`). Le thème publié **Shopistart** n’a pas été modifié.
 
-**État de l’import : partiel.** La structure native Shopify et trois fichiers de l’accueil sont dans GitHub : `sections/ardent-element-home.liquid`, `snippets/ardent-element-media.liquid` et `templates/index.json`. Les autres fichiers du thème n’y sont pas encore : l’outil d’import de GitHub a échoué. Une copie locale complète du brouillon (516 fichiers), avec les trois nouveaux décors, est conservée dans l’espace de travail Codex. Ne pas déployer ce dossier GitHub comme un thème complet avant la fin de l’import.
+Les pages Méridian, Bastille et Élysée utilisent chacune une ambiance Feu, Eau ou Air. Leurs visuels de montres restent des images d’intention, et les trois collections ne contiennent pas encore de montres publiées. La page `pages/configurateur` est pour l’instant un atelier de découverte : elle ne présente ni variante commandable ni prix non validé.
 
-Les modifications sont vérifiées sur le thème brouillon Shopify avant toute mise en ligne. Les visuels de montre et les textes commerciaux doivent être contrôlés avec [Product Truth](../docs/product-truth.md). Les décors Feu, Eau et Air sont illustratifs ; ils ne prouvent aucune caractéristique technique de la montre.
+Avant une mise en vente, confirmer les produits, leurs caractéristiques, les composants réellement disponibles, les compatibilités et les prix avec [Product Truth](../docs/product-truth.md), puis remplacer ou approuver les visuels produit. Les décors Feu, Eau et Air sont artistiques : ils ne prouvent aucune résistance à la chaleur, à l’eau ou à d’autres conditions.
+
+Toute évolution doit d’abord être vérifiée sur le thème brouillon Shopify avant publication.
