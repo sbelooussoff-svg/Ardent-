@@ -11,9 +11,9 @@
 <ardent-elements-home class="ae-home" data-element="fire" data-dwell="{{ section.settings.dwell | times: 1000 }}" data-pause-text="{{ 'ardent_elements.home.pause' | t | escape }}" data-play-text="{{ 'ardent_elements.home.play' | t | escape }}">
   <section class="ae-hero" aria-roledescription="{{ 'ardent_elements.home.carousel' | t | escape }}" aria-label="{{ 'ardent_elements.home.title' | t | escape }}">
     <div class="ae-scenes" aria-hidden="true">
-      <div class="ae-scene ae-scene--fire is-active" data-scene="0" style="--ae-scene-image:url('{{ 'meridian-fire-v1.jpg' | file_url }}')"></div>
-      <div class="ae-scene ae-scene--water" data-scene="1" style="--ae-scene-image:url('{{ 'bastille-water-v1.jpg' | file_url }}')"></div>
-      <div class="ae-scene ae-scene--air" data-scene="2" style="--ae-scene-image:url('{{ 'elysee-air-v1.jpg' | file_url }}')"></div>
+      <div class="ae-scene ae-scene--fire is-active" data-scene="0" style="--ae-scene-image:url('{{ 'meridian-fire-v1.jpg' | asset_url }}')"></div>
+      <div class="ae-scene ae-scene--water" data-scene="1" style="--ae-scene-image:url('{{ 'bastille-water-v1.jpg' | asset_url }}')"></div>
+      <div class="ae-scene ae-scene--air" data-scene="2" style="--ae-scene-image:url('{{ 'elysee-air-v1.jpg' | asset_url }}')"></div>
     </div>
     <div class="ae-hero__veil" aria-hidden="true"></div>
     <div class="ae-hero__top"><span>ARDENT — {{ 'ardent_elements.home.edition' | t }}</span><span>{{ 'ardent_elements.home.three' | t }}</span></div>

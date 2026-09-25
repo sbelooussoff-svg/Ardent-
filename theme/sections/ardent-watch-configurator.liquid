@@ -35,7 +35,7 @@
         {% capture watch_image %}{% render 'ardent-element-media', model: model, context: 'configurator' %}{% endcapture %}
         {% assign watch_image = watch_image | strip %}
         <article class="ardent-atelier__scene ardent-atelier__scene--{{ model }}" data-atelier-scene="{{ model }}" {% unless index == 1 %}hidden{% endunless %}>
-          <div class="ardent-atelier__atmosphere" style="--atelier-image:url('{{ atmosphere | file_url }}')" aria-hidden="true"></div>
+          <div class="ardent-atelier__atmosphere" style="--atelier-image:url('{{ atmosphere | asset_url }}')" aria-hidden="true"></div>
           <div class="ardent-atelier__scene-top"><span>0{{ index }} / 03</span><span>{{ element_name }}</span></div>
           <div class="ardent-atelier__watch">
             <img src="{{ watch_image | escape }}" alt="{{ 'ardent_elements.atelier.image_alt' | t: model: model_name | escape }}" width="1000" height="1000" {% unless index == 1 %}loading="lazy"{% endunless %}>

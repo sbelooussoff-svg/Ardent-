@@ -32,7 +32,7 @@
 %}
 <section id="ArdentDepth-{{ section.id }}" class="ae-depth ae-depth--{{ element }}" data-ardent-depth data-model="{{ model }}" aria-labelledby="ArdentDepthTitle-{{ section.id }}">
   <div class="ae-depth-stage" aria-hidden="true">
-    <div class="ae-depth-stage__scene" style="--ae-scene-image:url('{{ scene_filename | file_url }}')"></div>
+    <div class="ae-depth-stage__scene" style="--ae-scene-image:url('{{ scene_filename | asset_url }}')"></div>
     <div class="ae-depth-stage__shade"></div>
     <div class="ae-depth-stage__grain"></div>
   </div>
