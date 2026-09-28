@@ -79,8 +79,9 @@
                 <a class="ardent-nav__card ardent-nav__card--{{ model }}" href="{{ target_url }}" style="--card-index: {{ forloop.index0 }};">
                   <div class="ardent-nav__media">
                     {% if element_image != blank %}<img src="{{ element_image | escape }}" alt="{{ title }}" width="720" height="960" loading="lazy" decoding="async">{% endif %}
-                    <div class="ardent-nav__caption"><span>{{ element_key | t }}</span><h3>{{ title }}</h3><span class="ardent-nav__arrow" aria-hidden="true">↗</span></div>
+                    <video muted loop playsinline preload="none" aria-hidden="true" data-ardent-video><source src="{{ 'ardent-' | append: model | append: '-product-motion-v3.mp4' | asset_url }}" type="video/mp4"></video>
                   </div>
+                  <div class="ardent-nav__caption"><span>{{ element_key | t }}</span><h3>{{ title }}</h3><span class="ardent-nav__arrow" aria-hidden="true">↗</span></div>
                 </a>
               {% endfor %}
             </div>
@@ -114,8 +115,8 @@
                 <a class="ardent-nav__card ardent-nav__card--editorial" href="{{ editorial_link }}" style="--card-index: {{ forloop.index0 }};">
                   <div class="ardent-nav__media">
                     {% if editorial_image != blank %}{{ editorial_image | image_url: width: 900 | image_tag: alt: editorial_title, loading: 'lazy' }}{% endif %}
-                    <div class="ardent-nav__caption"><h3>{{ editorial_title | escape }}</h3><span class="ardent-nav__arrow" aria-hidden="true">↗</span></div>
                   </div>
+                  <div class="ardent-nav__caption"><h3>{{ editorial_title | escape }}</h3><span class="ardent-nav__arrow" aria-hidden="true">↗</span></div>
                 </a>
               {% endfor %}
             </div>
@@ -156,7 +157,17 @@
   @keyframes ardent-drawer-open{from{transform:translateX(-100%)}to{transform:none}}@keyframes ardent-drawer-close{to{transform:translateX(-100%)}}@keyframes ardent-backdrop-open{from{opacity:0}to{opacity:1}}@keyframes ardent-panel-reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@keyframes ardent-card-reveal{from{opacity:0;transform:translateY(28px);clip-path:inset(0 0 13%)}to{opacity:1;transform:none;clip-path:inset(0)}}
   @media(max-width:1100px){.ardent-nav{width:100vw}.ardent-nav__body{grid-template-columns:250px minmax(0,1fr)}.ardent-nav__masthead{padding-inline:28px}.ardent-nav__rail{padding:40px 24px 30px 28px}.ardent-nav__panels{padding:42px 28px}.ardent-nav__cards{gap:10px}.ardent-nav__caption{inset-inline:12px}}
   @media(max-width:760px){.ardent-nav__masthead{height:76px;padding:16px 22px}.ardent-nav__body{display:flex;flex-direction:column;min-height:calc(100dvh - 76px)}.ardent-nav__rail{display:contents}.ardent-nav__primary{padding:20px 22px;border-bottom:1px solid var(--nav-rule);display:grid;grid-template-columns:1fr 1fr;gap:0 22px}.ardent-nav__link{grid-template-columns:1fr 12px;font-size:14px;padding:13px 0}.ardent-nav__link>span{display:none}.ardent-nav__link>i{font-size:12px}.ardent-nav__rail-bottom{order:2;padding:8px 22px 28px}.ardent-nav__rail-bottom>p{display:none}.ardent-nav__panels{padding:28px 22px;width:100%}.ardent-nav__intro{min-height:0;margin-bottom:22px}.ardent-nav__intro h2{font-size:32px}.ardent-nav__cards,.ardent-nav__cards--two{grid-template-columns:1fr;gap:16px}.ardent-nav__media,.ardent-nav__cards--two .ardent-nav__media{aspect-ratio:1.55/1}.ardent-nav__media img{object-position:50% 42%}.ardent-nav__caption{inset:auto 22px 23px}.ardent-nav__caption h3{font-size:30px}.ardent-nav__panel.is-active .ardent-nav__card{animation-delay:0s}}
-  @media(prefers-reduced-motion:reduce){.ardent-nav,.ardent-nav::backdrop,.ardent-nav *,.ardent-nav *::after{animation:none!important;transition:none!important}.ardent-nav__card:hover img{transform:none}}
+  .ardent-nav__card{color:var(--nav-ink);--nav-glow:#a95e37}.ardent-nav__card--bastille{--nav-glow:#4a8e9d}.ardent-nav__card--elysee{--nav-glow:#879bb8}.ardent-nav__card--editorial{--nav-glow:#a5927a}
+  .ardent-nav__media,.ardent-nav__cards--two .ardent-nav__media{aspect-ratio:4/5;overflow:visible;background:transparent!important}.ardent-nav__media::after{inset:18% 5% 8%;z-index:0;border-radius:50%;background:radial-gradient(ellipse,var(--nav-glow),transparent 67%);filter:blur(30px);opacity:.16;animation:ardent-nav-glow 8s ease-in-out infinite alternate}.ardent-nav__media::before{content:"";position:absolute;inset:6% 2%;z-index:2;pointer-events:none;opacity:.38;mask-image:radial-gradient(ellipse 78% 72% at 50% 47%,#000 40%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 78% 72% at 50% 47%,#000 40%,transparent 100%)}
+  .ardent-nav__cards--two .ardent-nav__media{aspect-ratio:1.1/1}
+  .ardent-nav__card--meridian .ardent-nav__media::before{background:radial-gradient(circle at 22% 74%,#fca963 0 1px,transparent 3px),radial-gradient(circle at 66% 84%,#ffbe7a 0 1px,transparent 3px);background-size:100px 130px,170px 190px;animation:ardent-nav-embers 7s linear infinite}.ardent-nav__card--bastille .ardent-nav__media::before{background:repeating-linear-gradient(112deg,transparent 0 13%,#d3f5fa57 16%,transparent 19% 33%);filter:blur(8px);animation:ardent-nav-water 8s ease-in-out infinite alternate}.ardent-nav__card--elysee .ardent-nav__media::before{background:linear-gradient(115deg,transparent 25%,#fff9 51%,transparent 72%);filter:blur(16px);animation:ardent-nav-air 10s ease-in-out infinite alternate}
+  .ardent-nav__media :is(img,video){position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;mask-image:radial-gradient(ellipse 58% 61% at 50% 49%,#000 34%,#000e 46%,transparent 89%);-webkit-mask-image:radial-gradient(ellipse 58% 61% at 50% 49%,#000 34%,#000e 46%,transparent 89%);transition:transform 1.2s cubic-bezier(.2,.7,.2,1),opacity .5s ease}.ardent-nav__media video{opacity:0;pointer-events:none}.ardent-nav__media.is-playing video{opacity:1}.ardent-nav__card:hover .ardent-nav__media :is(img,video),.ardent-nav__card:focus-visible .ardent-nav__media :is(img,video){transform:translateY(-5px) scale(1.035)}
+  .ardent-nav__card:not(.ardent-nav__card--editorial) .ardent-nav__media img{z-index:2;opacity:.93}.ardent-nav__card--meridian .ardent-nav__media img{animation:ardent-product-fire 7s ease-in-out infinite}.ardent-nav__card--bastille .ardent-nav__media img{animation:ardent-product-water 9s ease-in-out infinite}.ardent-nav__card--elysee .ardent-nav__media img{animation:ardent-product-air 11s ease-in-out infinite}.ardent-nav__media video{z-index:1}.ardent-nav__media.is-playing video{opacity:.8}
+  .ardent-nav__caption{position:relative;inset:auto;display:block;padding:4px 10px 18px;color:var(--nav-ink);border-bottom:1px solid var(--nav-rule)}.ardent-nav__caption>span:first-child:not(.ardent-nav__arrow){color:#867a6e;opacity:1}.ardent-nav__caption h3{color:var(--nav-ink)}.ardent-nav__arrow{bottom:20px;right:10px}.ardent-nav__card--editorial .ardent-nav__media img{animation:ardent-nav-editorial-drift 11s ease-in-out infinite alternate}.ardent-nav__panel[data-ardent-panel=service] .ardent-nav__card--editorial .ardent-nav__media img{animation-name:ardent-nav-editorial-light}
+  @keyframes ardent-nav-glow{from{transform:scale(.89);opacity:.1}to{transform:scale(1.08);opacity:.23}}@keyframes ardent-nav-embers{from{transform:translateY(9%);opacity:.2}to{transform:translateY(-9%);opacity:.55}}@keyframes ardent-nav-water{from{transform:translateX(-7%);opacity:.15}to{transform:translateX(7%);opacity:.44}}@keyframes ardent-nav-air{from{transform:translateX(-18%);opacity:.18}to{transform:translateX(17%);opacity:.5}}@keyframes ardent-nav-editorial-drift{from{transform:scale(1) translateX(-1%)}to{transform:scale(1.045) translateX(1%)}}@keyframes ardent-nav-editorial-light{from{filter:brightness(.92);transform:scale(1.035)}to{filter:brightness(1.06);transform:scale(1)}}
+  @keyframes ardent-product-fire{0%,100%{transform:translateY(2px) rotate(-1deg) scale(1.01)}50%{transform:translateY(-7px) rotate(1deg) scale(1.025)}}@keyframes ardent-product-water{0%,100%{transform:translateY(4px) scale(1.015)}45%{transform:translateY(-8px) scale(1.025)}72%{transform:translateY(-3px) scale(1.02)}}@keyframes ardent-product-air{0%,100%{transform:translate(-3px,3px) rotate(-1deg) scale(1.01)}50%{transform:translate(5px,-8px) rotate(1deg) scale(1.025)}}
+  @media(max-width:760px){.ardent-nav__media,.ardent-nav__cards--two .ardent-nav__media{aspect-ratio:1.55/1}.ardent-nav__caption{inset:auto;padding:3px 8px 17px}.ardent-nav__arrow{right:8px;bottom:18px}}
+  @media(prefers-reduced-motion:reduce){.ardent-nav,.ardent-nav::backdrop,.ardent-nav *,.ardent-nav *::before,.ardent-nav *::after{animation:none!important;transition:none!important}.ardent-nav__card:hover img{transform:none}.ardent-nav__media video{display:none!important}}
 {% endstylesheet %}
 {% javascript %}
   if (!customElements.get('ardent-navigation')) {
@@ -167,6 +178,9 @@
         const signal = this._controller.signal;
         this._dialog = this.querySelector('dialog');
         if (!this._dialog) return;
+        this._videos = [...this.querySelectorAll('[data-ardent-video]')];
+        this._motion = matchMedia('(prefers-reduced-motion: reduce)');
+        this._videos.forEach((video) => video.addEventListener('playing', () => { if (this._dialog.open && !video.closest('[hidden]')) video.parentElement.classList.add('is-playing'); }, { signal }));
         this._triggerSelector = '#header-component .header__icon--menu, .ardent-nav-trigger';
         this._initTriggers();
         document.addEventListener('click', (event) => {
@@ -191,6 +205,8 @@
         this.querySelector('select[name="language_code"]')?.addEventListener('change', (event) => event.target.form.requestSubmit(), { signal });
         document.addEventListener('shopify:section:load', () => this._initTriggers(), { signal });
         window.addEventListener('resize', () => this._initTriggers(), { signal });
+        document.addEventListener('visibilitychange', () => this._syncVideos(), { signal });
+        this._motion.addEventListener('change', () => this._syncVideos(), { signal });
       }
       _initTriggers() {
         const header = document.getElementById('header-component');
@@ -221,6 +237,7 @@
         this._dialog.removeAttribute('data-closing');
         this._returnFocus = trigger;
         this._dialog.showModal();
+        this._syncVideos();
         document.documentElement.classList.add('ardent-menu-lock');
         document.querySelectorAll('[aria-controls="ArdentNavigationDialog"]').forEach((button) => button.setAttribute('aria-expanded', 'true'));
         this.querySelector('[data-ardent-close]').focus({ preventScroll: true });
@@ -228,11 +245,13 @@
       close() {
         if (!this._dialog.open || this._dialog.hasAttribute('data-closing')) return;
         this._dialog.setAttribute('data-closing', '');
+        this._syncVideos();
         const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300;
         this._closeTimer = setTimeout(() => this._dialog.close(), delay);
       }
       _afterClose() {
         this._dialog.removeAttribute('data-closing');
+        this._syncVideos();
         document.documentElement.classList.remove('ardent-menu-lock');
         document.querySelectorAll('[aria-controls="ArdentNavigationDialog"]').forEach((button) => button.setAttribute('aria-expanded', 'false'));
         if (this._returnFocus?.isConnected) this._returnFocus.focus({ preventScroll: true });
@@ -249,6 +268,14 @@
           panel.inert = !active;
           panel.classList.toggle('is-active', active);
         });
+        this._syncVideos();
+      }
+      _syncVideos() {
+        this._videos?.forEach((video) => {
+          const play = this._dialog.open && !this._dialog.hasAttribute('data-closing') && !document.hidden && !this._motion.matches && Boolean(video.closest('.ardent-nav__panel.is-active'));
+          if (play) { if (video.paused) video.play().catch(() => {}); }
+          else { video.pause(); video.parentElement.classList.remove('is-playing'); }
+        });
       }
       _trapFocus(event) {
         if (event.key !== 'Tab') return;
@@ -260,6 +287,7 @@
       }
       disconnectedCallback() {
         clearTimeout(this._closeTimer);
+        this._videos?.forEach((video) => video.pause());
         if (this._dialog?.open) this._dialog.close();
         document.documentElement.classList.remove('ardent-menu-lock');
         this._fallback?.remove();
